@@ -1,0 +1,171 @@
+# Translations for English
+# https://gohugo.io/content-management/multilingual/#translation-of-strings
+
+# === init ===
+[init]
+configurationError = "Configuration Error\nYou haven't configured the FixIt version param correctly yet. See https://fixit.lruihao.cn/documentation/basics/#theme-configuration"
+compatibilityError = "Compatibility Error ({{ .From }} -> {{ .To }}):\nYou have an incompatible update. See https://github.com/hugo-fixit/FixIt/releases"
+RCVersionWarn = "You are using a development version of FixIt. Please consider using a stable version.\nSee https://github.com/hugo-fixit/FixIt/releases"
+devEnvWarn = "Current environment is \"development\". The \"comment system\", \"CDN\" and \"fingerprint\" will be disabled."
+quicklyUpgrade = "Quickly upgrade use command: "
+# === init ===
+
+# === baseof ===
+[baseof]
+backToTop = "Back to Top"
+viewComments = "View Comments"
+noscript = "Theme FixIt works best with JavaScript enabled."
+# === baseof ===
+
+# === Taxonomy ===
+[allSome]
+other = "All {{ .Some }}"
+
+[category]
+other = "Category"
+
+[categories]
+other = "Categories"
+
+[tag]
+other = "Tag"
+
+[tags]
+other = "Tags"
+
+[posts]
+other = "Posts"
+
+[taxonomy.totalwordCount]
+one = "Total one word"
+other = "Total {{ .Count }} words"
+# === Taxonomy ===
+
+# === Section ===
+[section]
+recentlyUpdated = "Recently Updated"
+# === Section ===
+
+# === Pagination ===
+[pagination]
+more = "More"
+# === Pagination ===
+
+# === partials/header.html ===
+[header]
+selectLanguage = "Select Language"
+noMoretTranslations = "No more translations"
+switchTheme = "Switch Theme"
+# === partials/header.html ===
+
+# === partials/footer.html ===
+[footer]
+poweredBySome = "Powered by {{ .Hugo }} | Theme - {{ .Theme }}"
+siteUV = "Total visitors"
+sitePV = "Total visits"
+siteRunning = "Website running ..."
+# === partials/footer.html ===
+
+# === partials/comment.html ===
+[comment]
+valineLang = "en"
+valinePlaceholder = "Your comment ..."
+facebookLanguageCode = "en_US"
+# === partials/comment.html ===
+
+# === partials/assets.html ===
+[assets]
+search = "Search"
+searchPlaceholder = "Search titles or contents ..."
+clear = "Clear"
+cancel = "Cancel"
+noResultsFound = "No results found"
+lunrLanguageCode = "en"
+copyToClipboard = "Copy to clipboard"
+editLockTitle = "Lock editable code block"
+editUnLockTitle = "Unlock editable code block"
+cookieconsentMessage = "This website uses Cookies to improve your experience."
+cookieconsentDismiss = "Got it!"
+cookieconsentLink = "Learn more"
+# === partials/assets.html ===
+
+# === partials/plugin/share.html ===
+[shareOn]
+other = "Share on"
+# === partials/plugin/share.html ===
+
+# === posts/single.html ===
+[single]
+contents= "Contents"
+repost= "Repost"
+publishedOnDate= "published on {{ .Date }}"
+includedInCategories= "included in {{ .Categories }}"
+views = "views"
+comments = "comments"
+author = "Author"
+updatedOnDate = "Updated on {{ .Date }}"
+readMarkdown = "Read Markdown"
+editThisPage = "Edit this page"
+back = "Back"
+home = "Home"
+readMore = "Read More"
+expirationReminder = "This article was last updated on {{ .Date }}, the content may be out of date."
+encryptedAbstract = "This article has been encrypted, so its raw content is invisible!"
+encryptedMessage = "Please enter the password"
+password = "Password"
+encryptyAgain = "Encrypt again"
+
+[single.wordCount]
+one = "One word"
+other = "{{ .Count }} words"
+
+[single.readingTime]
+one = "One minute"
+other = "{{ .Count }} minutes"
+
+[single.reward]
+donate = "Donate"
+wechatpay = "WeChat Pay"
+alipay = "Alipay"
+paypal = "PayPal"
+bitcoin = "Bitcoin"
+# === posts/single.html ===
+
+# === 404.html ===
+[pageNotFound]
+other = "Page not found"
+
+[pageNotFoundText]
+other = "The page you're looking for doesn't exist. Sorry."
+# === 404.html ===
+
+# === offline ===
+[offlineTitle]
+other = "Offline"
+
+[offlineText]
+other = "You are not connected to the Internet, only cached pages will be available."
+# === offline ===
+
+# === shortcodes/admonition.html ===
+[admonition]
+note = "Note"
+abstract = "Abstract"
+info = "Info"
+tip = "Tip"
+success = "Success"
+question = "Question"
+warning = "Warning"
+failure = "Failure"
+danger = "Danger"
+bug = "Bug"
+example = "Example"
+quote = "Quote"
+# === shortcodes/admonition.html ===
+
+# === shortcodes/version.html ===
+[version]
+new = "NEW"
+changed = "CHANGED"
+deleted = "DELETED"
+# === shortcodes/version.html ===

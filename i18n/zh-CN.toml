@@ -1,0 +1,171 @@
+# Translations for Simplified Chinese
+# 简体中文的翻译
+# https://gohugo.io/content-management/multilingual/#translation-of-strings
+
+# === init ===
+[init]
+configurationError = "配置文件错误\n您还没有正确配置 FixIt 的版本参数。参考 https://fixit.lruihao.cn/zh-cn/documentation/basics/#theme-configuration"
+compatibilityError = "兼容性错误 ({{ .From }} -> {{ .To }}):\n您进行了一次不兼容的更新。参考 https://github.com/hugo-fixit/FixIt/releases"
+RCVersionWarn = "您正在使用开发版的 FixIt，请考虑使用稳定版。\n见 https://github.com/hugo-fixit/FixIt/releases"
+devEnvWarn = "当前运行环境是“development”。“评论系统”，“CDN”和“fingerprint”不会启用。"
+quicklyUpgrade = "使用命令快速升级："
+# === init ===
+
+# === baseof ===
+[baseof]
+backToTop = "回到顶部"
+viewComments = "查看评论"
+noscript = "FixIt 主题在启用 JavaScript 的情况下效果最佳。"
+# === baseof ===
+
+# === Taxonomy ===
+[allSome]
+other = "所有{{ .Some }}"
+
+[category]
+other = "分类"
+
+[categories]
+other = "分类"
+
+[tag]
+other = "标签"
+
+[tags]
+other = "标签"
+
+[posts]
+other = "文章"
+
+[taxonomy.totalwordCount]
+other = "总计约 {{ .Count }} 字"
+# === Taxonomy ===
+
+# === Section ===
+[section]
+recentlyUpdated = "最近更新"
+# === Section ===
+
+# === Pagination ===
+[pagination]
+more = "更多"
+# === Pagination ===
+
+# === partials/header.html ===
+[header]
+selectLanguage = "选择语言"
+noMoretTranslations = "没有更多翻译"
+switchTheme = "切换主题"
+# === partials/header.html ===
+
+# === partials/footer.html ===
+[footer]
+poweredBySome = "由 {{ .Hugo }} 强力驱动 | 主题 - {{ .Theme }}"
+siteUV = "总访客数"
+sitePV = "总访问量"
+siteRunning = "网站运行中……"
+# === partials/footer.html ===
+
+# === partials/comment.html ===
+[comment]
+valineLang = "zh-cn"
+valinePlaceholder = "你的评论……"
+facebookLanguageCode = "zh_CN"
+# === partials/comment.html ===
+
+# === partials/assets.html ===
+[assets]
+search = "搜索"
+searchPlaceholder = "搜索文章标题或内容……"
+clear = "清空"
+cancel = "取消"
+noResultsFound = "没有找到结果"
+lunrLanguageCode = "zh"
+lunrLanguageLib = "lib/lunr/lunr.zh.js"
+lunrSegmentitLib = "lib/lunr/lunr.segmentit.js"
+copyToClipboard = "复制到剪贴板"
+editLockTitle = "锁定可编辑代码块"
+editUnLockTitle = "解锁可编辑代码块"
+cookieconsentMessage = "本网站使用 Cookies 来改善您的浏览体验。"
+cookieconsentDismiss = "同意"
+cookieconsentLink = "了解更多"
+# === partials/assets.html ===
+
+# === partials/plugin/share.html ===
+[shareOn]
+other = "分享到"
+# === partials/plugin/share.html ===
+
+# === posts/single.html ===
+[single]
+contents= "目录"
+repost= "转载"
+publishedOnDate= "发布于 {{ .Date }}"
+includedInCategories= "收录于 {{ .Categories }}"
+views = "次阅读"
+comments = "条评论"
+author = "作者"
+updatedOnDate = "更新于 {{ .Date }}"
+readMarkdown = "阅读原始文档"
+editThisPage = "编辑此页"
+back = "返回"
+home = "主页"
+readMore = "阅读全文"
+expirationReminder = "本文最后更新于 {{ .Date }}，文中内容可能已过时。"
+encryptedAbstract = "本文已加密，因此其原始内容不可见！"
+encryptedMessage = "请输入密码"
+password = "密码"
+encryptyAgain = "重新加密"
+
+[single.wordCount]
+other = "约 {{ .Count }} 字"
+
+[single.readingTime]
+other = "预计阅读 {{ .Count }} 分钟"
+
+[single.reward]
+donate = "赞赏"
+wechatpay = "微信"
+alipay = "支付宝"
+paypal = "贝宝"
+bitcoin = "比特币"
+# === posts/single.html ===
+
+# === 404.html ===
+[pageNotFound]
+other = "页面没找到"
+
+[pageNotFoundText]
+other = "抱歉，您要查找的页面不存在。"
+# === 404.html ===
+
+# === offline ===
+[offlineTitle]
+other = "离线"
+
+[offlineText]
+other = "您没有连接到 Internet，只有缓存的页面可用。"
+# === offline ===
+
+# === shortcodes/admonition.html ===
+[admonition]
+note = "注意"
+abstract = "摘要"
+info = "信息"
+tip = "技巧"
+success = "成功"
+question = "问题"
+warning = "警告"
+failure = "失败"
+danger = "危险"
+bug = "Bug"
+example = "示例"
+quote = "引用"
+# === shortcodes/admonition.html ===
+
+# === shortcodes/version.html ===
+[version]
+new = "新增"
+changed = "更改"
+deleted = "删除"
+# === shortcodes/version.html ===

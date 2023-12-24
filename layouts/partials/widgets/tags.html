@@ -1,0 +1,31 @@
+<section class="Qc_aside_item tags"> 
+    <div class="Qc_aside_item-title"> 
+        <i class="iconfont icon-A67" style="margin-right: 8px;font-size: 17px"></i> 
+        <span class="text">标签云</span> 
+        <span class="xccx_mac"></span> 
+    </div> 
+     <div class="Qc_aside_item-contain" style="padding:10px"> 
+        <div class="tag"></div> 
+        <ul class="cloud">
+            {{- $tags := .Site.Taxonomies.tags }}
+            {{- if gt (len $tags) 0 }}
+            {{ $i := 0 }}
+                {{- range $name, $taxonomy := $tags }}
+
+                {{ $i = add $i 1 }}
+
+                {{- if lt $i 11 }}
+                    {{- with $.Site.GetPage (printf "/tags/%s" $name) }}
+            <li class="item">
+                <a style="background:#4C83FF" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                    {{- .Title -}}{{- if .Site.Params.widgets.tags_counter }} ({{ $taxonomy.Count }}){{ end -}}
+                </a>
+            </li> 
+            {{- end }}
+
+            {{- end }}
+            {{- end }}
+            {{- end }}
+         </ul> 
+        </div> 
+    </section>

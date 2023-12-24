@@ -1,0 +1,10 @@
+.Qc_bread{margin-bottom:15px;padding-bottom:15px;border-bottom:1px solid var(--classB)}
+.Qc_bread_bread{display:flex;font-size:15px;align-items:center}
+.Qc_bread_bread .line{padding:0 8px;color:var(--seat)}
+.Qc_bread_bread .item{color:var(--theme);white-space:nowrap}
+.Qc_bread_bread .item .link{color:var(--routine);transition:color .35s}
+.Qc_bread_bread .item .link:hover{color:var(--theme)}
+.Qc_bread_bread .item .icon{margin-right:2px;width:18px;height:18px;min-width:18px;min-height:18px;fill:var(--routine)}
+.Qc_bread_bread .item:first-child{display:flex;align-items:center}
+@-webkit-keyframes pulse{0%{box-shadow:0 0 0 0 var(--theme)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--theme)}}

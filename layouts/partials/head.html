@@ -1,0 +1,1056 @@
+
+<title>{{ .Title }}</title>
+<meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+{{ if .Keywords }}
+<meta name="keywords" content="{{ range .Keywords }}{{ . }},{{ end }}">
+{{ else if .IsHome }}
+<meta name="keywords" content="{{ .Site.Params.Keywords }}">
+{{ end }}
+<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Title }}{{ end }}">
+{{ with .Site.Author.Name }}
+<meta name="author" content="{{ . }}">
+{{ end }}
+<meta itemprop="name" content="{{ .Page.Title }}">
+<meta itemprop="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Title }}{{ end }}">
+<meta itemprop="image" content="{{ .Site.BaseURL }}img/author.jpg">
+{{ if .Site.Params.Twitter }}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@{{ .Site.Params.Twitter }}" />
+<meta name="twitter:title" content="{{ .Page.Title }}" />
+{{ end }}
+{{ with .Description }}
+<meta name="twitter:description" content="{{ . }}" />
+{{ else }}
+<meta name="twitter:description" content="{{ .Site.Params.Description }}">
+{{ end }}
+
+<link rel="alternate" href="{{ .Site.BaseURL }}feed.xml" title="{{ .Site.Title }}" type="application/rss+xml"/>
+
+<link rel="shortcut icon" href="{{ .Site.BaseURL }}imgs/icons/favicon.ico"/>
+<link rel="apple-touch-icon" href="{{ .Site.BaseURL }}imgs/icons/apple-touch-icon.png" />
+<link rel="apple-touch-icon-precomposed" href="{{ .Site.BaseURL }}imgs/icons/apple-touch-icon.png" />
+
+
+
+
+<style>
+    @font-face {
+        font-family: 'Xc Font';
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        src: url('https://cdn.jsdelivr.net/gh/Xpblog666/cdn@1.0/HarmonyOS_Sans_SC_Medium.ttf');
+        src: url('https://cdn.jsdelivr.net/gh/Xpblog666/cdn@1.0/HarmonyOS_Sans_SC_Medium.ttf') format('truetype');
+    }
+
+    html {
+        font-family: 'Xc Font', 'PingFang SC', 'Noto Serif SC', 'HarmonyOS_Sans_SC_Medium', 'Fira Mono', 'Microsoft YaHei', Arial, sans-serif
+    }
+
+    html .Qc_header_above .Qc_container {
+        max-width: 1720px
+    }
+
+    html .Qc_header_below .Qc_container {
+        max-width: 1720px
+    }
+
+    html .Qc_header_searchout .Qc_container {
+        max-width: 1720px
+    }
+
+    html .Qc_main {
+        max-width: 980px
+    }
+
+    html .Qc_aside {
+        width: 260px
+    }
+
+    body::before {
+        background: #f0f0f0;
+        background: ;
+        background-position: center 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/global.min.css" />
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css" />
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/theme.min.css" />
+
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome.min.css" />
+
+<!-- comment -->
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+
+
+{{ if .IsHome }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/index.min.css" />
+
+<script type="module">
+    import { pageviewCount } from 'https://unpkg.com/@waline/client@2.15.5/dist/pageview.mjs';
+    import { commentCount } from 'https://unpkg.com/@waline/client@2.15.5/dist/comment.mjs';
+
+    pageviewCount({
+        serverURL:  "comment.qiucode.cn"
+        
+    });
+  
+    commentCount({
+      serverURL: "comment.qiucode.cn"
+  
+      // 可选的，用于自定选择器，默认为 `'.waline-pageview-count'`
+      // selector: '.waline-pageview-count',
+    });
+  </script>
+{{ end }}
+
+{{- if not $.IsHome }}
+<script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+  
+    init({
+      el: '.waline-container',
+      placeholder: "请不要吝啬您的评论 ヾ(≧▽≦*)o",
+      sofa: "瞧，这里没人，还不抢占第一的位置 (≧∀≦)ゞ",
+      pageview: true, //浏览量统计
+      comment: true, //评论数统计 
+      emoji: [
+        '//unpkg.com/@waline/emojis@1.1.0/weibo',
+        '//unpkg.com/@waline/emojis@1.1.0/bilibili',
+      ],
+      login: 'disable',
+      imgUploader: false,
+      wordLimit: 200,
+      requiredMeta: ['nick', 'mail'],
+      reaction: true,
+      reactionText: [ '点赞', '踩一下', '得意', '不屑', '尴尬', '睡觉'],
+      reactionTitle: "您认为这篇文章怎么样？",
+      dark: 'auto', //'html[data-theme="dark"]',
+      serverURL: "comment.qiucode.cn",
+    });
+  </script>
+
+  {{- end }}
+  
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+  
+  
+
+
+<!-- 
+
+        <title>免费易用的编辑文章平台建设攻略，开源强大功能助力_Hugo_网站_静态</title>
+        <meta http-equiv="Cache-Control" content="no-transform"> 
+<meta http-equiv="Cache-Control" content="no-siteapp"> 
+<meta name="copyright" content="Copyright © 2017 Sohu.com Inc. All Rights Reserved.">
+<meta name="mediaid" content="艳红爱旅游">
+<meta property="og:type" content="news">
+<meta property="og:image" content="//p4.itc.cn/images01/20230430/bd972246c5d54dd3984a86863473e800.jpeg">
+<meta property="og:url" content="www.sohu.com/a/671692061_121677650">
+<meta property="og:release_date" content="2023-04-30 12:11">
+<meta itemprop="dateUpdate" content="2023-04-30 12:11">
+<meta itemprop="datePublished" content="2023-04-30 12:11">
+<link rel="canonical" href="http://www.sohu.com/a/671692061_121677650">
+<link rel="alternate" media="only screen and(max-width: 640px)" href="m.sohu.com/a/671692061_121677650">
+
+<meta name="keywords" content="命令行,文件,文章,平台,攻略,Hugo,主题,网站,建设,静态,hugo,Hugo,md,网站,静态">
+<meta name="description" content=" Hugo是一款由Go语言编写的静态网站生成器。 在命令行中，使用“hugo new site”命令创建一个新网站。 在命令行中使用“hugo”命令即可生成静态网站。希望这些信息能够帮助您更好地了…">
+<meta property="og:description" content=" Hugo是一款由Go语言编写的静态网站生成器。 在命令行中，使用“hugo new site”命令创建一个新网站。 在命令行中使用“hugo”命令即可生成静态网站。希望这些信息能够帮助您更好地了…">
+<meta property="og:title" content="免费易用的编辑文章平台建设攻略，开源强大功能助力_Hugo_网站_静态">
+<meta charset="utf-8">
+<meta name="data-spm" content="smpc">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+<link rel="icon" href="//statics.itc.cn/web/static/images/pic/sohu-logo/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="//statics.itc.cn/web/static/images/pic/sohu-logo/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="//statics.itc.cn/web/static/images/pic/sohu-logo/logo-57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="//statics.itc.cn/web/static/images/pic/sohu-logo/logo-72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="//statics.itc.cn/web/static/images/pic/sohu-logo/logo-114.png">
+<link rel="apple-touch-icon" sizes="144x144" href="//statics.itc.cn/web/static/images/pic/sohu-logo/logo-144.png">
+
+
+
+    
+
+<meta name="darkreader" content="4c9c7f26075c4cadbff4df229ff99efb"> -->
+
+
+
+<!-- csdn -->
+
+
+    
+    <!-- <meta charset="utf-8">
+    <link rel="canonical" href="https://blog.csdn.net/xuelang532777032/article/details/125540357">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="report" content="{&quot;spm&quot;:&quot;1001.2101&quot;,&quot;extra&quot;:{&quot;tsab&quot;:&quot;t_3&quot;,&quot;lvab&quot;:&quot;t_new&quot;},&quot;pid&quot;:&quot;blog&quot;}">
+    <meta name="referrer" content="always">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="alternate" media="handheld" href="#">
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <meta name="applicable-device" content="pc">
+    <link href="https://g.csdnimg.cn/static/logo/favicon32.ico" rel="shortcut icon" type="image/x-icon">
+    <title>prism.js使用图文教程_prismjs_雪狼之夜的博客-CSDN博客</title>
+   
+    <script type="text/javascript" async="" src="https://pos.baidu.com/auto_dup?di=0&amp;uuid=2388f881df81dc6f&amp;dri=0&amp;dis=0&amp;dai=0&amp;ps=0x0&amp;enu=encoding&amp;exps=110011&amp;ant=0&amp;psi=01a9dfb311da65f4&amp;dcb=___baidu_union_callback&amp;dtm=AUTO_JSONP&amp;dvi=0.0&amp;dci=-1&amp;dpt=none&amp;tpr=1689663371316&amp;ti=prism.js%E4%BD%BF%E7%94%A8%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B_prismjs_%E9%9B%AA%E7%8B%BC%E4%B9%8B%E5%A4%9C%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2&amp;ari=2&amp;ver=0609&amp;kws=prismjs&amp;dps=%E8%BF%98%E6%98%AF%E6%9C%89%E5%BF%85%E8%A6%81%E5%8D%95%E7%8B%AC%E5%88%86%E5%87%BA%E6%9D%A5%E8%AF%B4%E4%B8%8Bprism.js%E3%80%82%E5%85%B6%E5%AE%9E%E4%BD%A0%E4%BC%9A%E7%94%A8%E5%88%B0prism.js%20%E5%9F%BA%E6%9C%AC%E6%84%8F%E5%91%B3%E8%BF%99%E4%BD%A0%E8%A6%81%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E4%BA%86%EF%BC%8C%E8%A6%81%E4%B9%88%E6%90%AD%E5%BB%BA%E6%8A%80%E6%9C%AF&amp;dbv=2&amp;drs=1&amp;pcs=1366x657&amp;pss=1366x657&amp;cfv=0&amp;cpl=5&amp;chi=1&amp;cce=true&amp;cec=UTF-8&amp;tlm=1689663371&amp;prot=2&amp;rw=657&amp;ltu=https%3A%2F%2Fblog.csdn.net%2Fxuelang532777032%2Farticle%2Fdetails%2F125540357&amp;ltr=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3D1NLQOC56t156N_ICxphyiyXUiKpsQsVT2or4t-qaW_5kygmLCqvLannugX9GHQGipgk5-j_S9a0IWdheVmmVG2QbYHf5lMBHZvlPLnKYnVC%26wd%3D%26eqid%3Db7e3a9fc0000c2b10000000664b6377a&amp;eqid=b7e3a9fc0000c2b10000000664b6377a&amp;ecd=1&amp;dft=2&amp;uc=1366x728&amp;pis=-1x-1&amp;sr=1366x768&amp;tcn=1689663371&amp;dc=4&amp;aa=1"></script><script type="text/javascript" charset="utf-8" async="" src="https://gsp0.baidu.com/yrwHcjSl0MgCo2Kml5_Y_D3/api/customsearch/apiaccept?sid=10742016945123576423&amp;v=2.0&amp;callback=csdn.afterBaiduSearchInit"></script>
+    <script src="https://zz.bdstatic.com/linksubmit/push.js"></script>
+    <script type="text/javascript" async="" src="https://g.csdnimg.cn/??asdf/1.1.3/trackad.js,iconfont/nav/iconfont-1.0.1.js,notification/1.3.8/notify.js,notification/1.3.8/main.js"></script>
+    <script src="https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac"></script>
+    <script src="https://s3a.pstatp.com/toutiao/push.js?1abfa13dfe74d72d41d83c86d240de427e7cac50c51ead53b2e79d40c7952a23ed7716d05b4a0f683a653eab3e214672511de2457e74e99286eb2c33f4428830" id="ttzz"></script>
+    
+
+    <meta name="keywords" content="prismjs">
+    <meta name="csdn-baidu-search" content="{&quot;autorun&quot;:true,&quot;install&quot;:true,&quot;keyword&quot;:&quot;prismjs&quot;}">
+    <meta name="description" content="还是有必要单独分出来说下prism.js。其实你会用到prism.js 基本意味这你要搭建自己的技术博客了，要么搭建技术类分享的站点。        别急，我知道你肯定是配合文本编辑器一起用的，在这个之前你肯定也得知道这个玩意怎么搞，不至于你到时引入文本编辑器你都不知道是文本编辑器问题还是你js引的有问题        1、去prism.js点右边Download ▲ Prism        2、在Languages栏目（语言那边 ）你勾几个你要的语言比如博主勾一个jq        3_prismjs">
+        
+   -->
+
+
+
+
+
+
+
+                
+ 
+    <!-- <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/css/Xc.global.min.css" />
+    <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/css/Xc.style.css" />
+    <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/css/Xc.theme.min.css" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3863156_ywz3el5ldfj.css" />
+    <script src="https://xx9q.com/usr/themes/Xc/assets/js/Xc.style.min.js"></script>
+    <script src="https://xx9q.com/usr/themes/Xc/assets/js/Xc.short.min.js"></script>
+    <script src="https://xx9q.com/usr/themes/Xc/assets/js/jquery.min.js"></script>
+    <script src="https://xx9q.com/usr/themes/Xc/assets/js/lazysizes.min.js"></script>
+    <script src="https://xx9q.com/usr/themes/Xc/assets/js/Xc.extend.min.js"></script>
+    <div id="Loadanimation" style="z-index:999999;">
+        <div id="Loadanimation-center">
+            <div class="xccx_object" id="xccx_four"></div>
+            <div class="xccx_object" id="xccx_three"></div>
+            <div class="xccx_object" id="xccx_two"></div>
+            <div class="xccx_object" id="xccx_one"></div>
+        </div>
+    </div>
+    <script>$(function () { $("#Loadanimation").fadeOut(530); });</script>
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_3889197_fpqraxfdy9a.css">
+    <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/css/Xc.post.min.css" />
+    <link rel="stylesheet" href="/usr/themes/Xc/assets/code/prism.min.css">
+    <script src="https://xx9q.com/usr/themes/Xc/assets/js/clipboard.min.js"></script>
+    <script src="https://xx9q.com/usr/themes/Xc/assets/js/prism.min.js"></script>
+    <script src="https://xx9q.com/usr/themes/Xc/assets/js/Xc.post_page.min.js"></script>
+    </head>
+    
+    <body>
+        <header class="Qc_header current">
+            <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/Xc/css/Xc.dhltm.css" />
+            <div class="Qc_header_above">
+                <div class="Qc_container"> <svg class="Qc_header_above-slideicon" viewBox="0 0 1152 1024"
+                        xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                        <path
+                            d="M76.032 872a59.968 59.968 0 1 0 0 120h999.936a59.968 59.968 0 1 0 0-120H76.032zm16-420.032a59.968 59.968 0 1 0 0 120h599.936a59.968 59.968 0 1 0 0-119.936H92.032zM76.032 32a59.968 59.968 0 1 0 0 120h999.936a60.032 60.032 0 0 0 0-120H76.032z" />
+                    </svg> <a class="Qc_header_above-logo" href="https://xx9q.com/" title="John'Blog"> <img class="Qc_logo"
+                            alt="John'Blog" src="/favicon.png" /> <img class="Qc_logo night" alt="John'Blog" src="" /> </a>
+                    <nav class="Qc_header_above_nav"> <a class="item " href="https://xx9q.com/" title="首页"
+                            style="margin-right:8px"><i class="iconfont icon-shouye"></i> 首页</a>
+                        <div class="Qc_header_below">
+                            <div class="Qc_container">
+                                <div class="Qc_dropdown" trigger="hover">
+                                    <div class="Qc_dropdown_link"> <a class="nofollow "
+                                            href="https://xx9q.com/category/default/"><i class="iconfont icon-default"></i>
+                                            日常分享</a> <svg class="Qc_dropdown_link-icon" viewBox="0 0 1024 1024"
+                                            xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+                                            <path
+                                                d="M561.873 725.165c-11.262 11.262-26.545 21.72-41.025 18.502-14.479 2.413-28.154-8.849-39.415-18.502L133.129 375.252c-17.697-17.696-17.697-46.655 0-64.352s46.655-17.696 64.351 0l324.173 333.021 324.977-333.02c17.696-17.697 46.655-17.697 64.351 0s17.697 46.655 0 64.351L561.873 725.165z"
+                                                fill="var(--main)" />
+                                        </svg> </svg> </div>
+                                    <nav class="Qc_dropdown_menu"> <a class="" href="https://xx9q.com/category/wmfx/"
+                                            title="外贸分享">外贸分享</a> <a class="" href="https://xx9q.com/category/wztj/"
+                                            title="网站推荐">网站推荐</a> <a class="" href="https://xx9q.com/category/yxxg/"
+                                            title="游戏相关">游戏相关</a> </nav>
+                                </div> <a class="item " href="https://xx9q.com/category/xitong/" title="系统相关"><i
+                                        class="iconfont icon-xitong"></i> 系统相关</a>
+                                <div class="Qc_dropdown" trigger="hover">
+                                    <div class="Qc_dropdown_link"> <a class="nofollow "
+                                            href="https://xx9q.com/category/wangzhan/"><i
+                                                class="iconfont icon-wangzhan"></i> 网站文档</a> <svg
+                                            class="Qc_dropdown_link-icon" viewBox="0 0 1024 1024"
+                                            xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+                                            <path
+                                                d="M561.873 725.165c-11.262 11.262-26.545 21.72-41.025 18.502-14.479 2.413-28.154-8.849-39.415-18.502L133.129 375.252c-17.697-17.696-17.697-46.655 0-64.352s46.655-17.696 64.351 0l324.173 333.021 324.977-333.02c17.696-17.697 46.655-17.697 64.351 0s17.697 46.655 0 64.351L561.873 725.165z"
+                                                fill="var(--main)" />
+                                        </svg> </svg> </div>
+                                    <nav class="Qc_dropdown_menu"> <a class="" href="https://xx9q.com/category/bkfx/"
+                                            title="博客分享">博客分享</a> <a class="" href="https://xx9q.com/category/wzym/"
+                                            title="网站源码">网站源码</a> </nav>
+                                </div>
+                                <div class="Qc_dropdown" trigger="hover">
+                                    <div class="Qc_dropdown_link"> <a class="nofollow "
+                                            href="https://xx9q.com/category/ruanjian/"><i
+                                                class="iconfont icon-ruanjian"></i> 软件分享</a> <svg
+                                            class="Qc_dropdown_link-icon" viewBox="0 0 1024 1024"
+                                            xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+                                            <path
+                                                d="M561.873 725.165c-11.262 11.262-26.545 21.72-41.025 18.502-14.479 2.413-28.154-8.849-39.415-18.502L133.129 375.252c-17.697-17.696-17.697-46.655 0-64.352s46.655-17.696 64.351 0l324.173 333.021 324.977-333.02c17.696-17.697 46.655-17.697 64.351 0s17.697 46.655 0 64.351L561.873 725.165z"
+                                                fill="var(--main)" />
+                                        </svg> </svg> </div>
+                                    <nav class="Qc_dropdown_menu"> <a class="" href="https://xx9q.com/category/sjrj/"
+                                            title="📱手机软件">📱手机软件</a> <a class="" href="https://xx9q.com/category/dnrj/"
+                                            title="💻电脑软件">💻电脑软件</a> </nav>
+                                </div> <a class="item " href="https://xx9q.com/sn.html" title="我的记录"><i
+                                        class="iconfont icon-sn"></i> 我的记录</a> <a class="item "
+                                    href="https://xx9q.com/youlian.html" title="友情链接"><i class="iconfont icon-youlian"></i>
+                                    友情链接</a> <a class="item " href="https://xx9q.com/site.html" title="站点统计"><i
+                                        class="iconfont icon-site"></i> 站点统计</a> <a class="item "
+                                    href="https://xx9q.com/Aboutme.html" title="关于我"><i class="iconfont icon-Aboutme"></i>
+                                    关于我</a>
+                    </nav> <svg class="Qc_header_above-searchicon" viewBox="0 0 1024 1024"
+                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="display: block;">
+                        <path
+                            d="M1008.19 932.031L771.72 695.56a431.153 431.153 0 1 0-76.158 76.158l236.408 236.472a53.758 53.758 0 0 0 76.158 0 53.758 53.758 0 0 0 0-76.158zM107.807 431.185a323.637 323.637 0 0 1 323.316-323.381 323.7 323.7 0 0 1 323.381 323.38 323.637 323.637 0 0 1-323.38 323.317 323.637 323.637 0 0 1-323.317-323.316z" />
+                    </svg> <a href="javascript:void(0)" type="button" id="ClickMe" style="margin: 0px 3px 2px 13px"><svg
+                            t="1675873194952" class="loingico" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="3929" width="22" height="22">
+                            <path
+                                d="M554.666667 349.44a48.213333 48.213333 0 1 1-47.786667 47.786667A48.213333 48.213333 0 0 1 554.666667 349.44m0-85.333333a133.546667 133.546667 0 1 0 133.546666 133.12A133.12 133.12 0 0 0 554.666667 264.106667z"
+                                fill="var(--routine)" p-id="3930"></path>
+                            <path
+                                d="M768 759.893333a42.666667 42.666667 0 0 1-42.666667-42.666666 170.666667 170.666667 0 0 0-341.333333 0 42.666667 42.666667 0 0 1-85.333333 0 256 256 0 0 1 512 0 42.666667 42.666667 0 0 1-42.666667 42.666666z"
+                                fill="var(--routine)" p-id="3931"></path>
+                            <path
+                                d="M554.666667 213.333333a341.333333 341.333333 0 1 1-341.333334 341.333334 341.333333 341.333333 0 0 1 341.333334-341.333334m0-85.333333a426.666667 426.666667 0 1 0 426.666666 426.666667A426.666667 426.666667 0 0 0 554.666667 128z"
+                                fill="var(--routine)" p-id="3932"></path>
+                        </svg> </a>
+                    <div id="code" style="margin:40vh 0 -40vh auto">
+                        <div class="typecho-login">
+                            <div class="close1" style="margin:-28px -318px 10px auto"><a href="javascript:void(0)"
+                                    id="closebt"><svg t="1675874818302" class="iconkkkg" viewBox="0 0 1024 1024"
+                                        version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8105" width="25" height="25">
+                                        <path
+                                            d="M512.3 63.9c-247.2 0-447.6 200.4-447.6 447.6S265.1 959 512.3 959s447.6-200.4 447.6-447.6S759.5 63.9 512.3 63.9z m201.4 591.4c15.9 15.9 15.9 41.7 0 57.5-15.9 15.9-41.7 15.9-57.5 0L512.3 569 368.4 712.8c-15.9 15.9-41.7 15.9-57.5 0-15.9-15.9-15.9-41.7 0-57.5l143.9-143.9-143.9-143.8c-15.9-15.9-15.9-41.7 0-57.5 15.9-15.9 41.7-15.9 57.5 0L512.3 454l143.8-144c15.9-15.9 41.7-15.9 57.5 0 15.9 15.9 15.9 41.7 0 57.5L569.8 511.4l143.9 143.9z"
+                                            fill="var(--routine)" p-id="8106"></path>
+                                    </svg></a></div>
+                            <form action="https://xx9q.com/index.php/action/login?_=ea7ba6f99cd691d4376cdc5f4bb6ad35"
+                                method="post" name="login" rold="form">
+                                <h2>用户登录</h2> <input type="hidden" name="referer" value="/admin">
+                                <p> <label for="name" class="sr-only">用户名</label> <input type="text" name="name"
+                                        autocomplete="username" placeholder="用户名" required /> </p>
+                                <p> <label for="password" class="sr-only">密码</label> <input type="password" name="password"
+                                        autocomplete="current-password" placeholder="密码" required /> </p>
+                                <p class="submit"> <button type="submit" class="btn btn-l w-100 primary">登录</button> </p>
+                                <p class="register"> <button type="register" class="btn btn-l w-100 primary"> <a
+                                            href="/admin/register.php" target="_blank" rel="noopener noreferrer nofollow"
+                                            style="color: #fff">注册</a> </button> </p>
+                            </form>
+                        </div>
+                    </div>
+                    <script> $(function () { $('#ClickMe').click(function () { $('#code').center(); $('#goodcover').show(); $('#code').fadeIn() }); $('#closebt').click(function () { $('#code').hide(); $('#goodcover').hide() }); $('#goodcover').click(function () { $('#code').hide(); $('#goodcover').hide() }); jQuery.fn.center = function (loaded) { var obj = this; body_width = parseInt($(window).width()); body_height = parseInt($(window).height()); block_width = parseInt(obj.width()); block_height = parseInt(obj.height()); left_position = parseInt((body_width / 2) - (block_width / 2) + $(window).scrollLeft()); if (body_width < block_width) { left_position = 0 + $(window).scrollLeft() }; top_position = parseInt((body_height / 2) - (block_height / 2) + $(window).scrollTop()); if (body_height < block_height) { top_position = 0 + $(window).scrollTop() }; if (!loaded) { obj.css({ 'position': 'fixed' }); $(window).bind('resize', function () { obj.center(!loaded) }); $(window).bind('scroll', function () { obj.center(!loaded) }) } else { obj.stop(); obj.css({ 'position': 'absolute' }) } } }) </script>
+                    <div class="Qc_action_item mode"> <svg class="icon-1" viewBox="0 0 1024 1024"
+                            xmlns="http://www.w3.org/2000/svg" width="25" height="25">
+                            <path
+                                d="M587.264 104.96c33.28 57.856 52.224 124.928 52.224 196.608 0 218.112-176.128 394.752-393.728 394.752-29.696 0-58.368-3.584-86.528-9.728C223.744 832.512 369.152 934.4 538.624 934.4c229.376 0 414.72-186.368 414.72-416.256 1.024-212.992-159.744-389.12-366.08-413.184z" />
+                            <path
+                                d="M340.48 567.808l-23.552-70.144-70.144-23.552 70.144-23.552 23.552-70.144 23.552 70.144 70.144 23.552-70.144 23.552-23.552 70.144zM168.96 361.472l-30.208-91.136-91.648-30.208 91.136-30.208 30.72-91.648 30.208 91.136 91.136 30.208-91.136 30.208-30.208 91.648z" />
+                        </svg> <svg class="icon-2" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="25"
+                            height="25">
+                            <path
+                                d="M234.24 512a277.76 277.76 0 1 0 555.52 0 277.76 277.76 0 1 0-555.52 0zM512 187.733a42.667 42.667 0 0 1-42.667-42.666v-102.4a42.667 42.667 0 0 1 85.334 0v102.826A42.667 42.667 0 0 1 512 187.733zm-258.987 107.52a42.667 42.667 0 0 1-29.866-12.373l-72.96-73.387a42.667 42.667 0 0 1 59.306-59.306l73.387 72.96a42.667 42.667 0 0 1 0 59.733 42.667 42.667 0 0 1-29.867 12.373zm-107.52 259.414H42.667a42.667 42.667 0 0 1 0-85.334h102.826a42.667 42.667 0 0 1 0 85.334zm34.134 331.946a42.667 42.667 0 0 1-29.44-72.106l72.96-73.387a42.667 42.667 0 0 1 59.733 59.733l-73.387 73.387a42.667 42.667 0 0 1-29.866 12.373zM512 1024a42.667 42.667 0 0 1-42.667-42.667V878.507a42.667 42.667 0 0 1 85.334 0v102.826A42.667 42.667 0 0 1 512 1024zm332.373-137.387a42.667 42.667 0 0 1-29.866-12.373l-73.387-73.387a42.667 42.667 0 0 1 0-59.733 42.667 42.667 0 0 1 59.733 0l72.96 73.387a42.667 42.667 0 0 1-29.44 72.106zm136.96-331.946H878.507a42.667 42.667 0 1 1 0-85.334h102.826a42.667 42.667 0 0 1 0 85.334zM770.987 295.253a42.667 42.667 0 0 1-29.867-12.373 42.667 42.667 0 0 1 0-59.733l73.387-72.96a42.667 42.667 0 1 1 59.306 59.306l-72.96 73.387a42.667 42.667 0 0 1-29.866 12.373z" />
+                        </svg> </div>
+                </div>
+            </div>
+            <div class="Qc_header_searchout">
+                <div class="Qc_container">
+                    <div class="Qc_header_searchout_all">
+                        <div class="Qc_search_inner">
+                            <div class="Qc_label">
+                                <div class="title"> <i class="iconfont icon-A70"
+                                        style="margin-right: 5px;font-size: 18px;"></i> 关键词搜索 </div>
+                                <form class="search" method="post" action="https://xx9q.com/"> <input maxlength="16"
+                                        autocomplete="off" placeholder="请输入关键字..." name="s" value="" class="input"
+                                        type="text" /> <button type="submit" class="submit">搜索</button> </form>
+                                <div class="title"> <i class="iconfont icon-A67"
+                                        style="margin-right: 5px;font-size: 18px;"></i>标签搜索</div>
+                                <ul class="cloud">
+                                    <li class="item"><a style="background:#00EAFF"
+                                            href="https://xx9q.com/tag/%E5%A4%96%E8%B4%B8/">外贸</a></li>
+                                    <li class="item"><a style="background:#4facfe"
+                                            href="https://xx9q.com/tag/%E5%A4%96%E8%B4%B8%E5%88%86%E4%BA%AB/">外贸分享</a></li>
+                                    <li class="item"><a style="background:#49C628"
+                                            href="https://xx9q.com/tag/%E5%A4%96%E8%B4%B8%E8%AF%9D%E6%9C%AF/">外贸话术</a></li>
+                                    <li class="item"><a style="background:#5961F9"
+                                            href="https://xx9q.com/tag/typecho/">typecho</a></li>
+                                    <li class="item"><a style="background:#F8D800"
+                                            href="https://xx9q.com/tag/chatgpt/">chatgpt</a></li>
+                                    <li class="item"><a style="background:#FD6585"
+                                            href="https://xx9q.com/tag/typecho%E6%8F%92%E4%BB%B6/">typecho插件</a></li>
+                                    <li class="item"><a style="background:#f68e5f"
+                                            href="https://xx9q.com/tag/%E5%AD%97%E4%BD%93%E7%BE%8E%E5%8C%96/">字体美化</a></li>
+                                    <li class="item"><a style="background:#E96D71"
+                                            href="https://xx9q.com/tag/%E5%9B%BD%E5%86%85ChatGPT/">国内ChatGPT</a></li>
+                                    <li class="item"><a style="background:#f093fb"
+                                            href="https://xx9q.com/tag/%E7%BA%A2%E7%B1%B3ax6000/">红米ax6000</a></li>
+                                    <li class="item"><a style="background:#00f2fe"
+                                            href="https://xx9q.com/tag/%E4%BA%9A%E9%A9%AC%E9%80%8A/">亚马逊</a></li>
+                                    <li class="item"><a style="background:#F067B4"
+                                            href="https://xx9q.com/tag/AI%E7%BB%98%E5%9B%BE/">AI绘图</a></li>
+                                    <li class="item"><a style="background:#00EAFF"
+                                            href="https://xx9q.com/tag/GPTalk/">GPTalk</a></li>
+                                    <li class="item"><a style="background:#F8D800"
+                                            href="https://xx9q.com/tag/AALocker/">AALocker</a></li>
+                                    <li class="item"><a style="background:#F8D800"
+                                            href="https://xx9q.com/tag/%E4%BC%9A%E5%91%98%E9%9B%B6%E5%85%83%E8%B4%AD/">会员零元购</a>
+                                    </li>
+                                    <li class="item"><a style="background:#0396FF"
+                                            href="https://xx9q.com/tag/ai%E6%95%B0%E5%AD%97%E7%BB%98%E7%94%BB/">ai数字绘画</a>
+                                    </li>
+                                    <li class="item"><a style="background:#D939CD" href="https://xx9q.com/tag/Ai/">Ai</a>
+                                    </li>
+                                    <li class="item"><a style="background:#E96D71"
+                                            href="https://xx9q.com/tag/Stable-Diffusion/">Stable Diffusion</a></li>
+                                    <li class="item"><a style="background:#f68e5f"
+                                            href="https://xx9q.com/tag/%E5%8D%9A%E5%AE%A2/">博客</a></li>
+                                    <li class="item"><a style="background:#f9bb3c"
+                                            href="https://xx9q.com/tag/win11/">win11</a></li>
+                                    <li class="item"><a style="background:#BB4E75"
+                                            href="https://xx9q.com/tag/win10/">win10</a></li>
+                                </ul>
+                                <div class="title" style="padding: 15px 0 0 0"> <i class="iconfont icon-A89"
+                                        style="margin-right: 5px;font-size: 18px;"></i>近期浏览</div>
+                                <div id="jl_viewHistory" style="display: block"></div>
+                            </div>
+                            <div class="Qc_article">
+                                <div class="title"> <i class="iconfont icon-A37"
+                                        style="margin-right: 5px;font-size: 18px;"></i>热门文章</div>
+                                <div class="Qc_header_search" style="position: relative;">
+                                    <nav class="result"> <a class="item" href="https://xx9q.com/a/7/"
+                                            title="本主题—Joe魔改 一款个人类型Typecho主题"> <span class="sort">1</span> <span
+                                                class="text">本主题—Joe魔改 一款个人类型Typecho主题</span> <span class="views"></i>8.2k
+                                                阅读</span> </a> <a class="item" href="https://xx9q.com/a/28/"
+                                            title="红米Redmi AX6000开启并固化SSH简单方法+刷openwrt固件"> <span class="sort">2</span> <span
+                                                class="text">红米Redmi AX6000开启并固化SSH简单方法+刷openwrt固件</span> <span
+                                                class="views"></i>3.4k 阅读</span> </a> <a class="item"
+                                            href="https://xx9q.com/a/14/" title="最新可用 Typecho 付费阅读插件修复版-免登录版-免授权-对接第三方支付">
+                                            <span class="sort">3</span> <span class="text">最新可用 Typecho
+                                                付费阅读插件修复版-免登录版-免授权-对接第三方支付</span> <span class="views"></i>2.6k 阅读</span>
+                                        </a> <a class="item" href="https://xx9q.com/a/17/" title="Typecho七牛云插件，为您的网站访问加速">
+                                            <span class="sort">4</span> <span class="text">Typecho七牛云插件，为您的网站访问加速</span>
+                                            <span class="views"></i>2.2k 阅读</span> </a> <a class="item"
+                                            href="https://xx9q.com/a/16/" title="Typecho投稿功能开启——无需插件，一行代码"> <span
+                                                class="sort">5</span> <span class="text">Typecho投稿功能开启——无需插件，一行代码</span>
+                                            <span class="views"></i>2.2k 阅读</span> </a> <a class="item"
+                                            href="https://xx9q.com/a/63/" title="阿里巴巴国际站无人Ai直播玩法"> <span
+                                                class="sort">6</span> <span class="text">阿里巴巴国际站无人Ai直播玩法</span> <span
+                                                class="views"></i>1.1k 阅读</span> </a> <a class="item"
+                                            href="https://xx9q.com/a/36/" title="Typecho使用CDN后无法登陆后台解决办法"> <span
+                                                class="sort">7</span> <span class="text">Typecho使用CDN后无法登陆后台解决办法</span>
+                                            <span class="views"></i>1.1k 阅读</span> </a> <a class="item"
+                                            href="https://xx9q.com/a/1/" title="欢迎使用 Typecho"> <span class="sort">8</span>
+                                            <span class="text">欢迎使用 Typecho</span> <span class="views"></i>873 阅读</span>
+                                        </a> <a class="item" href="https://xx9q.com/a/15/" title="Typecho-后台美化插件 -非常好用">
+                                            <span class="sort">9</span> <span class="text">Typecho-后台美化插件 -非常好用</span> <span
+                                                class="views"></i>872 阅读</span> </a> </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Qc_header_slideout"> <img width="100%" height="150" class="Qc_header_slideout-image"
+                    src="https://xx9q.com/shaonv.jpg" alt="侧边栏壁纸" />
+                <div class="Qc_header_slideout-author"> <img width="50" height="50" class="avatar"
+                        src="https://thirdqq.qlogo.cn/g?b=qq&nk=687778&s=100" alt="博主昵称" />
+                    <div class="info"> <a class="link" href="https://xx9q.com" target="_blank"
+                            rel="noopener noreferrer nofollow">John</a>
+                        <p class="motto Qc_motto"></p>
+                    </div>
+                </div>
+                <ul class="Qc_header_slideout-count"> </ul>
+                <ul class="Qc_header_slideout-menu panel-box">
+                    <li> <a class="link" href="https://xx9q.com/" title="首页"> <span><i class="iconfont icon-A131"></i>
+                                首页</span> </a> </li>
+                    <li> <a class="link panel" href="#" rel="nofollow"> <span><i class="iconfont icon-A129"></i> 分类</span>
+                            <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13"
+                                height="13">
+                                <path
+                                    d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
+                            </svg> </a>
+                        <ul class="slides panel-body panel-box">
+                            <li>
+                                <div class="link panel "> <a href="https://xx9q.com/category/default/" title="日常分享">日常分享</a>
+                                    <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13"
+                                        height="13">
+                                        <path
+                                            d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
+                                    </svg> </div>
+                                <ul class="slides panel-body">
+                                    <li><a class="link " href="https://xx9q.com/category/wmfx/" title="外贸分享">外贸分享</a></li>
+                                    <li><a class="link " href="https://xx9q.com/category/wztj/" title="网站推荐">网站推荐</a></li>
+                                    <li><a class="link " href="https://xx9q.com/category/yxxg/" title="游戏相关">游戏相关</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="link " href="https://xx9q.com/category/xitong/" title="系统相关">系统相关</a></li>
+                            <li>
+                                <div class="link panel "> <a href="https://xx9q.com/category/wangzhan/"
+                                        title="网站文档">网站文档</a> <svg class="icon" viewBox="0 0 1024 1024"
+                                        xmlns="http://www.w3.org/2000/svg" width="13" height="13">
+                                        <path
+                                            d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
+                                    </svg> </div>
+                                <ul class="slides panel-body">
+                                    <li><a class="link " href="https://xx9q.com/category/bkfx/" title="博客分享">博客分享</a></li>
+                                    <li><a class="link " href="https://xx9q.com/category/wzym/" title="网站源码">网站源码</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="link panel "> <a href="https://xx9q.com/category/ruanjian/"
+                                        title="软件分享">软件分享</a> <svg class="icon" viewBox="0 0 1024 1024"
+                                        xmlns="http://www.w3.org/2000/svg" width="13" height="13">
+                                        <path
+                                            d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
+                                    </svg> </div>
+                                <ul class="slides panel-body">
+                                    <li><a class="link " href="https://xx9q.com/category/sjrj/" title="📱手机软件">📱手机软件</a>
+                                    </li>
+                                    <li><a class="link " href="https://xx9q.com/category/dnrj/" title="💻电脑软件">💻电脑软件</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li> <a class="link panel" href="#" rel="nofollow"> <span><i class="iconfont icon-A3"></i> 页面</span>
+                            <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13"
+                                height="13">
+                                <path
+                                    d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
+                            </svg> </a>
+                        <ul class="slides panel-body">
+                            <li><a class="link " href="https://xx9q.com/sn.html" title="我的记录">我的记录</a></li>
+                            <li><a class="link " href="https://xx9q.com/youlian.html" title="友情链接">友情链接</a></li>
+                            <li><a class="link " href="https://xx9q.com/site.html" title="站点统计">站点统计</a></li>
+                            <li><a class="link " href="https://xx9q.com/Aboutme.html" title="关于我">关于我</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="Qc_header_slideout-menu panel-box" style="margin-top: 15px;margin-bottom: 100px;">
+                    <li> <a class="link panel" href="#" rel="nofollow"> <span><i class="iconfont icon-A17"></i> 用户登录</span>
+                            <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13"
+                                height="13">
+                                <path
+                                    d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z">
+                                </path>
+                            </svg> </a>
+                        <ul class="slides panel-body">
+                            <li> <a class="link" href="https://xx9q.com/admin/login.php" target="_blank"
+                                    rel="noopener noreferrer nofollow">登录</a> <a class="link"
+                                    href="https://xx9q.com/admin/register.php" target="_blank"
+                                    rel="noopener noreferrer nofollow">注册</a> </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="Qc_header_mask"></div>
+        </header>
+        <div class="Qc_top_img top_img_post"
+            style="background: url(http://img.xx9q.com/blog/typecho/ldwu5g77.png) center;background-size:cover;height:40vh">
+            <div class="infomation">
+                <h1 class="title Qc_psot_title">如何支持发送Emoji表情？</h1>
+                <div class="desctitle"> <i class="iconfont icon-rili sj"
+                        style="margin:0 2px 0 10px;font-size: 18px;"></i><span class="text sj">2023年04月06日</span> <i
+                        class="iconfont icon-huore yd" style="margin:0 2px 0 10px;font-size: 18px;"></i><span
+                        class="text yd">777阅读</span> <i class="iconfont icon-xiaoxi pl"
+                        style="margin:0 2px 0 10px;font-size: 18px;"></i><span class="text pl">0评论</span> <i
+                        class="iconfont icon-xihuan1 dz" style="margin:0 2px 0 10px;font-size: 18px;"></i><span
+                        class="text dz">0点赞</span> </div>
+            </div>
+            <section class="Qc_top_img_bottom"> <svg class="waves-svg" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none"
+                    shape-rendering="auto">
+                    <defs>
+                        <path id="gentle-wave"
+                            d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z">
+                        </path>
+                    </defs>
+                    <g class="parallax">
+                        <use xlink:href="#gentle-wave" x="48" y="0"></use>
+                        <use xlink:href="#gentle-wave" x="48" y="3"></use>
+                        <use xlink:href="#gentle-wave" x="48" y="5"></use>
+                        <use xlink:href="#gentle-wave" x="48" y="7"></use>
+                    </g>
+                </svg> </section>
+        </div>
+        <div class="Qc_container showInUp">
+            <div class="Qc_main Qc_post">
+                <div class="Qc_detail" data-cid="24">
+                    <div class="Qc_bread">
+                        <ul class="Qc_bread_bread">
+                            <li class="item"> <span class="iconfont icon-A131" style="margin-right: 4px;"></span> <a
+                                    href="https://xx9q.com/" class="link" title="首页">首页</a> </li>
+                            <li class="line">/</li>
+                            <li class="item"> <a class="link" href="https://xx9q.com/category/default/"
+                                    title="日常分享">日常分享</a> </li>
+                            <li class="line">/</li>
+                            <li class="item">正文</li>
+                        </ul>
+                    </div>
+                    <div class="Qc_detail_category"> </div>
+                    <article class="Qc_detail_article">
+                        <p>默认情况下，大家创建的数据库应该都是无法支持存储emoj表情的，我们可以通过修改数据库以及表的编码，来使得用户在APP的某些功能中，可以发送并展示emoji表情，如：弹幕、评论等。</p>
+                        <h2>修改数据库配置</h2>
+                        <p><img src="http://img.xx9q.com/blog/typecho/ldwu5g77.png" alt="ldwu5g77.png"
+                                title="ldwu5g77.png"><br>点击配置修改<br><img src="http://img.xx9q.com/blog/typecho/ldwu5of3.png"
+                                alt="ldwu5of3.png" title="ldwu5of3.png"><br>在【client】配置下，新增：</p>
+                        <pre><code class="lang-d">default-character-set = utf8mb4</code></pre>
+                        <p><img src="http://img.xx9q.com/blog/typecho/ldwu76w4.png" alt="ldwu76w4.png"
+                                title="ldwu76w4.png"><br>在【mysqld】节点下的末尾，新增：</p>
+                        <pre><code class="lang-d">character-set-client-handshake = FALSE
+        character-set-server = utf8mb4
+        collation-server = utf8mb4_unicode_ci
+        init_connect='SET NAMES utf8mb4'</code></pre>
+                        <p><img src="http://img.xx9q.com/blog/typecho/ldwu7tul.png" alt="ldwu7tul.png"
+                                title="ldwu7tul.png"><br><img src="http://img.xx9q.com/blog/typecho/ldwu7wss.png"
+                                alt="ldwu7wss.png" title="ldwu7wss.png"><br>在【mysql】节点下，新增：</p>
+                        <pre><code class="lang-d">default-character-set = utf8mb4</code></pre>
+                        <p><img src="http://img.xx9q.com/blog/typecho/ldwu8ccm.png" alt="ldwu8ccm.png"
+                                title="ldwu8ccm.png"><br>点击保存按钮。<br><img src="http://img.xx9q.com/blog/typecho/ldwu8kko.png"
+                                alt="ldwu8kko.png" title="ldwu8kko.png"><br>点击左侧【服务】菜单，点击【重启】按钮来重启我们的数据库。<br><img
+                                src="http://img.xx9q.com/blog/typecho/ldwu8she.png" alt="ldwu8she.png" title="ldwu8she.png">
+                        </p>
+                        <h2>更改数据库编码</h2>
+                        <p>在宝塔左侧点击【数据库】，在右侧点击【phpMyAdmin】进入我们的数据库管理页面。<br><img
+                                src="http://img.xx9q.com/blog/typecho/ldwudola.png" alt="ldwudola.png" title="ldwudola.png">
+                        </p>
+                        <p>点击右侧的【SQL】功能。<br><img src="http://img.xx9q.com/blog/typecho/ldwudul1.png" alt="ldwudul1.png"
+                                title="ldwudul1.png"></p>
+                        <p>在输入框内容，录入以下内容，并且替换掉其中【你的数据库名称】几个字。</p>
+                        <pre><code class="lang-d">ALTER DATABASE 你的数据库名称 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;</code></pre>
+                        <p>点击右下角执行。<br><img src="http://img.xx9q.com/blog/typecho/ldwueh60.png" alt="ldwueh60.png"
+                                title="ldwueh60.png"><br>出现以下结果表示执行完成<br><img
+                                src="http://img.xx9q.com/blog/typecho/ldwueod8.png" alt="ldwueod8.png" title="ldwueod8.png">
+                        </p>
+                        <h2>更改表编码</h2>
+                        <p>再次点击【SQL】，录入以下内容，并且替换掉其中【你的数据库名称】几个字。</p>
+                        <pre><code class="lang-d">use 你的数据库名称;
+        ALTER TABLE Typecho_comment CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;</code></pre>
+                        <p>这句sql的意义在于将【Typecho_comment】这张表的编码改为uft8mb4并且修改排序方式为utf8mb4_general_ci。<br>Typecho_comment是苹果cms自带的评论表，如果您的表名不是该名称，请自行修改。<br>点击右下角【执行】。
+                        </p>
+                        <h2>更改其他表编码</h2>
+                        <p>如果您希望其他表支持emoji，则可以按照上面的方式自行替换修改。</p>
+                        <h2>检查配置是否成功</h2>
+                        <p>点击【SQL】功能。<br><img src="http://img.xx9q.com/blog/typecho/ldwugto4.png" alt="ldwugto4.png"
+                                title="ldwugto4.png"></p>
+                        <p>运行以下命令：</p>
+                        <pre><code class="lang-d">SHOW VARIABLES WHERE Variable_name LIKE 'character_set_%' OR Variable_name LIKE 'collation%';</code></pre>
+                        <p><img src="http://img.xx9q.com/blog/typecho/ldwuh4en.png" alt="ldwuh4en.png" title="ldwuh4en.png">
+                        </p>
+                        <p>检查几个关键点是否都被修改为utf8mb4：<br><img src="http://img.xx9q.com/blog/typecho/ldwuhaxf.png"
+                                alt="ldwuhaxf.png" title="ldwuhaxf.png"></p>
+                    </article>
+                    <div class="Qc_detail_agree">
+                        <div class="agree">
+                            <div class="icon"> <svg class="icon-1" viewBox="0 0 1024 1024"
+                                    xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+                                    <path
+                                        d="M234.0864 881.6128V436.0704c0-18.0224-12.1344-32.6144-27.0848-32.6144H149.1968c-27.904 0-50.4832 27.2384-50.4832 60.8768v389.0688c0 33.6384 22.6304 60.8768 50.4832 60.8768h57.8048c14.9504 0 27.0848-14.6432 27.0848-32.6656z"
+                                        fill="var(--theme)" p-id="3364"></path>
+                                    <path
+                                        d="M272.9984 890.7264V426.5472c0-10.7008 7.168-20.1216 17.5104-22.7328 36.4544-9.3184 120.1152-42.7008 155.6992-156.6208 21.6576-99.7888 45.1584-146.8416 114.8416-141.2096s74.3424 73.4208 74.3424 94.1056v160s-5.632 24.4736 17.8688 26.368c23.552 1.8944 207.104 0 207.104 0s100.7104-1.6896 68.7104 123.392c-27.8528 108.8-82.944 283.8528-96.8704 327.6288-2.8672 9.0624-6.9632 17.6128-12.3392 25.4976-13.4656 19.6608-41.7792 51.2-85.0432 51.2H296.4992c-13.0048 0.1024-23.5008-10.4448-23.5008-23.4496z"
+                                        fill="var(--theme)" p-id="3365" data-spm-anchor-id="a313x.7781069.0.i5"></path>
+                                </svg> <svg class="icon-2" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+                                    width="26" height="26">
+                                    <path
+                                        d="M234.0864 881.6128V436.0704c0-18.0224-12.1344-32.6144-27.0848-32.6144H149.1968c-27.904 0-50.4832 27.2384-50.4832 60.8768v389.0688c0 33.6384 22.6304 60.8768 50.4832 60.8768h57.8048c14.9504 0 27.0848-14.6432 27.0848-32.6656z"
+                                        fill="#909399" p-id="3364" data-spm-anchor-id="a313x.7781069.0.i8" class="selected">
+                                    </path>
+                                    <path
+                                        d="M272.9984 890.7264V426.5472c0-10.7008 7.168-20.1216 17.5104-22.7328 36.4544-9.3184 120.1152-42.7008 155.6992-156.6208 21.6576-99.7888 45.1584-146.8416 114.8416-141.2096s74.3424 73.4208 74.3424 94.1056v160s-5.632 24.4736 17.8688 26.368c23.552 1.8944 207.104 0 207.104 0s100.7104-1.6896 68.7104 123.392c-27.8528 108.8-82.944 283.8528-96.8704 327.6288-2.8672 9.0624-6.9632 17.6128-12.3392 25.4976-13.4656 19.6608-41.7792 51.2-85.0432 51.2H296.4992c-13.0048 0.1024-23.5008-10.4448-23.5008-23.4496z"
+                                        fill="#909399" p-id="3365" data-spm-anchor-id="a313x.7781069.0.i5" class="selected">
+                                    </path>
+                                </svg> </div> <span class="text">0</span>赞
+                        </div>
+                    </div>
+                    <div class="Qc_detail_operate">
+                        <div class="Qc_detail_operate-tags"> <a
+                                href="https://xx9q.com/tag/Emoji%E8%A1%A8%E6%83%85/">Emoji表情</a><a
+                                href="https://xx9q.com/tag/utf8mb4/">utf8mb4</a></div>
+                    </div>
+                </div>
+                <div class="Qc_detail_copyright">
+                    <div class="content">
+                        <div class="item"> <i class="iconfont icon-A119"></i> <span>发布作者：</span> <span
+                                class="text">John</span> </div>
+                        <div class="item"> <i class="iconfont icon-A124"></i> <span>百度收录：</span> <span class="text"
+                                id="Qc_Baidu_Record">正在检测是否收录...</span> </div>
+                        <div class="item"> <i class="iconfont icon-A72"></i> <span>本文链接：</span> <span class="text"> <a
+                                    class="link" href="https://xx9q.com/a/24/" target="_blank"
+                                    rel="noopener noreferrer nofollow">https://xx9q.com/a/24/</a> </span> </div>
+                        <div class="item"> <i class="iconfont icon-A56"></i> <span>作品采用：</span> <span class="text"> 《 <a
+                                    class="link" href="//creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank"
+                                    rel="noopener noreferrer nofollow">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 》许可协议授权
+                            </span> </div>
+                    </div>
+                </div>
+                <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/Xc/css/Xc.comment.css" />
+                <div class="Qc_comment">
+                    <h3 class="Qc_comment_title">—— 评论区 ——</h3>
+                    <div id="respond-post-24" class="Qc_comment_respond">
+                        <form method="post" class="Qc_comment_respond-form" action="https://xx9q.com/a/24/comment"
+                            data-type="text">
+                            <div class="head" style="margin-bottom: 15px;">
+                                <div class="qqget_hasLogin ajax-user-avatar"> <img
+                                        src="https://xx9q.com/usr/themes/Xc/assets/img/qqtx.png" width="35px" height="35px"
+                                        class="avatar hasLogin-author "
+                                        style="width: 40px;height: 40px;border-radius: 50%;border: 1px solid var(--classA);padding: 2px;">
+                                </div>
+                                <div class="list">
+                                    <div class="title">昵称</div> <input class="Qc_input" type="text" name="author"
+                                        id="author" placeholder="*昵称（必填）" value="" unselectable="off" onblur="fn_qqinfo()">
+                                    <span class="Qc_pointout" style="margin-left: -140px; display: none;"> 输入QQ号会自动获取
+                                    </span>
+                                </div>
+                                <div class="list">
+                                    <div class="title">邮箱</div> <input class="Qc_input" type="text" name="mail" id="mail"
+                                        placeholder="*邮箱（必填）" unselectable="off" value=""> <span class="Qc_pointout"
+                                        style="margin-left: -140px; display: none;"> 您将收到邮箱回复通知 </span>
+                                </div>
+                                <div class="list">
+                                    <div class="title">网址</div> <input class="Qc_input" type="text" value=""
+                                        autocomplete="off" name="url" placeholder="*网址（选填）" /> <span class="Qc_pointout"
+                                        style="margin-left: -145px; display: none;"> 可通过昵称访问您的网站 </span>
+                                </div>
+                            </div>
+                            <div class="body"> <textarea class="text Qc_owo_target" name="text" value=""
+                                    autocomplete="new-password" placeholder="来都来了，说一句吧~"></textarea>
+                                <div class="foot">
+                                    <div class="owo Qc_owo_contain"></div>
+                                    <div class="submit"> <span class="cancle Qc_comment_cancle">取消</span> <button
+                                            type="submit">发送评论</button> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <aside class="Qc_aside">
+                <section class="Qc_aside_item author"> <img width="100%" height="120" class="image"
+                        src="https://xx9q.com/shaonv.jpg" alt="博主栏壁纸" />
+                    <div class="user"> <img width="75" height="75" class="avatar"
+                            src="https://thirdqq.qlogo.cn/g?b=qq&nk=687778&s=100" alt="博主头像" /> <a class="link"
+                            href="https://xx9q.com" target="_blank" rel="noopener noreferrer nofollow">John</a>
+                        <p class="motto Qc_motto"></p>
+                    </div>
+                    <div class="count">
+                        <div class="item" title="累计文章数"> <span class="num">35</span> <span>文章数</span> </div>
+                        <div class="item" title="累计标签数"> <span class="num">40</span> <span>标签数</span> </div>
+                        <div class="item" title="累计评论数"> <span class="num">96</span> <span>评论量</span> </div>
+                    </div>
+                    <ul class="list">
+                        <li class='item'> <a class='link' href='https://xx9q.com/a/14/'
+                                title='最新可用 Typecho 付费阅读插件修复版-免登录版-免授权-对接第三方支付'>最新可用 Typecho 付费阅读插件修复版-免登录版-免授权-对接第三方支付</a>
+                            <svg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16'
+                                height='16'>
+                                <path
+                                    d='M448.12 320.331a30.118 30.118 0 0 1-42.616-42.586L552.568 130.68a213.685 213.685 0 0 1 302.2 0l38.552 38.551a213.685 213.685 0 0 1 0 302.2L746.255 618.497a30.118 30.118 0 0 1-42.586-42.616l147.034-147.035a153.45 153.45 0 0 0 0-217.028l-38.55-38.55a153.45 153.45 0 0 0-216.998 0L448.12 320.33zM575.88 703.67a30.118 30.118 0 0 1 42.616 42.586L471.432 893.32a213.685 213.685 0 0 1-302.2 0l-38.552-38.551a213.685 213.685 0 0 1 0-302.2l147.065-147.065a30.118 30.118 0 0 1 42.586 42.616L173.297 595.125a153.45 153.45 0 0 0 0 217.027l38.55 38.551a153.45 153.45 0 0 0 216.998 0L575.88 703.64zm-234.256-63.88L639.79 341.624a30.118 30.118 0 0 1 42.587 42.587L384.21 682.376a30.118 30.118 0 0 1-42.587-42.587z' />
+                            </svg></li>
+                        <li class='item'> <a class='link' href='https://xx9q.com/a/16/'
+                                title='Typecho投稿功能开启——无需插件，一行代码'>Typecho投稿功能开启——无需插件，一行代码</a> <svg class='icon'
+                                viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16' height='16'>
+                                <path
+                                    d='M448.12 320.331a30.118 30.118 0 0 1-42.616-42.586L552.568 130.68a213.685 213.685 0 0 1 302.2 0l38.552 38.551a213.685 213.685 0 0 1 0 302.2L746.255 618.497a30.118 30.118 0 0 1-42.586-42.616l147.034-147.035a153.45 153.45 0 0 0 0-217.028l-38.55-38.55a153.45 153.45 0 0 0-216.998 0L448.12 320.33zM575.88 703.67a30.118 30.118 0 0 1 42.616 42.586L471.432 893.32a213.685 213.685 0 0 1-302.2 0l-38.552-38.551a213.685 213.685 0 0 1 0-302.2l147.065-147.065a30.118 30.118 0 0 1 42.586 42.616L173.297 595.125a153.45 153.45 0 0 0 0 217.027l38.55 38.551a153.45 153.45 0 0 0 216.998 0L575.88 703.64zm-234.256-63.88L639.79 341.624a30.118 30.118 0 0 1 42.587 42.587L384.21 682.376a30.118 30.118 0 0 1-42.587-42.587z' />
+                            </svg></li>
+                        <li class='item'> <a class='link' href='https://xx9q.com/a/22/' title=' 外贸报价的方法和技巧'> 外贸报价的方法和技巧</a>
+                            <svg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16'
+                                height='16'>
+                                <path
+                                    d='M448.12 320.331a30.118 30.118 0 0 1-42.616-42.586L552.568 130.68a213.685 213.685 0 0 1 302.2 0l38.552 38.551a213.685 213.685 0 0 1 0 302.2L746.255 618.497a30.118 30.118 0 0 1-42.586-42.616l147.034-147.035a153.45 153.45 0 0 0 0-217.028l-38.55-38.55a153.45 153.45 0 0 0-216.998 0L448.12 320.33zM575.88 703.67a30.118 30.118 0 0 1 42.616 42.586L471.432 893.32a213.685 213.685 0 0 1-302.2 0l-38.552-38.551a213.685 213.685 0 0 1 0-302.2l147.065-147.065a30.118 30.118 0 0 1 42.586 42.616L173.297 595.125a153.45 153.45 0 0 0 0 217.027l38.55 38.551a153.45 153.45 0 0 0 216.998 0L575.88 703.64zm-234.256-63.88L639.79 341.624a30.118 30.118 0 0 1 42.587 42.587L384.21 682.376a30.118 30.118 0 0 1-42.587-42.587z' />
+                            </svg></li>
+                    </ul>
+                    <div class="Qc_contact-information"
+                        style="display: flex;-webkit-box-align: center;align-items: center;justify-content: space-around;padding-top: 10px;">
+                        <a class="github" href="这里填写Github地址" target="_blank" title="Github"
+                            rel="noopener noreferrer nofollow"> <svg viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+                                <path
+                                    d="M512 95.872a426.666667 426.666667 0 0 0-134.912 831.445333c21.333333 3.754667 29.312-9.045333 29.312-20.266666 0-10.112-0.512-43.733333-0.512-79.445334-107.221333 19.712-134.954667-26.154667-143.488-50.133333a155.136 155.136 0 0 0-43.733333-60.288c-14.933333-7.978667-36.266667-27.733333-0.554667-28.245333a85.376 85.376 0 0 1 65.621333 43.733333 91.178667 91.178667 0 0 0 124.245334 35.2 89.770667 89.770667 0 0 1 27.221333-57.088c-94.933333-10.666667-194.133333-47.445333-194.133333-210.645333a166.058667 166.058667 0 0 1 43.733333-114.688 153.344 153.344 0 0 1 4.266667-113.066667s35.712-11.178667 117.333333 43.733333a402.218667 402.218667 0 0 1 213.333333 0c81.578667-55.466667 117.333333-43.733333 117.333334-43.733333a153.301333 153.301333 0 0 1 4.266666 113.066667 165.077333 165.077333 0 0 1 43.733334 114.688c0 163.712-99.754667 199.978667-194.688 210.645333a101.034667 101.034667 0 0 1 28.8 78.933333c0 57.088-0.512 102.954667-0.512 117.333334 0 11.221333 7.978667 24.533333 29.312 20.266666A426.88 426.88 0 0 0 512 95.872z"
+                                    fill="var(--title)"></path>
+                            </svg> </a> <a class="gitee" href="这里填写Gitee地址" target="_blank" title="Gitee"
+                            rel="noopener noreferrer nofollow"> <svg viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                                <path
+                                    d="M512 1024C229.248 1024 0 794.752 0 512S229.248 0 512 0s512 229.248 512 512-229.248 512-512 512z m259.168-568.896h-290.752a25.28 25.28 0 0 0-25.28 25.28l-0.032 63.232c0 13.952 11.296 25.28 25.28 25.28h177.024a25.28 25.28 0 0 1 25.28 25.28v12.64a75.84 75.84 0 0 1-75.84 75.84h-240.224a25.28 25.28 0 0 1-25.28-25.28v-240.192a75.84 75.84 0 0 1 75.84-75.84h353.92a25.28 25.28 0 0 0 25.28-25.28l0.064-63.2a25.312 25.312 0 0 0-25.28-25.312H417.184a189.632 189.632 0 0 0-189.632 189.6v353.952c0 13.952 11.328 25.28 25.28 25.28h372.928a170.656 170.656 0 0 0 170.656-170.656v-145.376a25.28 25.28 0 0 0-25.28-25.28z"
+                                    fill="#d90013"></path>
+                            </svg> </a> <a class="bilibili" href="这里填写B站地址" target="_blank" title="B站"
+                            rel="noopener noreferrer nofollow"> <svg viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+                                <path
+                                    d="M777.514667 131.669333a53.333333 53.333333 0 0 1 0 75.434667L728.746667 255.829333h49.92A160 160 0 0 1 938.666667 415.872v320a160 160 0 0 1-160 160H245.333333A160 160 0 0 1 85.333333 735.872v-320a160 160 0 0 1 160-160h49.749334L246.4 207.146667a53.333333 53.333333 0 1 1 75.392-75.434667l113.152 113.152c3.370667 3.370667 6.186667 7.04 8.448 10.965333h137.088c2.261333-3.925333 5.12-7.68 8.490667-11.008l113.109333-113.152a53.333333 53.333333 0 0 1 75.434667 0z m1.152 231.253334H245.333333a53.333333 53.333333 0 0 0-53.205333 49.365333l-0.128 4.010667v320c0 28.117333 21.76 51.157333 49.365333 53.162666l3.968 0.170667h533.333334a53.333333 53.333333 0 0 0 53.205333-49.365333l0.128-3.968v-320c0-29.44-23.893333-53.333333-53.333333-53.333334z m-426.666667 106.666666c29.44 0 53.333333 23.893333 53.333333 53.333334v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333334z m320 0c29.44 0 53.333333 23.893333 53.333333 53.333334v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333334z"
+                                    fill="#fb7299"></path>
+                            </svg> </a> <a class="qq" href="这里填写QQ地址" target="_blank" title="QQ"
+                            rel="noopener noreferrer nofollow"> <svg viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" width="20" height="22">
+                                <path
+                                    d="M511.09761 957.257c-80.159 0-153.737-25.019-201.11-62.386-24.057 6.702-54.831 17.489-74.252 30.864-16.617 11.439-14.546 23.106-11.55 27.816 13.15 20.689 225.583 13.211 286.912 6.767v-3.061z"
+                                    fill="#FAAD08"></path>
+                                <path
+                                    d="M496.65061 957.257c80.157 0 153.737-25.019 201.11-62.386 24.057 6.702 54.83 17.489 74.253 30.864 16.616 11.439 14.543 23.106 11.55 27.816-13.15 20.689-225.584 13.211-286.914 6.767v-3.061z"
+                                    fill="#FAAD08"></path>
+                                <path
+                                    d="M497.12861 474.524c131.934-0.876 237.669-25.783 273.497-35.34 8.541-2.28 13.11-6.364 13.11-6.364 0.03-1.172 0.542-20.952 0.542-31.155C784.27761 229.833 701.12561 57.173 496.64061 57.162 292.15661 57.173 209.00061 229.832 209.00061 401.665c0 10.203 0.516 29.983 0.547 31.155 0 0 3.717 3.821 10.529 5.67 33.078 8.98 140.803 35.139 276.08 36.034h0.972z"
+                                    fill="#000000"></path>
+                                <path
+                                    d="M860.28261 619.782c-8.12-26.086-19.204-56.506-30.427-85.72 0 0-6.456-0.795-9.718 0.148-100.71 29.205-222.773 47.818-315.792 46.695h-0.962C410.88561 582.017 289.65061 563.617 189.27961 534.698 185.44461 533.595 177.87261 534.063 177.87261 534.063 166.64961 563.276 155.56661 593.696 147.44761 619.782 108.72961 744.168 121.27261 795.644 130.82461 796.798c20.496 2.474 79.78-93.637 79.78-93.637 0 97.66 88.324 247.617 290.576 248.996a718.01 718.01 0 0 1 5.367 0C708.80161 950.778 797.12261 800.822 797.12261 703.162c0 0 59.284 96.111 79.783 93.637 9.55-1.154 22.093-52.63-16.623-177.017"
+                                    fill="#000000"></path>
+                                <path
+                                    d="M434.38261 316.917c-27.9 1.24-51.745-30.106-53.24-69.956-1.518-39.877 19.858-73.207 47.764-74.454 27.875-1.224 51.703 30.109 53.218 69.974 1.527 39.877-19.853 73.2-47.742 74.436m206.67-69.956c-1.494 39.85-25.34 71.194-53.24 69.956-27.888-1.238-49.269-34.559-47.742-74.435 1.513-39.868 25.341-71.201 53.216-69.974 27.909 1.247 49.285 34.576 47.767 74.453"
+                                    fill="#FFFFFF"></path>
+                                <path
+                                    d="M683.94261 368.627c-7.323-17.609-81.062-37.227-172.353-37.227h-0.98c-91.29 0-165.031 19.618-172.352 37.227a6.244 6.244 0 0 0-0.535 2.505c0 1.269 0.393 2.414 1.006 3.386 6.168 9.765 88.054 58.018 171.882 58.018h0.98c83.827 0 165.71-48.25 171.881-58.016a6.352 6.352 0 0 0 1.002-3.395c0-0.897-0.2-1.736-0.531-2.498"
+                                    fill="#FAAD08"></path>
+                                <path
+                                    d="M467.63161 256.377c1.26 15.886-7.377 30-19.266 31.542-11.907 1.544-22.569-10.083-23.836-25.978-1.243-15.895 7.381-30.008 19.25-31.538 11.927-1.549 22.607 10.088 23.852 25.974m73.097 7.935c2.533-4.118 19.827-25.77 55.62-17.886 9.401 2.07 13.75 5.116 14.668 6.316 1.355 1.77 1.726 4.29 0.352 7.684-2.722 6.725-8.338 6.542-11.454 5.226-2.01-0.85-26.94-15.889-49.905 6.553-1.579 1.545-4.405 2.074-7.085 0.242-2.678-1.834-3.786-5.553-2.196-8.135"
+                                    fill="#000000"></path>
+                                <path
+                                    d="M504.33261 584.495h-0.967c-63.568 0.752-140.646-7.504-215.286-21.92-6.391 36.262-10.25 81.838-6.936 136.196 8.37 137.384 91.62 223.736 220.118 224.996H506.48461c128.498-1.26 211.748-87.612 220.12-224.996 3.314-54.362-0.547-99.938-6.94-136.203-74.654 14.423-151.745 22.684-215.332 21.927"
+                                    fill="#FFFFFF"></path>
+                                <path
+                                    d="M323.27461 577.016v137.468s64.957 12.705 130.031 3.91V591.59c-41.225-2.262-85.688-7.304-130.031-14.574"
+                                    fill="#EB1C26"></path>
+                                <path
+                                    d="M788.09761 432.536s-121.98 40.387-283.743 41.539h-0.962c-161.497-1.147-283.328-41.401-283.744-41.539l-40.854 106.952c102.186 32.31 228.837 53.135 324.598 51.926l0.96-0.002c95.768 1.216 222.4-19.61 324.6-51.924l-40.855-106.952z"
+                                    fill="#EB1C26"></path>
+                            </svg> </a> <a class="weibo" href="这里填写微博地址" target="_blank" title="微博"
+                            rel="noopener noreferrer nofollow"> <svg viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+                                <path
+                                    d="M851.4 590.193c-22.196-66.233-90.385-90.422-105.912-91.863-15.523-1.442-29.593-9.94-19.295-27.505 10.302-17.566 29.304-68.684-7.248-104.681-36.564-36.14-116.512-22.462-173.094 0.866-56.434 23.327-53.39 7.055-51.65-8.925 1.89-16.848 32.355-111.02-60.791-122.395C311.395 220.86 154.85 370.754 99.572 457.15 16 587.607 29.208 675.873 29.208 675.873h0.58c10.009 121.819 190.787 218.869 412.328 218.869 190.5 0 350.961-71.853 398.402-169.478 0 0 0.143-0.433 0.575-1.156 4.938-10.506 8.71-21.168 11.035-32.254 6.668-26.205 11.755-64.215-0.728-101.66z m-436.7 251.27c-157.71 0-285.674-84.095-285.674-187.768 0-103.671 127.82-187.76 285.674-187.76 157.705 0 285.673 84.089 285.673 187.76 0 103.815-127.968 187.768-285.673 187.768z"
+                                    fill="#E71F19"></path>
+                                <path
+                                    d="M803.096 425.327c2.896 1.298 5.945 1.869 8.994 1.869 8.993 0 17.7-5.328 21.323-14.112 5.95-13.964 8.993-28.793 8.993-44.205 0-62.488-51.208-113.321-114.181-113.321-15.379 0-30.32 3.022-44.396 8.926-11.755 4.896-17.263 18.432-12.335 30.24 4.933 11.662 18.572 17.134 30.465 12.238 8.419-3.46 17.268-5.33 26.41-5.33 37.431 0 67.752 30.241 67.752 67.247 0 9.068-1.735 17.857-5.369 26.202a22.832 22.832 0 0 0 12.335 30.236l0.01 0.01z"
+                                    fill="#F5AA15"></path>
+                                <path
+                                    d="M726.922 114.157c-25.969 0-51.65 3.744-76.315 10.942-18.423 5.472-28.868 24.622-23.5 42.91 5.509 18.29 24.804 28.657 43.237 23.329a201.888 201.888 0 0 1 56.578-8.064c109.253 0 198.189 88.271 198.189 196.696 0 19.436-2.905 38.729-8.419 57.16-5.508 18.289 4.79 37.588 23.212 43.053 3.342 1.014 6.817 1.442 10.159 1.442 14.943 0 28.725-9.648 33.37-24.48 7.547-24.906 11.462-50.826 11.462-77.175-0.143-146.588-120.278-265.813-267.973-265.813z"
+                                    fill="#F5AA15"></path>
+                                <path
+                                    d="M388.294 534.47c-84.151 0-152.34 59.178-152.34 132.334 0 73.141 68.189 132.328 152.34 132.328 84.148 0 152.337-59.182 152.337-132.328 0-73.15-68.19-132.334-152.337-132.334zM338.53 752.763c-29.454 0-53.39-23.755-53.39-52.987 0-29.228 23.941-52.989 53.39-52.989 29.453 0 53.39 23.76 53.39 52.989 0 29.227-23.937 52.987-53.39 52.987z m99.82-95.465c-6.382 11.086-19.296 15.696-28.726 10.219-9.43-5.323-11.75-18.717-5.37-29.803 6.386-11.09 19.297-15.7 28.725-10.224 9.43 5.472 11.755 18.864 5.37 29.808z"
+                                    fill="var(--background-reverse)"></path>
+                            </svg> </a> <a class="email" href="mailto:填写邮箱号" target="_blank" title="邮箱"
+                            rel="noopener noreferrer nofollow"> <svg viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" width="21" height="22">
+                                <path
+                                    d="M512 938.666667C276.352 938.666667 85.333333 747.648 85.333333 512S276.352 85.333333 512 85.333333s426.666667 191.018667 426.666667 426.666667-191.018667 426.666667-426.666667 426.666667z m341.333333-426.666667a341.333333 341.333333 0 1 0-169.301333 294.869333l-43.008-73.685333A256 256 0 1 1 768 512v42.666667a42.666667 42.666667 0 0 1-85.333333 0V384h-57.770667a170.666667 170.666667 0 1 0 2.816 253.44A128 128 0 0 0 853.333333 554.666667v-42.666667z m-341.333333-85.333333a85.333333 85.333333 0 1 1 0 170.666666 85.333333 85.333333 0 0 1 0-170.666666z"
+                                    fill="#dc4835"></path>
+                            </svg> </a> </div>
+                </section>
+                <section class="Qc_aside_item timelife">
+                    <div class="Qc_aside_item-title"> <i class="iconfont icon-A123"
+                            style="margin-right: 8px;font-size: 17px"></i> <span class="text">人生倒计时</span> <span
+                            class="xccx_mac"></span> </div>
+                    <div class="Qc_aside_item-contain"></div>
+                </section>
+                <section class="Qc_aside_item newreply">
+                    <div class="Qc_aside_item-title"> <i class="iconfont icon-A65"
+                            style="margin-right: 8px;font-size: 17px"></i> <span class="text">最新评论</span> <span
+                            class="xccx_mac"></span> </div>
+                    <ul class="Qc_aside_item-contain">
+                        <li class="item">
+                            <div class="user"> <img width="40" height="40" class="avatar lazyload"
+                                    src="/usr/themes/Xc/assets/img/txlazyload.png"
+                                    data-src="https://thirdqq.qlogo.cn/g?b=qq&nk=907344018&s=100" alt="韩雨轩" />
+                                <div class="info">
+                                    <div class="author">韩雨轩</div> <span class="date">22小时前</span>
+                                </div>
+                            </div>
+                            <div class="reply"> <a class="link" href="https://xx9q.com/a/7/?scroll=comment-98"> <img
+                                        class="owo_image lazyload"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        data-src="https://xx9q.com/usr/themes/Xc/assets/owo/paopao/E4BDA0E68782E79A84_2x.png"
+                                        alt="表情" />来看看</a> </div>
+                        </li>
+                        <li class="item">
+                            <div class="user"> <img width="40" height="40" class="avatar lazyload"
+                                    src="/usr/themes/Xc/assets/img/txlazyload.png"
+                                    data-src="https://gravatar.helingqi.com/wavatar/7d330251012b6aa5d597257aa3828d63?d=mm"
+                                    alt="35757999999" />
+                                <div class="info">
+                                    <div class="author">35757999999</div> <span class="date">1天前</span>
+                                </div>
+                            </div>
+                            <div class="reply"> <a class="link" href="https://xx9q.com/a/17/?scroll=comment-97"> 看看隐藏</a>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="user"> <img width="40" height="40" class="avatar lazyload"
+                                    src="/usr/themes/Xc/assets/img/txlazyload.png"
+                                    data-src="https://gravatar.helingqi.com/wavatar/d953a07d415742c867dbce5de51ea299?d=mm"
+                                    alt="snake" />
+                                <div class="info">
+                                    <div class="author">snake</div> <span class="date">2天前</span>
+                                </div>
+                            </div>
+                            <div class="reply"> <a class="link" href="https://xx9q.com/a/7/?scroll=comment-96"> 好看<img
+                                        class="owo_image lazyload"
+                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                        data-src="https://xx9q.com/usr/themes/Xc/assets/owo/paopao/E591B5E591B5_2x.png"
+                                        alt="表情" /></a> </div>
+                        </li>
+                        <li class="item">
+                            <div class="user"> <img width="40" height="40" class="avatar lazyload"
+                                    src="/usr/themes/Xc/assets/img/txlazyload.png"
+                                    data-src="https://thirdqq.qlogo.cn/g?b=qq&nk=942856269&s=100" alt="942856269" />
+                                <div class="info">
+                                    <div class="author">942856269</div> <span class="date">3天前</span>
+                                </div>
+                            </div>
+                            <div class="reply"> <a class="link" href="https://xx9q.com/a/19/?scroll=comment-95"> 800815</a>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="user"> <img width="40" height="40" class="avatar lazyload"
+                                    src="/usr/themes/Xc/assets/img/txlazyload.png"
+                                    data-src="https://gravatar.helingqi.com/wavatar/8e76c11ead31546fb6695e770425ea08?d=mm"
+                                    alt="听醉" />
+                                <div class="info">
+                                    <div class="author">听醉</div> <span class="date">3天前</span>
+                                </div>
+                            </div>
+                            <div class="reply"> <a class="link" href="https://xx9q.com/a/7/?scroll=comment-94"> 看看</a>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <section class="Qc_aside_item tags">
+                    <div class="Qc_aside_item-title"> <i class="iconfont icon-A67"
+                            style="margin-right: 8px;font-size: 17px"></i> <span class="text">标签云</span> <span
+                            class="xccx_mac"></span> </div>
+                    <div class="Qc_aside_item-contain" style="padding:10px">
+                        <div class="tag"></div>
+                        <ul class="cloud">
+                            <li class="item"><a style="background:#7367F0"
+                                    href="https://xx9q.com/tag/%E5%A4%96%E8%B4%B8/">外贸</a></li>
+                            <li class="item"><a style="background:#bc99c4"
+                                    href="https://xx9q.com/tag/%E5%A4%96%E8%B4%B8%E5%88%86%E4%BA%AB/">外贸分享</a></li>
+                            <li class="item"><a style="background:#F55555"
+                                    href="https://xx9q.com/tag/%E5%A4%96%E8%B4%B8%E8%AF%9D%E6%9C%AF/">外贸话术</a></li>
+                            <li class="item"><a style="background:#00EAFF" href="https://xx9q.com/tag/typecho/">typecho</a>
+                            </li>
+                            <li class="item"><a style="background:#F067B4" href="https://xx9q.com/tag/chatgpt/">chatgpt</a>
+                            </li>
+                            <li class="item"><a style="background:#736EFE"
+                                    href="https://xx9q.com/tag/typecho%E6%8F%92%E4%BB%B6/">typecho插件</a></li>
+                            <li class="item"><a style="background:#5961F9"
+                                    href="https://xx9q.com/tag/%E5%AD%97%E4%BD%93%E7%BE%8E%E5%8C%96/">字体美化</a></li>
+                            <li class="item"><a style="background:#32CCBC"
+                                    href="https://xx9q.com/tag/%E5%9B%BD%E5%86%85ChatGPT/">国内ChatGPT</a></li>
+                            <li class="item"><a style="background:#49C628"
+                                    href="https://xx9q.com/tag/%E7%BA%A2%E7%B1%B3ax6000/">红米ax6000</a></li>
+                            <li class="item"><a style="background:#E96D71"
+                                    href="https://xx9q.com/tag/%E4%BA%9A%E9%A9%AC%E9%80%8A/">亚马逊</a></li>
+                            <li class="item"><a style="background:#32CCBC"
+                                    href="https://xx9q.com/tag/AI%E7%BB%98%E5%9B%BE/">AI绘图</a></li>
+                            <li class="item"><a style="background:#BB4E75" href="https://xx9q.com/tag/GPTalk/">GPTalk</a>
+                            </li>
+                            <li class="item"><a style="background:#e8583d"
+                                    href="https://xx9q.com/tag/AALocker/">AALocker</a></li>
+                            <li class="item"><a style="background:#32CCBC"
+                                    href="https://xx9q.com/tag/%E4%BC%9A%E5%91%98%E9%9B%B6%E5%85%83%E8%B4%AD/">会员零元购</a>
+                            </li>
+                            <li class="item"><a style="background:#F6416C"
+                                    href="https://xx9q.com/tag/ai%E6%95%B0%E5%AD%97%E7%BB%98%E7%94%BB/">ai数字绘画</a></li>
+                            <li class="item"><a style="background:#00f2fe" href="https://xx9q.com/tag/Ai/">Ai</a></li>
+                            <li class="item"><a style="background:#5151E5"
+                                    href="https://xx9q.com/tag/Stable-Diffusion/">Stable Diffusion</a></li>
+                            <li class="item"><a style="background:#FA742B"
+                                    href="https://xx9q.com/tag/%E5%8D%9A%E5%AE%A2/">博客</a></li>
+                            <li class="item"><a style="background:#00EAFF" href="https://xx9q.com/tag/win11/">win11</a></li>
+                            <li class="item"><a style="background:#FD6585" href="https://xx9q.com/tag/win10/">win10</a></li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="Qc_aside_item flatterer">
+                    <div class="Qc_aside_item-title"> <i class="iconfont icon-Agou"
+                            style="margin-right: 8px;font-size: 17px"></i> <span class="text">舔狗日记</span> <span
+                            class="xccx_mac"></span> </div>
+                    <div class="Qc_aside_item-contain">
+                        <div class="content"></div>
+                        <div class="change"> <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
+                                width="23" height="23">
+                                <path
+                                    d="M55.935033 264.48948c0 0 85.897017-132.548409 221.81443-203.673173 135.916406-71.121743 303.368504-50.646859 413.187968 18.319527 109.819465 68.970415 146.791894 127.160016 146.791894 127.160016l94.59499-53.879895c0 0 19.576483-9.697092 19.576483 12.932142l0 338.379961c0 0 0 30.17399-22.837719 19.395191-19.210878-9.062571-226.959086-127.198289-292.424528-164.466828-35.950145-16.035251-4.365101-29.062068-4.365101-29.062068l91.284402-52.173738c0 0-52.068992-65.209619-128.278989-99.744682-81.576231-42.501826-157.948384-47.541735-251.497925-12.224097-61.002644 23.025054-132.823368 81.988166-184.553949 169.082716L55.935033 264.48948 55.935033 264.48948 55.935033 264.48948zM904.056909 711.697844c0 0-85.897017 132.550423-221.816444 203.671159-135.917413 71.12275-303.366489 50.651895-413.186961-18.315498-109.825508-68.972429-146.790886-127.165052-146.790886-127.165052L27.662591 823.768348c0 0-19.572454 9.703135-19.572454-12.932142L8.090137 472.459267c0 0 0-30.170968 22.831676-19.397205 19.211885 9.067607 226.965129 127.198289 292.430571 164.470856 35.950145 16.035251 4.366109 29.058039 4.366109 29.058039l-91.285409 52.175753c0 0 52.071006 65.206598 128.279996 99.744682 81.57321 42.498804 157.942341 47.540728 251.496918 12.222082 60.998616-23.026061 132.820346-81.983131 184.546898-169.082716L904.056909 711.697844 904.056909 711.697844 904.056909 711.697844zM904.056909 711.697844"
+                                    fill="var(--classA)" p-id="2335"></path>
+                            </svg> </div>
+                    </div>
+                </section>
+            </aside>
+        </div>
+        <footer class="Qc_footer">
+            <div class="Qc_container">
+                <div class="item">
+                    <p>2020 - 2023 版权所有 ©<a href="http://beian.miit.gov.cn/">鲁ICP备2021005633号-2</a></p>
+                </div>
+                <div class="item">
+                    <p>已运行 <strong class="Qc_run__day">00</strong> 天 <strong class="Qc_run__hour">00</strong> 时 <strong
+                            class="Qc_run__minute">00</strong> 分 <strong class="Qc_run__second">00</strong> 秒</p>
+                </div>
+            </div>
+        </footer>
+        <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/css/jquery.fancybox.min.css" />
+        <script src="https://xx9q.com/usr/themes/Xc/assets/js/jquery.fancybox.min.js"></script>
+        <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/css/qmsg.css" />
+        <script src="https://xx9q.com/usr/themes/Xc/assets/js/qmsg.js"></script>
+        <link rel="stylesheet" href="https://xx9q.com/usr/themes/Xc/assets/css/APlayer.min.css" />
+        <script src="https://xx9q.com/usr/themes/Xc/assets/js/APlayer.min.js"></script>
+        <script src="https://xx9q.com/usr/themes/Xc/assets/js/viewhistory.js"></script>
+        <script src="https://xx9q.com/usr/themes/Xc/assets/js/Xc.smooth.js"></script>
+        <html data-theme="xccx_cc"><canvas id="www_xccx_cc"></canvas>
+        <script>jl_viewHistory({ limit: 4, storageKey: 'jl_viewHistory', primaryKey: 'url', addHistory: true, titleSplit: '|' });</script>
+        <script type='text/javascript'
+            src='https://xx9q.com/usr/plugins/ActivatePowerMode/static/activate-power-mode.js'></script>
+        <script
+            type='text/javascript'> $(function () { try { console.log('%c 疯狂打字机 https://gitee.com/HoeXhe/ActivatePowerMode %c www.hoehub.com 😊 ActivatePowerMode By Hoe ', 'font-family:\'Microsoft YaHei\',\'SF Pro Display\',Roboto,Noto,Arial,\'PingFang SC\',sans-serif;color:white;background:#ffa099;padding:5px 0;', 'font-family:\'Microsoft YaHei\',\'SF Pro Display\',Roboto,Noto,Arial,\'PingFang SC\',sans-serif;color:#ffa099;background:#404040;padding:5px 0;'); (function () { POWERMODE.colorful = true; POWERMODE.shake = true; document.body.addEventListener('input', POWERMODE); })(); } catch (e) { console.log('打字特效插件出现错误:请联系www.hoehub.com'); } }); </script>
+    </body>
+    
+    </html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

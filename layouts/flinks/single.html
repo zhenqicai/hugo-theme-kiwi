@@ -1,0 +1,129 @@
+
+{{- define "main" }}
+
+
+<style>
+    .Qc_detail_friends-item .qccq_img{}
+.Qc_detail_friends-item .qccq_url{background:var(--main);transition:.35s;border-radius:var(--radius-wrap);padding:15px;box-shadow:var(--box-shadow);margin-bottom:15px;border-bottom:0px solid var(--classC)}
+.Qc_detail_friends-item .qccq_img .avatar{float:left;width:40px;height:40px;object-fit:cover;border-radius:50%;margin-right:1rem!important;margin-left:0!important}
+.Qc_detail_friends-item .name .xccx-name{font-size:14px;line-height:25px;color:var(--main);display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.Qc_detail_friends-item .desc .xccx-desc{font-size:12px;color:var(--minor);line-height:15px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.Qc_detail_friends{display:grid;grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));gap:15px;margin-bottom:15px}
+.Qc_detail_friends-item .contain{display:block;border-radius:var(--radius-inner);overflow:hidden;padding:15px;color:#fff;word-break:break-word;transition:box-shadow 0.35s,-webkit-transform 0.35s;transition:transform 0.35s,box-shadow 0.35s;transition:transform 0.35s,box-shadow 0.35s,-webkit-transform 0.35s}
+.Qc_detail_friends-item .contain:hover{-webkit-transform:translateY(-5px) scale(1.025);transform:translateY(-5px) scale(1.025);box-shadow:0 34px 20px -24px rgba(136,161,206,0.3)}
+.Qc_detail_friends-item .contain .title{position:relative}
+.Qc_detail_friends-item .contain .title::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:1px;background:#fff}
+.Qc_detail_friends-item .contain .content{display:flex;justify-content:space-between;align-items:center;margin-top:15px}
+.Qc_detail_friends-item .contain .content .desc{margin-right:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.Qc_detail_friends-item .contain .content .avatar{width:40px;height:40px;min-width:40px;min-height:40px;border-radius:50%;-o-object-fit:cover;object-fit:cover;border:2px solid #00000033}
+.xccx-friends .sub-text{word-break:break-all;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}
+.xccx-f-left .f-avatar .avatar{width:100%;height:100%;border-radius:50%;margin:0;object-fit:cover}
+.xccx-friends .xccx-f-left{width:100px;min-width:100px;display:flex;align-items:center;justify-content:center;transition:all 0.5s ease-in-out;margin:0 0 0 -15px}
+.xccx-friends .xccx-f-left .f-avatar{width:70px;height:70px;box-sizing:border-box;padding:1px;border-radius:50%;overflow:hidden;border:rgba(255,255,255,.4) 2px solid;transition:all 0.5s ease-in-out}
+.xccx-friends .xccx-f-right{flex-grow:1;display:flex;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box}
+.xccx-friends .Qc_detail_friends-item .contain{border-radius:5px;padding:20px 15px}
+.xccx-friends .Qc_detail_friends-item .contain .title::after{display:none}
+.xccx-friends .title{max-width:100%;min-width:100%;display:flex;align-items:center;justify-content:center;font-size:15px}
+.xccx-friends .title .icon{width:1em;min-width:1em;height:1em;min-height:1em;fill:currentColor;overflow:hidden;font-size:20px;margin-left:3px}
+.xccx-friends .content{margin-top:10px !important;font-size:0.9em}
+.xccx-friends .Qc_detail_friends-item .contain .content .desc{-webkit-line-clamp:1;margin-right:0px}
+.xccx-friends .contain{display:flex;align-items:center;position:relative;transition:background-color 0.1s ease-in-out,border 0.2s ease-in-out;border:0px solid transparent}
+.xccx-friends .contain:hover{transform:none;box-shadow:0px 0px 20px -5px rgb(158 158 158 / 20%);border-color:var(--background)}
+.xccx-friends .contain::before{content:"";position:absolute;left:0;top:0;bottom:0;right:0;z-index:-1;transform:scale(0);transition:all 0.5s ease-in-out;transform-origin:right bottom;border-bottom-left-radius:12px}
+.xccx-friends .contain:hover .title,.xccx-friends .contain:hover .content{color:#ffffff !important}
+.xccx-friends .contain:hover .title .icon{display:none}
+.xccx-friends .contain:hover .xccx-f-left{margin-left:-200px}
+.xccx-friends .contain:hover .xccx-f-right{padding-left:100px}
+.xccx-friends .contain:hover .f-avatar{transform:rotateZ(-360deg)}
+@media (max-width:768px){
+.Qc_Friends {grid-template-columns:repeat(2, 1fr) !important}
+.xccx-friends .contain{border-color:var(--background)}
+}.xccx-friends .contain:hover{border-color:var(--background);box-shadow:0px 0px 20px -5px rgb(158 158 158 / 20%)}
+.Qc_Friends{display:block;display:grid;grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));gap:15px;margin-bottom:15px}
+.Qc_Friends ul a{display:flex;background:var(--classD);position:relative;border-radius:var(--radius-wrap);overflow:hidden;letter-spacing:0;flex-direction:column;justify-content:center;border:1px solid rgb(189 189 189 / 25%)}
+.Qc_Friends ul a:active{scale:.98}
+.Qc_Friends ul a:hover{background:rgb(var(--classD) / 70%);color:white;box-shadow:0 1.2rem 1rem -1rem rgb(var(--classD) / .2)}
+.Qc_Friends ul a:hover:before{left:1rem;opacity:1}
+.Qc_Friends ul .Qc_items_all{padding:15px;padding-top:22px;padding-bottom:20px;position:relative;text-align:center;transition:all .5s}
+.Qc_Friends ul a:hover .Qc_items_all{filter:blur(20px) opacity(0);transform:scale(0.5)}
+.Qc_Friends ul .avatar{height:50px;width:50px;border-radius:50%;border:2px solid #eaeaea5e;transition:all .5s;padding:1px;box-shadow:0 0 15px 0px rgb(0 0 0 / 10%);object-fit:cover}
+.Qc_Friends ul .Qc_linkbg{width:100%;height:100%;transition:all .5s;filter:opacity(.15) blur(30px) saturate(1.8);top:0;object-fit:cover;object-position:top;position:absolute;transform:scale(1.1)}
+.Qc_Friends ul a:hover .Qc_linkbg{filter:opacity(0.95) blur(0);transform:scale(1)}
+.Qc_items_name,.Qc_items_desc{color:#eee;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;text-transform:capitalize;padding-top:10px;font-size:15px}
+.Qc_items_desc{font-size:13px;color:#ddd}
+@media (max-width:767px){
+.Qc_Friends ul .Qc_items_all{padding:.5rem;filter:none !important;transform:none !important}
+.Qc_Friends ul .Qc_linkbg{margin:0 0 -1.5rem;position:relative;filter:opacity(2) blur(0) saturate(1);aspect-ratio:5 / 3;border-radius:0 0 250px 250px / 0 0 50px 50px}
+.Qc_Friends ul .avatar{height:45px;width:45px}
+.Qc_Friends ul a:hover:before{left:.5rem;top:.5rem}
+.Qc_Friends ul .Qc_items_all{padding-bottom:15px}
+}
+.Qc_detail_Toolbox{display:grid;grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));gap:20px;margin-bottom:50px;padding-top:20px}
+.qccq_Toolbox_title{display:flex;align-items:center;padding:0 0 0.5rem;border-bottom:1px solid var(--classC)}
+.qccq_Toolbox .Qc_detail_friends-item .contain{transition:.35s;background:var(--Toolbox);border-radius:4px;padding:15px 15px}
+.qccq_Toolbox .Qc_detail_friends-item .contain:hover{opacity:1;border-radius:4px;transform:translateY(0px);box-shadow:0px 0px 5px 2px rgba(150,150,150,0.89);animation:index-link-active 1s cubic-bezier(0.315,0.605,0.375,0.925) forwards}
+.qccq_Toolbox_title .iconfont{margin-right:5px;font-size:20px}
+.qccq_Toolbox_title .title{font-size:16px;color:var(--main)}
+
+.flinks-block-title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+.flinks-list-title {
+    font-size: 1.25em;
+    font-weight: bold;
+  }
+
+  .flinks-list-desc {
+    font-style: italic;
+  }
+
+  .Qc_detail > div:not(:first-child) {
+    margin-bottom: 20px;
+  }
+
+</style>
+
+<div class="Qc_main Qc_page">
+    <div class="Qc_detail">
+        <h1 class="flinks-block-title">{{ .Title }}</h1>
+        {{ range .Site.Data.flinks }}
+        <div class="flinks-list-title">{{ .FLinksTitle | safeHTML }}</div>
+        <div class="flinks-list-desc">{{ .FLinksDesc | safeHTML }}</div>
+        <ul class="Qc_detail_friends xccx-friends">
+            {{ range .FLinksList }}
+            <li class="Qc_detail_friends-item"> 
+                <a class="contain" href="{{ if or .isLost  .lostFriend }} javascript:void; {{ else }} {{ .link }} {{ end }}" rel="external nofollow noreferrer" title=" {{ .name }}"  {{ if not .isLost }} target="_blank" {{ end }} style="background: #7367F0"> 
+                    
+                    {{ if .isLost }}
+                    <div style="position: absolute; top: 0px; left: 190px; border: 1px solid; border-radius: 5px; padding: 2px; --darkreader-inline-border-top: initial; --darkreader-inline-border-right: initial; --darkreader-inline-border-bottom: initial; --darkreader-inline-border-left: initial;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="">已失联</div>
+                    {{ end }}
+            
+                    {{ if .lostFriend  }}
+                    <div style="position: absolute; top: 0px; left: 190px; border: 1px solid; border-radius: 5px; padding: 2px; --darkreader-inline-border-top: initial; --darkreader-inline-border-right: initial; --darkreader-inline-border-bottom: initial; --darkreader-inline-border-left: initial;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="">丢了本站友链</div>
+                    {{ end }}
+
+                    <div class="xccx-f-left"> 
+                        <div class="f-avatar"> 
+                            <img width="60" height="60" class="avatar ls-is-cached lazyloaded"  loading="lazy" src="{{ .Site.BaseURL }}images/loading.gif"  data-lazy-src="{{ .avatar }}" alt="{{ .name }}" /> 
+                        </div> 
+                    </div> 
+                    <div class="xccx-f-right"> 
+                        <span class="title"> 
+                            <span class="sub-text">{{ .name  | safeHTML }}</span> 
+                        </span> 
+                        <div class="content"> 
+                            <div class="desc"  title="{{ .desc }}">{{ .desc | safeHTML }}</div> 
+                        </div> 
+                    </div> 
+                </a> 
+            </li>
+            {{ end }}
+        </ul>
+        {{ end }}
+       
+    </div>
+</div>
+
+{{- end }}

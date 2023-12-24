@@ -1,0 +1,7 @@
+
+{{ $assets_to_concat := slice }}
+{{ range slice "global.min.css" "index2.min.css" "post.min.css" "prism.min.css" "style.css" "theme.min.css" }}
+  {{ with partialCached "func/GetResource" . . }}
+    {{ $assets_to_concat = $assets_to_concat | append . }}
+  {{ end }}
+{{ end }}

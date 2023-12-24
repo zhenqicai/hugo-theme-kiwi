@@ -1,0 +1,49 @@
+<li class="Qc_list_item wow index2">
+    <div class="line"></div>
+    <a href="{{ .RelPermalink | relLangURL }}" class="thumbnail" title="{{ .Title }}" rel="noopener noreferrer">
+        
+
+        {{- $isHidden := (.Site.Params.cover.hidden | default .Site.Params.cover.hiddenInList) }}
+       
+        {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
+
+    </a>
+    <div class="information">
+        <a href="{{ .RelPermalink | relLangURL }}" class="title" title="{{ .Title }}" rel="noopener noreferrer">
+            
+            {{- if and .Weight (gt .Weight 0) }}
+                <span class="badge" style="display:inline-block">置顶</span>
+            {{- end }}
+            {{ .Title }}
+        </a>
+        <a class="abstract" href="{{ .RelPermalink | relLangURL }}" title="文章摘要" rel="noopener noreferrer">{{ .Summary }}</a>
+        <div class="meta">
+            <ul class="items">
+                <li><i class="fa fa-calendar-times-o"></i>&nbsp;&nbsp;{{ .Date.Format .Site.Params.dateFormat }}</li>
+            
+                <li>
+                    <i class="fa fa-eye"></i>&nbsp;
+                    <span class="waline-pageview-count" data-path="{{ .RelPermalink | relLangURL }}"></span>
+                </li>
+                <li>
+                    <i class="fa fa-comments-o"></i>&nbsp;
+                    <span  class="waline-comment-count" data-path="{{ .RelPermalink | relLangURL }}"></span>
+                </li>
+            </ul>
+            <div class="last" style="display:flex">
+                <i class="fa fa-folder-open" style="margin-right:2px;font-size:15px"></i>&nbsp;&nbsp;
+               
+                {{ if .Site.Params.postMeta.categories }}
+                    {{ with .Params.categories }}
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a class="link" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" itemprop="url" rel="noopener noreferrer index">
+                    <span itemprop="name">{{- . -}}</span>
+                  </a>
+                </span>
+                {{ end }}
+                {{ end }}
+
+            </div>
+        </div>
+    </div>
+</li>

@@ -1,0 +1,140 @@
+# ====================================================================
+# 
+# 建议在修改以下配置时，请拷贝调整以免造成不必要的冲突，来完善您站点的配置
+#
+# It is recommended to copy and adjust the following configurations 
+# to avoid unnecessary conflicts and improve the configuration of 
+# your site
+#
+# ====================================================================
+
+# --------------------------------------------------------------------
+#
+# Hugo 引擎的基础配置
+#
+# Basic configure for Hugo engine 
+#
+# --------------------------------------------------------------------
+
+# 线上网站 URL 例如：https://www.example.org/
+# Online website URL, for example: https://www.example.org/
+baseURL: / #https://qiucode.cn
+
+# 网站标题
+# Site title
+title: 秋码分享
+
+# 主题目录名 （themes文件夹下的）
+# Theme directory name (located in the themes folder)
+theme: hugo-theme-kiwi #gohugo-theme-ananke #
+
+# 设置代码语言
+# Set Code Language
+#languageCode: zh-cn
+
+# 网站内容语言设置（默认：en）
+# Website Content Language Settings（default: en）
+#defaultContentLanguage: zh-CN
+
+# 文章列表每页所显示的文章数量，默认为 10
+# The number of articles displayed on each page of the article list defaults to 10
+paginate: 10
+
+menus:
+  main:
+    - identifier: home
+      name: 首页
+      pageref: /
+      pre: home
+      weight: 1
+    - identifier: about
+      name: 关于本站
+      pageref: /about.html
+      pre: user
+      weight: 2
+
+params: 
+  dateFormat: "2006-01-02"
+  timeFormat: "2006-01-02T15:04:05-07:00"
+  
+  postMeta: 
+    categories: true
+
+  cover: 
+    hidden: false # hide everywhere but not in structured data
+    hiddenInList: false # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+  
+  sidebar: 
+    widgets: [ "categories", "tags"]
+  # 文章目录显示
+  # Table of Contents in the Sidebar
+  # Front-matter variable (nonsupport wrap expand_all).
+  toc:
+    enable: true
+    # 自动设置列表的数字
+    # Automatically add list number to toc.
+    number: true
+    # 开启自动换行显示
+    # If true, all words will placed on next lines 
+    # if header width longer then sidebar width.
+    wrap: false
+    # 自动展开子列表
+    # If true, all level of TOC in a post will be displayed, 
+    # rather than the activated part of it.
+    expandAll: false
+    # 最大的列表深度，建议不要超过3层
+    # Maximum heading depth of generated toc.
+    maxDepth: 3
+
+  # 评论组件设置，最多支持2个显示
+  # Multiple Comment System Support
+  comments:
+    # 开启评论组件
+    # If true, will show comment component in post end.
+    enable: true  
+    # 设置默认使用的评论插件
+    # 可选值：livere | waline | utterances | artalk | giscus
+    # Choose a comment system to be displayed by default.
+    # Available values: livere | waline | utterances | artalk | giscus 
+    active: waline
+    # 让用户自己选择使用评论插件留言
+    # 如果设置为 false，将采用 active 参数的那个插件
+    # Setting `true` means remembering the comment system selected by 
+    # the visitor, otherwise use the `active` setting comment system.
+    storage: true
+    # TODO
+    # Lazyload all comment systems.
+    # lazyload: false
+    # 设置你要显示的2个评论插件，`weight` 数字越小越靠前
+    # `name` 参数名可选值：livere | waline | utterances | artalk | giscus
+    # Modify texts or order for any naves, here are some examples.
+    nav:
+      - name: waline
+        title: Waline
+        color: "#27ae60"
+        weight: 1
+
+  waline:
+    pageView: true
+    comment: true
+    placeholder: "请文明发言哟 ヾ(≧▽≦*)o"
+    sofa: "快来发表你的意见吧 (≧∀≦)ゞ"
+    #emoji: false
+    emoji: [
+      '//unpkg.com/@waline/emojis@1.1.0/weibo',
+      '//unpkg.com/@waline/emojis@1.1.0/bilibili',
+    ]
+    login: 'disable'
+    imgUploader: false
+    wordLimit: 200
+    requiredMeta: ['nick', 'mail']
+    reaction: true
+    reactionText: [ '点赞', '踩一下', '得意', '不屑', '尴尬', '睡觉']
+    reactionTitle: "你认为这篇文章怎么样？"
+    serverURL: "comment.qiucode.cn"
+  
+
+  css: css
+  js: js
+

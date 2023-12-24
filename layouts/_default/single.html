@@ -1,0 +1,33 @@
+{{- define "main" }}
+
+{{ $isComment := .Params.comment.enable | default .Site.Params.comments.enable }}
+{{ .Scratch.Set "isComment" $isComment }}
+<div class="Qc_main Qc_post">
+    <div class="Qc_detail">
+        <h1 class="title Qc_psot_title"> {{ .Title }}</h1>
+        <div class="Qc_bread">
+            <ul class="Qc_bread_bread">
+                <li class="item"> <span class="iconfont icon-A131" style="margin-right: 4px;"></span> <a
+                        href="https://qiucode.cn/" class="link" title="首页">首页</a> </li>
+                <li class="line">/</li>
+                <li class="item"> <a class="link" href="https://qiucode.cn/category/bkfx/" title="博客分享">博客分享</a>
+                </li>
+                <li class="line">/</li>
+                <li class="item">正文</li>
+            </ul>
+        </div>
+        <div class="Qc_detail_category"> </div>
+        <article class="Qc_detail_article" id="article-container">
+            {{ .Content }}
+        </article>
+    </div>
+
+    {{ if and .IsPage $isComment }}
+       	{{ partialCached "comments.html" . }}
+    {{ end }}
+</div>
+
+
+{{- end }}
+
+

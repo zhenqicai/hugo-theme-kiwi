@@ -1,0 +1,30 @@
+<aside class="Qc_aside">
+ 
+
+{{- $root := . }}
+{{- with (default .Site.Params.sidebar.widgets .Params.widgets) -}}
+	{{- range $widget := . }}
+		{{- $widgetPath := printf "widgets/%s.html" $widget }}
+		{{- $widgetCached := false }}
+		{{- if isset $.Site.Params "widgets" }}
+			{{- $widgetCached = (index $.Site.Params.widgets $widget).cached }}
+		{{- end }}
+		{{- if eq $widgetCached true }}
+			{{- partialCached $widgetPath $root }}
+		{{- else }}
+			{{- partial $widgetPath $root }}
+		{{- end }}
+	{{- end }}
+
+{{- end }}
+
+{{ $tocEnable := .Params.toc | default .Site.Params.toc.enable }}
+
+    {{ if and $tocEnable .Site.Params.toc.number }}
+
+    <section class="sticky_layout">
+        {{- partial "toc.html" . }}
+    </section>
+    {{ end }} 
+
+</aside>

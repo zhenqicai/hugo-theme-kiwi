@@ -1,0 +1,525 @@
+<style>
+
+    .card-widget:first-child {
+        margin-top: 0
+    }
+
+    @media screen and (max-width:900px) {
+        .card-widget:first-child {
+            margin-top: 20px
+        }
+    }
+
+     .card-widget {
+        position: relative;
+        overflow: hidden;
+        margin-top: 20px;
+        padding: 20px 24px;
+        color:var(--main)
+    }
+
+     .card-widget,
+    #recent-posts>.recent-post-item,
+    .cardHover,
+    .error404 #error-wrap .error-content,
+    .layout>.recent-posts .pagination>:not(.space),
+    .layout>div:first-child:not(.recent-posts) {
+        border-radius: 8px;
+        background: var(--background);
+        -webkit-box-shadow: var(--card-box-shadow);
+        box-shadow: var(--card-box-shadow);
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -o-transition: all .3s;
+        -ms-transition: all .3s;
+        transition: all .3s
+    }
+
+    .card-widget:hover,
+    #recent-posts>.recent-post-item:hover,
+    .cardHover:hover,
+    .error404 #error-wrap .error-content:hover,
+    .layout>.recent-posts .pagination>:not(.space):hover,
+    .layout>div:first-child:not(.recent-posts):hover {
+        -webkit-box-shadow: var(--card-hover-box-shadow);
+        box-shadow: var(--card-hover-box-shadow)
+    }
+
+
+
+    .item-headline {
+        padding-bottom: 6px;
+        font-size: 1.2em
+    }
+
+     .item-headline span {
+        margin-left: 6px
+    }
+
+   
+ 
+     @media screen and (min-width:900px) {
+        .sticky_layout {
+            position: sticky;
+            position: -webkit-sticky;
+            top: 60px;
+            -webkit-transition: top .3s;
+            -moz-transition: top .3s;
+            -o-transition: top .3s;
+            -ms-transition: top .3s;
+            transition: top .3s
+        }
+    } 
+
+    
+
+
+
+    #card-toc .toc-percentage {
+        float: right;
+        margin-top: -9px;
+        color: #a9a9a9;
+        font-style: italic;
+        font-size: 140%
+    }
+
+    #card-toc .toc-content {
+        overflow-y: scroll;
+        overflow-y: overlay;
+        margin: 0 -24px;
+        max-height: calc(100vh - 120px)
+    }
+
+    @media screen and (max-width:900px) {
+         #card-toc .toc-content {
+            max-height: calc(100vh - 140px)
+        }
+    }
+
+     #card-toc .toc-content>* {
+        margin: 0 20px !important
+    }
+
+
+
+     #card-toc .toc-content>*>.toc-item>.toc-child {
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 1px solid var(--dark-grey)
+    }
+
+    #card-toc .toc-content:not(.is-expand) .toc-child {
+        display: none
+    }
+
+    @media screen and (max-width:900px) {
+        #card-toc .toc-content:not(.is-expand) .toc-child {
+            display: block !important
+        }
+    }
+
+   #card-toc .toc-content:not(.is-expand) .toc-item.active .toc-child {
+        display: block
+    }
+
+    #card-toc .toc-content li,
+     #card-toc .toc-content ol {
+        list-style: none
+    }
+
+     #card-toc .toc-content>ol {
+        padding: 0 !important
+    }
+
+    #card-toc .toc-content ol {
+        margin: 0;
+        padding-left: 18px
+    }
+
+    #card-toc .toc-content .toc-link {
+        display: block;
+        margin: 4px 0;
+        padding: 1px 6px;
+        color: var(--toc-link-color);
+        -webkit-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        -ms-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out
+    }
+
+     #card-toc .toc-content .toc-link:hover {
+        color: #49b1f5
+    }
+
+    #card-toc .toc-content .toc-link.active {
+        background: #00c4b6;
+        color: #fff
+    }
+
+     .sticky_layout:only-child>:first-child {
+        margin-top: 20px
+    }
+
+
+</style>
+
+{{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content -}}
+{{- $has_headers := ge (len $headers) 1 -}}
+{{- if $has_headers -}}
+    <div class="card-widget" id="card-toc">
+        <div class="item-headline">
+            <i class="fa fa-bars"></i>
+            <span>目录</span>
+            <span class="toc-percentage">0</span>
+        </div>
+        <div class="toc-content">
+
+            {{- $largest := 6 -}}
+            {{- range $headers -}}
+
+                {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
+                {{- $headerLevel := len (seq $headerLevel) -}}
+                
+                {{- if lt $headerLevel $largest -}}
+                    {{- $largest = $headerLevel -}}
+                {{- end -}}
+
+            {{- end -}}
+
+            {{- $firstHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers 0) 1) 0)) -}}
+
+            {{- $.Scratch.Set "bareul" slice -}}
+          
+            <ol class="toc">
+
+                {{- range seq (sub $firstHeaderLevel $largest) -}}
+
+                <ol class="toc-child">
+
+                    {{- $.Scratch.Add "bareul" (sub (add $largest .) 1) -}}
+
+                {{- end -}}
+
+                {{- range $i, $header := $headers -}}
+
+                    {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
+                    {{- $headerLevel := len (seq $headerLevel) -}}
+
+                    {{- $id := index (findRE "(id=\"(.*?)\")" $header 9) 0 }}
+
+                    {{- $cleanedID := replace (replace $id "id=\"" "") "\"" "" }}
+                    {{- $header := replaceRE "<h[1-6].*?>((.|\n])+?)</h[1-6]>" "$1" $header -}}
+
+                    {{- if ne $i 0 -}}
+                        {{- $prevHeaderLevel := index (findRE "[1-6]" (index $headers (sub $i 1)) 1) 0 -}}
+                        {{- $prevHeaderLevel := len (seq $prevHeaderLevel) -}}
+                        {{- if gt $headerLevel $prevHeaderLevel -}}
+                            {{- range seq $prevHeaderLevel (sub $headerLevel 1) -}}
+
+                            <ol class="toc-child">
+                                {{- if ne $prevHeaderLevel . -}}
+                                    {{- $.Scratch.Add "bareul" . -}}
+                                {{- end -}}
+
+                            {{- end -}}
+
+                        {{- else -}}
+
+                        </li>
+                        {{- if lt $headerLevel $prevHeaderLevel -}}
+                            {{- range seq (sub $prevHeaderLevel 1) -1 $headerLevel -}}
+                                {{- if in ($.Scratch.Get "bareul") . -}}
+
+                            </ol>
+
+                                    {{- $tmp := $.Scratch.Get "bareul" -}}
+                                    {{- $.Scratch.Delete "bareul" -}}
+                                    {{- $.Scratch.Set "bareul" slice}}
+                                    {{- range seq (sub (len $tmp) 1) -}}
+                                        {{- $.Scratch.Add "bareul" (index $tmp (sub . 1)) -}}
+                                    {{- end -}}
+                                {{- else -}}
+
+                            </ol>
+                        </li>
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end }}
+
+                    <li class="toc-item toc-level-2">
+                        <a class="toc-link" href="#{{- $cleanedID -}}" aria-label="{{- $header | plainify -}}" data-pjax-state="anchor">
+                            <span class="toc-number">{{-  $headerLevel }}</span> 
+                            <span class="toc-text"> {{- $header | safeHTML -}}</span>
+                        </a>
+                        {{- else }}
+                        <li class="toc-item toc-level-3">
+                            <a class="toc-link" href="#{{- $cleanedID -}}" aria-label="{{- $header | plainify -}}" data-pjax-state="anchor">
+                                <span class="toc-number">{{ add $i 1 }}</span> 
+                                <span class="toc-text"> {{- $header | safeHTML -}}</span>
+                            </a>
+                        {{- end -}}
+                    {{- end -}}
+                        <!-- {{- $firstHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers 0) 1) 0)) -}} -->
+                        {{- $firstHeaderLevel := $largest }}
+                        {{- $lastHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers (sub (len $headers) 1)) 1) 0)) }}
+                    </li>
+                    {{- range seq (sub $lastHeaderLevel $firstHeaderLevel) -}}
+                    {{- if in ($.Scratch.Get "bareul") (add . $firstHeaderLevel) }}
+                </ol>
+                {{- else }}
+                </ol>
+                </li>
+                {{- end -}}
+            {{- end }}
+            </ol>
+
+        </div>
+    </div>
+
+
+{{- end }}
+
+
+
+
+
+<script>
+
+    const btf = {
+    
+        scrollToDest: (pos, time = 500) => {
+            const currentPos = window.pageYOffset
+            if (currentPos > pos) pos = pos - 70
+        
+            if ('scrollBehavior' in document.documentElement.style) {
+                window.scrollTo({
+                top: pos,
+                behavior: 'smooth'
+                })
+                return
+            }
+        
+            let start = null
+            pos = +pos
+            window.requestAnimationFrame(function step (currentTime) {
+                start = !start ? currentTime : start
+                const progress = currentTime - start
+                if (currentPos < pos) {
+                window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos)
+                } else {
+                window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time))
+                }
+                if (progress < time) {
+                window.requestAnimationFrame(step)
+                } else {
+                window.scrollTo(0, pos)
+                }
+            })
+        },
+    
+       
+        getEleTop: ele => {
+            let actualTop = ele.offsetTop
+            let current = ele.offsetParent
+        
+            while (current !== null) {
+                actualTop += current.offsetTop
+                current = current.offsetParent
+            }
+        
+            return actualTop
+        },
+
+        updateAnchor: (anchor) => {
+            if (anchor !== window.location.hash) {
+                if (!anchor) anchor = location.pathname
+                const title = "秋码记录"
+                window.history.replaceState({
+                    url: location.href,
+                    title
+                }, title, anchor)
+            }
+        },
+
+
+        throttle: function (func, wait, options) {
+            let timeout, context, args
+            let previous = 0
+            if (!options) options = {}
+        
+            const later = function () {
+                previous = options.leading === false ? 0 : new Date().getTime()
+                timeout = null
+                func.apply(context, args)
+                if (!timeout) context = args = null
+            }
+        
+            const throttled = function () {
+                const now = new Date().getTime()
+                if (!previous && options.leading === false) previous = now
+                
+                const remaining = wait - (now - previous)
+                context = this
+                args = arguments
+                if (remaining <= 0 || remaining > wait) {
+                    if (timeout) {
+                        clearTimeout(timeout)
+                        timeout = null
+                    }
+                    previous = now
+                    func.apply(context, args)
+                    if (!timeout) context = args = null
+                } else if (!timeout && options.trailing !== false) {
+                    timeout = setTimeout(later, remaining)
+                }
+            }
+        
+            return throttled
+        },
+
+        getScrollPercent: (currentTop, ele) => {
+            const docHeight = ele.clientHeight
+            const winHeight = document.documentElement.clientHeight
+            const headerHeight = ele.offsetTop
+            const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight)
+            const scrollPercent = (currentTop - headerHeight) / (contentMath)
+            const scrollPercentRounded = Math.round(scrollPercent * 100)
+            const percentage = (scrollPercentRounded > 100) ? 100 : (scrollPercentRounded <= 0) ? 0 : scrollPercentRounded
+            return percentage
+        },
+
+
+
+
+    }  
+
+
+
+     /**
+    * toc,anchor
+    */
+    const scrollFnToDo = function () {
+      const isToc = true //GLOBAL_CONFIG_SITE.isToc
+      const isAnchor = true //GLOBAL_CONFIG.isAnchor
+      const $article = document.getElementById('article-container')
+  
+      if (!($article && (isToc || isAnchor))) return
+  
+      let $tocLink, $cardToc, autoScrollToc, $tocPercentage, isExpand
+  
+      if (isToc) {
+        const $cardTocLayout = document.getElementById('card-toc')
+        $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0]
+        $tocLink = $cardToc.querySelectorAll('.toc-link')
+        $tocPercentage = $cardTocLayout.querySelector('.toc-percentage')
+        isExpand = $cardToc.classList.contains('is-expand')
+  
+        window.mobileToc = {
+          open: () => {
+            $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: 55px'
+          },
+  
+          close: () => {
+            $cardTocLayout.style.animation = 'toc-close .2s'
+            setTimeout(() => {
+              $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+            }, 100)
+          }
+        }
+  
+        // toc元素點擊
+        $cardToc.addEventListener('click', e => {
+          e.preventDefault()
+          const target = e.target.classList
+          if (target.contains('toc-content')) return
+          const $target = target.contains('toc-link')
+            ? e.target
+            : e.target.parentElement
+          btf.scrollToDest(btf.getEleTop(document.getElementById(decodeURI($target.getAttribute('href')).replace('#', ''))), 300)
+          if (window.innerWidth < 900) {
+            window.mobileToc.close()
+          }
+        })
+  
+        autoScrollToc = item => {
+          const activePosition = item.getBoundingClientRect().top
+          const sidebarScrollTop = $cardToc.scrollTop
+          if (activePosition > (document.documentElement.clientHeight - 100)) {
+            $cardToc.scrollTop = sidebarScrollTop + 150
+          }
+          if (activePosition < 100) {
+            $cardToc.scrollTop = sidebarScrollTop - 150
+          }
+        }
+      }
+  
+      // find head position & add active class
+      const list = $article.querySelectorAll('h1,h2,h3,h4,h5,h6')
+      let detectItem = ''
+      const findHeadPosition = function (top) {
+        if (top === 0) {
+          return false
+        }
+  
+        let currentId = ''
+        let currentIndex = ''
+  
+        list.forEach(function (ele, index) {
+          if (top > btf.getEleTop(ele) - 80) {
+            const id = ele.id
+            currentId = id ? '#' + encodeURI(id) : ''
+            currentIndex = index
+          }
+        })
+  
+        if (detectItem === currentIndex) return
+  
+        if (isAnchor) btf.updateAnchor(currentId)
+  
+        detectItem = currentIndex
+  
+        if (isToc) {
+          $cardToc.querySelectorAll('.active').forEach(i => { i.classList.remove('active') })
+  
+          if (currentId === '') {
+            return
+          }
+  
+          const currentActive = $tocLink[currentIndex]
+          currentActive.classList.add('active')
+  
+          setTimeout(() => {
+            autoScrollToc(currentActive)
+          }, 0)
+  
+          if (isExpand) return
+          let parent = currentActive.parentNode
+  
+          for (; !parent.matches('.toc'); parent = parent.parentNode) {
+            if (parent.matches('li')) parent.classList.add('active')
+          }
+        }
+      }
+  
+      // main of scroll
+      window.tocScrollFn = btf.throttle(() => {
+        const currentTop = window.scrollY || document.documentElement.scrollTop
+        // if (isToc && GLOBAL_CONFIG.percent.toc) {
+         if(isToc){
+          $tocPercentage.textContent = btf.getScrollPercent(currentTop, $article)
+        }
+        findHeadPosition(currentTop)
+      }, 100)
+  
+      window.addEventListener('scroll', tocScrollFn)
+    }
+  
+
+    scrollFnToDo()
+</script>
+
+
+
+

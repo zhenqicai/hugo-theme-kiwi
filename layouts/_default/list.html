@@ -1,0 +1,84 @@
+{{- define "main" }}
+
+    {{- $pages := union .RegularPages .Sections }}
+
+    {{- if .IsHome }}
+        {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{- end }}
+
+    {{- $paginator := .Paginate $pages }}
+    <div class="Qc_main index">
+        <div class="Qc_index">
+           
+            <div class="Qc_index_list">
+                <ul class="Qc_list">
+    
+                    {{- range $index, $data := $paginator.Pages }}
+                        {{ partial "article.html" $data }}
+    
+                    {{ end }}
+    
+                </ul>
+              
+            </div>
+       
+
+    {{- if gt $paginator.TotalPages 1 }}
+
+    <ul class="Qc_pagination">
+        
+
+        {{- if not (eq $paginator.PageNumber 1) }}
+        <li>
+            <a  href="{{ $paginator.First.URL | absURL }}">{{ "1" }}</a>
+        </li>
+            {{- if not (eq $paginator.PageNumber 2) }}
+                {{- if gt $paginator.PageNumber 3 }}
+                &nbsp;...&nbsp;
+                {{- end }}
+            <li >
+                <a  href="{{ $paginator.Prev.URL | absURL }}">{{ sub $paginator.PageNumber 1 }}</a>
+            </li> 
+                
+            {{- end }}
+        {{- end }}
+        
+        {{- range $.Paginator.Pagers -}}
+            {{ if eq . $paginator }}
+            <li class="{{ if eq . $paginator }}active{{ end }}">
+                <a  href="{{ .URL | absURL }}">{{- .PageNumber -}}</a>
+            </li>
+            {{ end }}
+        {{- end }}
+
+        {{- if not (eq $paginator.PageNumber $paginator.TotalPages) }}
+            {{- if not (eq $paginator.PageNumber ( sub $paginator.TotalPages 1)) }}
+            <li >
+                <a  href="{{ $paginator.Next.URL | absURL }}">{{ add $paginator.PageNumber 1 }}</a>
+            </li>
+
+                {{- if lt $paginator.PageNumber (sub $paginator.TotalPages 2) }}
+                &nbsp;...&nbsp;
+                {{- end }}
+
+            {{- end }}
+
+            <li >
+                <a class="pageLast" href="{{ $paginator.Last.URL | absURL }}">{{ $paginator.TotalPages }}</a>
+            </li>
+        {{- end }}
+
+    </ul>
+
+    {{- end }}
+
+
+
+</div>
+</div>
+
+{{- end }}
+
+
+
+

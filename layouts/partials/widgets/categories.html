@@ -1,0 +1,34 @@
+{{- $categories := .Site.Taxonomies.categories }}
+{{- if gt (len $categories) 0 }}
+
+<section class="Qc_aside_item tags"> 
+    <div class="Qc_aside_item-title"> 
+        <i class="iconfont icon-A67" style="margin-right: 8px;font-size: 17px"></i> 
+        <span class="text">文章分类</span> 
+        <span class="qccq_mac"></span> 
+    </div> 
+    <div class="Qc_aside_item-contain" style="padding:10px"> 
+        <div class="tag"></div> 
+		<ul class="list">
+			{{ $i := 0 }}
+			{{- range $name, $taxonomy := $categories }}
+			
+			   {{ $i = add $i 1 }}
+
+			   {{- if lt $i 11 }}
+				{{- with $.Site.GetPage (printf "/categories/%s" $name) }}
+			<li class="item"> 
+				<a class="link" href="{{ .RelPermalink }}">{{ .Title }} </a>
+				<span class="widget__counter widget__counter--bubble">{{ $taxonomy.Count }}</span>
+			</li>
+               {{- end }}
+
+			{{- end }}
+		{{- end }}
+	</div>
+</section>
+{{- end }}
+
+
+
+

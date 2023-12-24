@@ -1,0 +1,88 @@
+# 友情链接
+# Friend's links
+
+- FLinksTitle: 大佬博客
+  FLinksDesc: 来自那些深耕技术的大佬博客。
+  FLinksList:
+    - name: 程序萌部落
+      desc: 编程, NAS, 吃喝玩乐学
+      avatar: https://cdn.jsdelivr.net/gh/TianZonglin/tuchuang/img/logo.jpg
+      link: https://www.cxmoe.com
+
+    - name: LOGI
+      desc: 会点代码的强迫症
+      avatar: https://ae01.alicdn.com/kf/UTB8q2lYPFfFXKJk43Otxh4IPFXaQ.jpeg
+      link: https://logi.im
+
+    - name: Anleenoの小屋
+      desc: 九月露湿，待君之前
+      avatar: https://q1.qlogo.cn/g?b=qq&nk=3186252936&s=640
+      link: https://www.anleenoxu.top
+
+    - name: Arien
+      desc: 追求源于热爱
+      avatar: https://www.arien.top/image/logo/logoarien20210419124502.jpg
+      link: https://www.arien.top
+    
+    - name: 旧时繁华
+      desc: 繁华似锦觅安宁,淡云流水度此
+      avatar: https://zzwyun.gitee.io/static/img/jiushi.png
+      link: https://blog.rain888.cn
+
+    - name: 在码圈
+      desc: 代码改变未来，努力coding
+      avatar: https://www.bedebug.com/avatar
+      link: https://www.bedebug.com
+
+    - name: TOOMEY'S BLO
+      desc: 我只是一个追逐群星的孩子，注视着天空中千万繁星的诞生
+      avatar: https://t1.picb.cc/uploads/2020/03/26/k0rpN1.png
+      link: https://blog.zbcode.cn/
+      lostFriend: true
+
+    - name: 未雨晴空
+      desc: 执着于理想，纯粹于当下。
+      avatar: https://www.oneisall.top/static/images/avatar.jpg
+      link: https://www.oneisall.top
+
+    - name: 北风小窝
+      desc: 喂，等你很久了！
+      avatar: http://images.beif.top/img/f24a9e9a60e0c2204d12081d897680de.png
+      link: https://beif.top
+      isLost: true
+
+    - name: 木子博客
+      desc: 用生活记录我们的爱！
+      avatar: https://muuzi.cn/mzlogo.png
+      link: https://muuzi.cn/
+      isLost: true
+      
+    - name: ONESTARの客栈
+      desc: 转瞬即逝的相逢与离别，每一个瞬间，我都想要珍惜
+      avatar: https://onestar.newstar.net.cn/images/me.jpg
+      link: https://onestar.newstar.net.cn/
+      isLost: true
+      
+    - name: begem - Club
+      desc: 网络优秀资源分享,分享建站技术经验,网站源码,技术教程,精心分享
+      avatar: https://pan.begem.cn/2021/08/28/2494d6a156180.png
+      link: https://blog.begem.cn/
+      isLost: true
+    
+- FLinksTitle: 技术与文学
+  FLinksDesc: 献丑余下时光捣鼓的技术和文学相关内容！
+  FLinksList:
+    - name: qiucode-ui文档
+      desc: 一款轻量级、模块化的前端 UI 组件库
+      avatar: /static/front/images/qiucode-ui-logo.png
+      link: https://ui.qiucode.cn/
+
+    - name: 同一地方
+      desc: 首部小说文学作品
+      avatar: https://bookcover.yuewen.com/qdbimg/349573/1017382996/180
+      link: https://book.qidian.com/info/1017382996
+
+    - name: 潜逃之双重身份
+      desc: 30年悬而未决，最终凶手成了受害者，而受害者倒成了凶手
+      avatar: https://bookcover.yuewen.com/qdbimg/349573/1030616305/180
+      link: https://book.qidian.com/info/1030616305/

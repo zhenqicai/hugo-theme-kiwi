@@ -1,0 +1,132 @@
+# CDN 公共资源商列表
+# Public CDN vendor list
+vendors: 
+  cdnjs: "https://cdnjs.cloudflare.com/ajax/libs"
+  unpkg: "https://unpkg.com"
+  bootcdn: "https://cdn.bootcdn.net/ajax/libs"
+  qiniu: "https://cdn.staticfile.org"
+
+# JavaScript 资源
+# JavaScript Resources
+js:
+  - name: animejs
+    version: 3.2.1
+    file: lib/anime.min.js
+  - name: viewerjs
+    version: 1.11.0
+    file: dist/viewer.min.js
+
+# CSS 资源
+# CSS Resources
+css:
+  - name: '@fortawesome/fontawesome-free'
+    version: 6.1.2
+    file: css/all.min.css
+    alias: font-awesome
+  - name: animate.css
+    version: 3.1.1
+    file: animate.min.css
+  - name: viewerjs
+    version: 1.11.0
+    file: dist/viewer.min.css
+
+# 第三方服务组件资源
+# 3rd servcies Resource
+
+# 站点统计
+# Site analytics engine
+analytics:
+  la: https://sdk.51.la/js-sdk-pro.min.js
+  laWidget: https://v6-widget.51.la/v6/laId/quote.js?theme=0&col=true&f=12&display=0,0,0,1,0,1,1,1
+  baidu: https://hm.baidu.com/hm.js?
+  google: https://www.googletagmanager.com/gtag/js?id=
+  busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+
+# 文章分享
+# Share
+addthis:
+  js: https://s7.addthis.com/js/300/addthis_widget.js
+
+# 评论组件
+# Comment component
+waline:
+  js:
+    name: '@waline/client'
+    version: 2.13.0
+    file: dist/waline.js
+    alias: waline
+  css:
+    name: '@waline/client'
+    version: 2.13.0
+    file: dist/waline.css
+    alias: waline
+
+artalk:
+  js:
+    name: artalk
+    version: 2.3.4
+    file: dist/Artalk.js
+  css:
+    name: artalk
+    version: 2.3.4
+    file: dist/Artalk.css
+
+giscus:
+  js: https://giscus.app/client.js
+
+utterances:
+  js: https://utteranc.es/client.js
+
+livere:
+  js: https://cdn-city.livere.com/js/embed.dist.js
+
+# 全文搜索
+# Full text search
+algolia:
+  name: algoliasearch
+  version: 4.14.2
+  file: dist/algoliasearch-lite.umd.js
+instant:
+  name: instantsearch.js
+  version: 4.49.0
+  file: dist/instantsearch.production.min.js
+
+plugins:
+  # 数学公式渲染
+  mathjax:
+    js:
+      name: mathjax
+      version: 3.2.0
+      file: es5/tex-mml-chtml.js
+  katex:
+    js:
+      - name: katex
+        version: 0.16.0
+        file: dist/katex.min.js
+      - name: auto-render
+        alias_name: katex
+        version: 0.16.0
+        file: dist/contrib/auto-render.min.js
+    css:
+      name: katex
+      version: 0.16.0
+      file: dist/katex.min.css
+  # 画图渲染
+  mermaid:
+    js:
+      name: mermaid
+      version: 9.1.7
+      file: dist/mermaid.min.js
+  # 文章访问/评论统计
+  waline:
+    js:
+      - name: pageview
+        alias_name: '@waline/client'
+        version: 2.13.0
+        file: dist/pageview.js
+        alias: waline 
+      - name: comment
+        alias_name: '@waline/client'
+        version: 2.13.0
+        file: dist/comment.js
+        alias: waline
