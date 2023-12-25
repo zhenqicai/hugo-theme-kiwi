@@ -83,6 +83,50 @@
     margin-bottom: 20px;
   }
 
+  .Qc_reads_article {
+    padding-top: 15px;
+    font-size: 15px;
+    word-break: break-word;
+    color: var(--routine);
+  }
+
+  .Qc_reads_article p {
+    line-height: 26px;
+    margin-bottom: 18px;
+ }
+
+ .Qc_mtitle {
+    display: flex;
+    justify-content: center;
+}
+
+.Qc_mtitle__text {
+    position: relative;
+    color: var(--minor);
+    padding: 0 12px;
+    transition: padding 0.35s;
+}
+
+.Qc_mtitle__text::before, .Qc_mtitle__text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 1px;
+    background: var(--theme);
+}
+.Qc_mtitle__text::before {
+    left: -35px;
+}
+.Qc_callout {
+    padding: 12px;
+    border: 1px solid var(--classB);
+    border-left-width: 4px;
+    border-radius: 4px;
+    color: var(--routine);
+    line-height: 26px;
+}
+
 </style>
 
 <div class="Qc_main Qc_page">
@@ -124,6 +168,36 @@
         {{ end }}
        
     </div>
+
+    
+    <div class="Qc_reads_article">
+        <p>
+            <qc-mtitle title="申请格式">
+                <span class="Qc_mtitle">
+                    <span class="Qc_mtitle__text">
+                        申请格式
+                    </span>
+                </span>
+            </qc-mtitle>
+        </p>
+       
+        <p>
+        </p>
+        <section style="margin-bottom: 15px">
+            <qc-callout color="#9e4def">
+                
+                <span class="_content" style="display: block;">
+                    <div class="Qc_callout" style="border-left-color: #9e4def;">
+                        {{ .Content }}
+                    </div>
+                </span>
+            </qc-callout>
+        </section>
+        
+    </div>
+
+    {{ partialCached "comments.html" . }}
+
 </div>
 
 {{- end }}
