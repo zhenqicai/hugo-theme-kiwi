@@ -31,7 +31,7 @@
 <link rel="apple-touch-icon-precomposed" href="{{ .Site.BaseURL }}imgs/icons/apple-touch-icon.png" />
 
 
-
+{{ $isComment := .Scratch.Get "isComment" }}
 
 <style>
     @font-face {
@@ -83,9 +83,10 @@
 
 <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome.min.css" />
 
+{{ if  $isComment }}
 <!-- comment -->
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
-
+{{ end }}
 
 {{ if .IsHome }}
 <link rel="stylesheet" href="{{ .Site.BaseURL }}css/index.min.css" />
@@ -108,7 +109,7 @@
   </script>
 {{ end }}
 
-{{- if not $.IsHome }}
+{{- if and ( not $.IsHome )  $isComment }}
 <script type="module">
     import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
   

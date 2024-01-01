@@ -1,0 +1,137 @@
+# 时间轴
+# timeline
+
+- Year: 2023
+  Title: 2023年
+  TimeList: 
+    - Cal: 12月30日
+      Desc: 202年即将过去，纵有再多的不甘，可又能咋样？2024年却以轻快地步伐向我门迈进。
+
+    - Cal: 12月24日
+      Desc: 一套由 Hugo 驱动的博客主题 hugo-theme-kiwi 在 github 上开源了。
+
+    - Cal: 11月08日
+      Desc: 睽违了一年多，Web3项目实践系列文章总算得以在 CSDN 上发表了。
+
+    - Cal: 07月15日
+      Desc: 开始进入【人工智能】领域的研习。
+
+    - Cal: 06月20日
+      Desc: 为期三年的云服务器到期了，不打算续费了，将【秋码记录】站点文章迁移到由 Hugo 构建，并托管到 github 上。
+    
+
+- Year: 2022
+  Title: 2022年
+  TimeList: 
+    - Cal: 11月30日
+      Desc: 关注 Web3、以太坊以及智能合约相关内容
+
+    - Cal: 06月18日
+      Desc: 【秋码记录】首页文章列表实现了骨架屏，接下来将逐渐使整站都完成骨架屏占位填充。
+            <img src="https://zhenqioss.oss-cn-beijing.aliyuncs.com/qiucode2020/artSkeleton.gif" alt="秋码记录】首页文章列表实现了骨架屏" />
+
+    - Cal: 03月12日
+      Desc: 秋码记录】于03-10日晚间时分申请加入Google Ads,没想到03-12日就审核通过了！……
+
+- Year: 2021
+  Title: 2021年
+  TimeList: 
+    - Cal: 06月17日
+      Desc: 开启二级域名ui.qiucode.cn，将作为 qiucode-ui 组件库文档地址。
+
+    - Cal: 06月13日
+      Desc: 由于近来在攥写《同一地方》，所以【秋码记录】耽搁了，现将搜索文章功能初步完成，当中难免有些这样或那样的问题，会尽量完善它的！
+
+    - Cal: 02月05日
+      Desc: 【秋码记录】时间轴重新上新。
+      
+    - Cal: 01月31日
+      Desc: 【秋码记录】主题/模板深夜悄然上线了！
+
+- Year: 2020
+  Title: 2020年
+  TimeList: 
+    - Cal: 12月31日
+      Desc: 2020年即将离去，或许多年后，忆起，该是怎样的心情呢？2020年，恍如昨日，一切却都那么历历在目；但又很漫长……，总之，2020年是一个不一样的年份，让我们挥手告别这实属(鼠)不易(疫)的2020年吧！
+
+    - Cal: 10月01日
+      Desc: 普天同庆，qiucode.cn整体架构重新设计……
+
+    - Cal: 08月12日
+      Desc: qiucode.cn接入第三方QQ登录以及实现文章付费阅读（集成支付宝支付）
+
+    - Cal: 06月20日
+      Desc: 6.18年中优惠大促销，遂又购得一服务器，qiucode.cn终将归来，页面也较之前进行改版（也就是现在这版的了）
+    
+    - Cal: 03月24日
+      Desc: 时隔一年之久的开源项目（qiucode-ui）重新添加新组件，并发布最新版V0.0.77。由于去年双十一购买的服务器与域名不在同一云服务商，故而域名需转出转入，由于较为繁琐，遂停了！
+                       
+    - Cal: 01月31日
+      Desc: 原定于此时返程，但由于疫情原因，故而又推迟了一周，然而一周的时间也到了，而疫情并未出现好转，遂只能再次延缓了一周，在这接下来的一周时间里，疫情看似有所好转，也该返程了！
+            这个春节也是自步入社会后能在老家待了这么久，2020年，不一样的春节，村中虽有烟花炮竹，但多人聚集，亲朋好友串门也随着疫情的严重性而闭门不出。
+                       
+
+- Year: 2019
+  Title: 2019年
+  TimeList: 
+    - Cal: 12月21日
+      Desc: 首部作品《同一地方》发表于中文起点网，笔名：上官江南
+
+    - Cal: 11月11日
+      Desc: 浏览各大云服务商，看看双十一活动，云服务器会优惠多少呢？索性购买了为期还是一年的云服务器。
+
+    - Cal: 10月13日
+      Desc: 为期一年的服务器到期了，续费又太贵了，故而暂且搁浅了。
+
+    - Cal: 10月01日
+      Desc: 热烈庆祝中华人民共和国成立70周年，动身北上进京旅游观光。
+
+    - Cal: 06月27日
+      Desc: qiucode.cn(秋码分享旧版)现已开源，源于开源，现回馈于开源。
+            Github地址： <a href="https://github.com/zhenqicai/qiucodeBlog" target="_blank">https://github.com/zhenqicai/qiucodeBlog</a>
+            码云地址： <a href="https://gitee.com/zhenqi/qiucodeBlog" target="_blank">https://gitee.com/zhenqi/qiucodeBlog</a>
+                           
+    - Cal: 04月25日
+      Desc: 时间过得好快，因为最近很忙，以至于很多功能还未实现，现先将整个网站的架构改成Springboot，ORM还是使用Mybatis，前端
+            模板渲染引擎还是Freemarker，前端UI库还是Layui库，后续也会将现有的缓存Ehcache改成redis缓存。
+    
+    - Cal: 03月11日
+      Desc: 基于Vue.js2.X的qiucode-ui（组件库）开源了！github地址：<a href="https://github.com/zhenqicai/qiucodeUI" target="_blank">https://github.com/zhenqicai/qiucodeUI</a>,
+            qiucode-ui在线文档地址：<a href="https://zhenqicai.github.io/qiucodeUI-docs" target="_blank">https://zhenqicai.github.io/qiucodeUI-docs</a>
+                         
+    - Cal: 02月26日
+      Desc: 基于Vue.js2.X的qiucode-ui（组件库）在npm上发布了！
+      
+    - Cal: 01月31日
+      Desc: 晌午时分，阴，饭后去会了多年未见的大佬，但第一眼见时，其已添了不少白发，或许是思绪太多吧！
+                       
+    - Cal: 01月01日
+      Desc: 2018已然过去，不管在2018有没有实现你的愿望，反正2019已经到来了，那就把2018没实现的放在2019去实现吧！元旦快乐！
+                       
+                       
+- Year: 2018
+  Title: 2018
+  TimeList: 
+    - Cal: 10月30日
+      Desc: 你瞧这些云聚了又散，散了又聚，人生离合，亦复如斯。--《神雕侠侣》
+
+    - Cal: 10月28日
+      Desc: 秋码微信小程序上线，界面有待后续优化。。。
+      
+    - Cal: 10月21日
+      Desc: 免费体验服务器结束之际，迁移到新服务器，增加了缓存
+      
+    - Cal: 10月14日
+      Desc: 天气阴，貌似要下雨，却始终没有下！晚间时分，全站配置https
+                       
+    - Cal: 10月13日
+      Desc: 注册了域名：qiucode.cn 
+      
+    - Cal: 10月06日
+      Desc: 秋码个人技术网站上线了<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1535176231879&amp;di=2fe344b5ceb8aba301eefc07adaf3126&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170222%2Fa51ea74b22c344c2b6ebb4a9c623f3e9.gif">
+
+    - Cal: 10月05日
+      Desc: 不知多久前，本就有想弄个个人站点，但都是由于其他种种原因，以至于到现在才上线个人技术站点！
+
+    - Cal: 10月01日
+      Desc: 普天同庆，祝愿我们的祖国更加繁荣昌盛！

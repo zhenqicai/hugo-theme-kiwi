@@ -29,13 +29,13 @@
 	<footer class="Qc_footer">
 		<div class="Qc_container">
 			<div class="item">
-				<p>2018 - 2023 版权所有 ©<a href="http://beian.miit.gov.cn/">闽ICP备2021005633号-2</a></p>
+				<p>2018 - {{ time.Now | time.Format  .Site.Params.yearFormat }} 版权所有 ©<a href="http://beian.miit.gov.cn/">闽ICP备2021005633号-2</a></p>
 			</div>
 
 			<div class="item">
 				<p>
 					<strong>本站由 <span style="color:blue;font:bold;">Hugo</span> 驱动的 
-						<a href="https://github.com/zhenqicai/hugo-theme-kiwi" target="_blank" >hugo-theme-kiwi V0.0.1</a> 主题强力支撑</strong>
+						<a href="https://github.com/zhenqicai/hugo-theme-kiwi" target="_blank" >hugo-theme-kiwi V{{ .Site.Params.theme_version }}</a> 主题强力支撑</strong>
 				</p>
 			</div>
 		

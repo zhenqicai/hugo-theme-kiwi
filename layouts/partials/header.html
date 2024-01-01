@@ -19,6 +19,10 @@
                 <i class="fa fa-link"></i>友情链接
             </a> 
 
+            <a class="item {{ if eq (.RelPermalink | relLangURL) "/timeline/" }} active {{ end }}" href="/timeline" title="点点滴滴">
+                <i  class="fa fa-calendar-times-o"></i>点点滴滴
+            </a> 
+
 
             <a class="item {{ if eq (.RelPermalink | relLangURL) "/about/" }} active {{ end }}" href="/about" title="关于我">
                 <i class="fa fa-user"></i>关于本站

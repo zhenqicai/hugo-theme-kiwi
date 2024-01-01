@@ -1,0 +1,228 @@
+{{- define "main" }}
+<style>
+    .body-box{width:100%;background: var(--background); color: var(--routine);}
+
+    .timer-shaft-box{width:100%;padding:30px 40px;box-sizing: border-box;}
+    .timer-shaft{position:relative;width:100%;height:80px;overflow: hidden;}
+    .timer-left{position:absolute;top:50%;left:20px;z-index:1;width:22px;height: 22px;margin-top: -2.5px;border-top: 0.4rem solid var(--minor);border-right: 0.4rem solid var(--minor);box-shadow: 0 0 0 lightgray;-webkit-transition: all 200ms ease;transition: all 200ms ease;-webkit-transform: translate3d(0, -50%, 0) rotate(-135deg);transform: translate3d(0, -50%, 0) rotate(-135deg);cursor:pointer;}
+    .timer-right{position:absolute;top:50%;right:20px;z-index:1;width: 22px;height: 22px;margin-top: -2.5px;border-top: 0.4rem solid var(--minor);border-right: 0.4rem solid var(--minor);box-shadow: 0 0 0 lightgray;-webkit-transition: all 200ms ease;transition: all 200ms ease;-webkit-transform: translate3d(0, -50%, 0) rotate(45deg);transform: translate3d(0, -50%, 0) rotate(45deg);cursor:pointer;} 
+    .timer-scale{position:absolute;top:0;left:0;height:80px;padding-left: 80px;font-size: 0;white-space: nowrap;}
+    .timer-scale-cont{display:inline-block;height:100%;line-height:80px;}
+    .time-circle{display:inline-block;vertical-align:middle;width:60px;height:60px;line-height: 60px;text-align: center;font-size:18px;color:#fff;border-radius: 50%;background: #9fb19b;transition: all .3s;cursor:pointer;}
+    .timer-scale-cont.hov .time-circle{width:80px;height:80px;line-height: 80px;font-size:24px;background: #84e173;}
+    .line-scale{display:inline-block;vertical-align:middle;width:145px;height:22px;margin:0 2px;background: url(/static/front/images/timeline/icon_scale.png) no-repeat;background-size: cover;}
+
+    .timer-shaft-content{width:100%;margin-top:45px;overflow: hidden;font-size:0;box-sizing:border-box;white-space: nowrap;}
+    .shaft-detail-cont{display: none;width:100%;}
+    .timer-year{padding-left:69px;font-weight:bold;/*color:#333;*/font-size:0;}
+    .icon-year{display: inline-block;vertical-align:middle;color:#84e173;width:30px;height:30px;margin:30px auto;border:solid 2px currentColor;border-radius:16px 16px 16px 0;-webkit-transform:rotate(-45deg);-moz-transform: ratate(-45deg);transform:rotate(-45deg);}
+    .timer-year span{display: inline-block;vertical-align:middle;margin-left:18px;font-size:24px;}
+    .month-detail-box{position:relative;width:100%;min-height:93px;padding-top:30px;font-size:0;box-sizing: border-box;white-space: normal;}
+    .month-detail-box:before{content: '';position:absolute;top:0;left:85px;height:100%;border-right:1px dashed #84e173;}
+    .month-detail-box .month-title{position:absolute;font-size:16px;font-weight: bold;/*color:#333;*/}
+    .month-detail-box .month-title:before {content: '';position: absolute;top: 50%;left: 78px;width: 13px;height: 13px;margin-top: -6.5px;background-color: var(--background);border-radius: 50%;border: 1px solid #19be6b;}
+    .incident-record{display:inline-block;padding-left:100px;line-height:2;font-size:14px;/*color:#333;*/}
+    .incident-record a{font-size:14px;color:#1d69a3;}
+
+</style>
+
+<div class="Qc_main Qc_page">
+    <div class="Qc_detail">
+
+        <div class="body-box">
+            <div class="timer-shaft-box">
+                <div class="timer-shaft">
+                    
+                    <div class="timer-left "></div>
+                    <div class="timer-right"></div>
+
+                    <div class="timer-scale">
+                        {{ range .Site.Data.timeline }}
+                        <div class="timer-scale-cont hov">
+                            <p class="time-circle">{{ .Year | safeHTML  }}</p>
+                            <p class="line-scale"></p>
+                        </div>
+                        {{ end }}
+                      
+                    </div>
+                </div>
+                <div class="timer-shaft-content">
+                    {{ range .Site.Data.timeline }}
+                    
+                    <div class="shaft-detail-cont" >
+                        <p class="timer-year">
+                            <i class="icon-year"></i>
+                            <span>{{ .Title | safeHTML  }}</span>
+                        </p>
+        
+                        {{ range .TimeList }}
+                        <div class="month-detail-box">
+                            <span class="month-title">{{ .Cal | safeHTML }}</span>
+                            <p class="incident-record">{{ .Desc | safeHTML }}</p>
+                        </div>
+                        {{ end }}
+        
+                    </div>
+                    {{ end }}
+                    
+                   
+        
+                </div>
+            </div>
+        </div>
+       
+
+    </div>
+</div>
+
+<script>
+
+
+(function(){
+  
+    // 时间轴
+    var timerNum = 0;
+    var space = 210; // 移动间距
+    var length = document.querySelectorAll('.timer-scale-cont').length, numL;
+    
+    // 分辨率
+    if(window.screen.width > 1500) {
+        numL = length - 4
+    } else if(window.screen.width < 1500) {
+        numL = length - 3
+    }
+    // 点击左侧
+    document.querySelector('.timer-left').addEventListener("click",() => {
+        if(timerNum > 0) {
+            timerNum -= 1;
+            moveL(timerNum, numL)
+        }
+        tags(timerNum);
+    })
+
+   
+    // 点击右侧
+    document.querySelector('.timer-right').addEventListener("click",() => {
+        if(timerNum < length - 1) {
+            timerNum += 1;
+            tags(timerNum);
+        }
+        moveL(timerNum, numL)
+    })
+    
+    // 点击年
+    document.querySelectorAll('.time-circle').forEach((ele,index) => {
+        
+        ele.addEventListener("click",() => {
+            timerNum = index;
+            moveL(timerNum, numL)
+            tags(timerNum);
+        })
+        
+       
+    })
+   
+   
+    function tags(num) {
+        let timerCount = document.querySelectorAll('.timer-scale-cont');
+        for(let i = 0; i < timerCount.length; i++) {
+            let element = timerCount[i];
+            if(num === i ){
+                element.classList.add('hov');
+                findBrotherDom(element).forEach(function (sibling) {
+                    sibling.classList.remove("hov");
+                });
+                break;
+            }
+        }
+
+        let detailCount = document.querySelectorAll('.shaft-detail-cont')
+        for(let j = 0; j< detailCount.length; j ++) {
+            let detailEle = detailCount[j];
+            if(num === j ){
+                detailEle.style.display = 'block';
+                findBrotherDom(detailEle).forEach((sibling) => {
+                    sibling.style.display = 'none';
+                })
+                break;
+            }
+        }
+    }
+   
+    function moveL(num, len) {
+        moveLeft = -num * space;
+        //document.querySelector('.timer-scale').animate({left:moveLeft}, 700);
+        animate(document.querySelector('.timer-scale'),{left:moveLeft})
+    }
+    
+    function findBrotherDom(targetElement) {
+        var siblings = []; // 存放兄弟节点数组
+        
+        if (targetElement.parentNode && targetElement.parentNode.childNodes) {
+            for (var i = 0; i < targetElement.parentNode.childNodes.length; i++) {
+                var childNode = targetElement.parentNode.childNodes[i];
+                
+                if (childNode !== targetElement && childNode.nodeType === Node.ELEMENT_NODE) {
+                    siblings.push(childNode);
+                }
+            }
+        }
+        
+        return siblings;
+    }
+
+
+
+    //返回el对象css样式中的property属性值
+    function getStyle(el, property) {
+        if (getComputedStyle) {
+            return getComputedStyle(el)[property];
+        } else {
+            return el.currentStyle[property];
+        }
+    }
+    /* 对el对象css样式中的属性值进行更改，更改的内容在properties里面，properties是一个
+    属性对象数组，对每一个properties里的每一个对象值进行修改，并且产生由快到慢的动画
+    效果变化 */
+    function animate(el, properties) {
+        clearInterval(el.timeId);
+        //产生动态效果的方法
+        el.timeId = setInterval(function() {
+            for (var property in properties) {
+                var current;
+                var target = properties[property];
+                //分为两种参数，一种是透明度，范围是0到1的变化
+                if (property == "opacity") {
+                    current = Math.round(getStyle(el, "opacity") * 100);
+                }
+                //另一种是像素的变化，如width , height 等
+                else {
+                    current = parseInt(getStyle(el, property));
+                }
+                //属性的变化速度（由快到慢）
+                var speed = (target - current) / 30;
+                //ceil向上取整  floor向下取整
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                //重新设置el对象 css中的样式
+                if (property == "opacity") {
+                    el.style.opacity = (current + speed) / 100;
+                } else {
+                    el.style[property] = current + speed + "px";
+                }
+            }
+        }, 20);
+
+    }
+
+    //首次运行
+    moveL(0, numL)
+    tags(0);
+
+})()
+
+
+</script>
+    
+
+
+{{- end }}

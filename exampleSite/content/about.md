@@ -10,6 +10,8 @@ followme: false
 nav: false
 copyright: false
 url: about
+comment:
+  enable: true
 ---
 
 
