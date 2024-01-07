@@ -44,7 +44,7 @@
 	</footer>
 
 	<style>
-		.joe_action {
+		.kiwi_action {
 			position: fixed;
 			bottom: 90px;
 			right: 30px;
@@ -52,13 +52,13 @@
 		}
 
 
-		.joe_action_item.scroll.active {
+		.kiwi_action_item.scroll.active {
 			visibility: visible;
 			-webkit-transform: scale(1);
 			transform: scale(1);
 		}
 
-		.joe_action_item.scroll {
+		.kiwi_action_item.scroll {
 			visibility: hidden;
 			-webkit-transform: scale(0);
 			transform: scale(0);
@@ -67,11 +67,11 @@
 			transition: visibility 0.35s, transform 0.35s, -webkit-transform 0.35s;
 		}
 
-		.joe_action_item {
+		.kiwi_action_item {
 			box-shadow: rgb(0 0 0 / 10%) 0px 0px 10px, rgb(0 0 0 / 20%) 0px 5px 20px;
 			background: var(--darkreader-bg--background);
 		}
-		.joe_action_item {
+		.kiwi_action_item {
 			position: relative;
 			display: flex;
 			align-items: center;
@@ -84,7 +84,7 @@
 			margin-top: 15px;
 			box-shadow: 0 0 10px rgb(0 0 0 / 10%), 0 5px 20px rgb(0 0 0 / 20%);
 		}
-		.joe_action_item svg {
+		.kiwi_action_item svg {
 			position: absolute;
 			width: 25px;
 			height: 25px;
@@ -93,19 +93,19 @@
 
 
 
-		.joe_action_item.mode svg{-webkit-transform:scale(0);transform:scale(0);opacity:0}
-		.joe_action_item.mode svg.active{-webkit-transform:scale(1);transform:scale(1);opacity:1}
+		.kiwi_action_item.mode svg{-webkit-transform:scale(0);transform:scale(0);opacity:0}
+		.kiwi_action_item.mode svg.active{-webkit-transform:scale(1);transform:scale(1);opacity:1}
 		
 	</style>
 
 
-	<div class="joe_action">
-		<div class="joe_action_item scroll ">
+	<div class="kiwi_action">
+		<div class="kiwi_action_item scroll ">
 			<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="25" height="25">
 				<path d="M725.902 498.916c18.205-251.45-93.298-410.738-205.369-475.592l-6.257-3.982-6.258 3.414c-111.502 64.853-224.711 224.142-204.8 475.59-55.751 53.476-80.214 116.623-80.214 204.8v15.36l179.2-35.27c11.378 40.39 58.596 69.973 113.21 69.973 54.613 0 101.262-29.582 112.64-68.836l180.337 36.41v-15.36c-.569-89.885-25.031-153.6-82.489-206.507zM571.733 392.533c-33.564 31.29-87.04 28.445-118.329-5.12s-28.444-87.04 5.12-117.76c33.565-31.289 87.04-28.444 118.33 5.12s28.444 86.471-5.12 117.76zm-56.32 368.64c-35.84 0-64.284 29.014-64.284 64.285 0 35.84 54.044 182.613 64.284 182.613s64.285-146.773 64.285-182.613c0-35.271-29.014-64.285-64.285-64.285z"></path>
 			</svg>
 		</div>
-		<div class="joe_action_item mode">
+		<div class="kiwi_action_item mode">
 			<svg class="icon-1 " viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="25" height="25">
 				<path d="M587.264 104.96c33.28 57.856 52.224 124.928 52.224 196.608 0 218.112-176.128 394.752-393.728 394.752-29.696 0-58.368-3.584-86.528-9.728C223.744 832.512 369.152 934.4 538.624 934.4c229.376 0 414.72-186.368 414.72-416.256 1.024-212.992-159.744-389.12-366.08-413.184z"></path>
 				<path d="M340.48 567.808l-23.552-70.144-70.144-23.552 70.144-23.552 23.552-70.144 23.552 70.144 70.144 23.552-70.144 23.552-23.552 70.144zM168.96 361.472l-30.208-91.136-91.648-30.208 91.136-30.208 30.72-91.648 30.208 91.136 91.136 30.208-91.136 30.208-30.208 91.648z"></path>
@@ -184,7 +184,7 @@
 
 <script>
 	
-	var mybutton = document.querySelector(".joe_action .joe_action_item.scroll")
+	var mybutton = document.querySelector(".kiwi_action .kiwi_action_item.scroll")
     window.onscroll = function () {
         if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
             // mybutton.style.visibility = "visible";
@@ -208,9 +208,9 @@
 
 
 <script>
-	var themeBtn = document.querySelector(".joe_action .joe_action_item.mode")
-	let icon_1 = document.querySelector(".joe_action .joe_action_item.mode .icon-1")
-	let icon_2 = document.querySelector(".joe_action .joe_action_item.mode .icon-2")
+	var themeBtn = document.querySelector(".kiwi_action .kiwi_action_item.mode")
+	let icon_1 = document.querySelector(".kiwi_action .kiwi_action_item.mode .icon-1")
+	let icon_2 = document.querySelector(".kiwi_action .kiwi_action_item.mode .icon-2")
     themeBtn.addEventListener("click", () => {
 		
         if (icon_1.classList.contains("active")) {

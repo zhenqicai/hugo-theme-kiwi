@@ -1,0 +1,90 @@
+{{- define "main" }}
+<div class="Qc_main index">
+    <div class="Qc_index">
+        <div class="Qc_index_list">
+            <ul class="Qc_list">
+        
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    var getUrlParameter = function getUrlParameter (sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+
+    var searchData = function(){
+        var q = getUrlParameter("keyword");
+      
+        document.querySelector('.Qc_list').innerHTML = ''
+
+        fetch('{{"index.xml"|absURL}}')
+        .then(response => response.text())
+        .then(res => {
+           
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(res, "text/xml"); // xmlData是包含XML内容的字符串变量
+
+            let items = xmlDoc.getElementsByTagName("item")
+
+            let itemHtml = ''
+            for (i = 0; i < items.length; i++) {
+                let title = items[i].querySelector('title').textContent
+                let desc = items[i].querySelector('description').textContent
+                let link = items[i].querySelector('link').textContent
+                let pubDate = new Date(items[i].querySelector('pubDate').textContent)
+
+                if(title.toLowerCase().indexOf(q.toLowerCase()) >= 0 || desc.toLowerCase().indexOf(q.toLowerCase()) >= 0 ) {
+                    
+                    let highTitle = title.toLowerCase().replace(q.toLowerCase(),`<span style="font-weight:700;color:red;">${q.toLowerCase()}</span>`)
+
+                    let highDesc = desc.toLowerCase().replace(q.toLowerCase(),`<span style="font-weight:700;color:red;">${q.toLowerCase()}</span>`)
+
+                    itemHtml += `<li class="Qc_list_item wow index2">
+                                    <div class="line"></div>
+                                    <div class="information">
+                                        <a href="${link}" class="title" title="${title}" rel="noopener noreferrer">
+                                            ${highTitle}
+                                        </a>
+                                        <a class="abstract" href="${link}" title="文章摘要" rel="noopener noreferrer">${highDesc}</a>
+                                        <div class="meta">
+                                            <ul class="items">
+                                                <li>
+                                                    <i class="fa fa-calendar-times-o"></i>&nbsp;&nbsp;${pubDate.getFullYear()}-${(pubDate.getMonth() + 1)}-${pubDate.getDate()}</li>
+                                                <li>
+                                            </ul>
+                                           
+                                        </div>
+                                    </div>
+                                </li>`
+                }
+                
+            }
+            document.querySelector('.Qc_list').innerHTML = itemHtml
+
+        })
+    };
+
+    if (document.readyState === "complete" ||
+        (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+        searchData();
+    } else {
+        document.addEventListener("DOMContentLoaded", searchData);
+    } 
+
+</script>
+{{ end }}

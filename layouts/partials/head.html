@@ -35,16 +35,15 @@
 
 <style>
     @font-face {
-        font-family: 'Xc Font';
+        font-family: 'Kiwi Font';
         font-weight: 400;
         font-style: normal;
         font-display: swap;
-        src: url('https://cdn.jsdelivr.net/gh/Xpblog666/cdn@1.0/HarmonyOS_Sans_SC_Medium.ttf');
-        src: url('https://cdn.jsdelivr.net/gh/Xpblog666/cdn@1.0/HarmonyOS_Sans_SC_Medium.ttf') format('truetype');
+        src: url("/fonts/fontawesome-webfont.woff2") format("woff2");
     }
 
     html {
-        font-family: 'Xc Font', 'PingFang SC', 'Noto Serif SC', 'HarmonyOS_Sans_SC_Medium', 'Fira Mono', 'Microsoft YaHei', Arial, sans-serif
+        font-family: 'Kiwi Font', 'PingFang SC', 'Noto Serif SC', 'HarmonyOS_Sans_SC_Medium', 'Fira Mono', 'Microsoft YaHei', Arial, sans-serif
     }
 
     html .Qc_header_above .Qc_container {
@@ -83,7 +82,7 @@
 
 <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome.min.css" />
 
-{{ if  $isComment }}
+{{ if and ( not $.IsHome ) $isComment }}
 <!-- comment -->
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
 {{ end }}
@@ -96,12 +95,12 @@
     import { commentCount } from 'https://unpkg.com/@waline/client@2.15.5/dist/comment.mjs';
 
     pageviewCount({
-        serverURL:  "comment.qiucode.cn"
+        serverURL:  "example.qiucode.cn", //评论系统服务器 URL
         
     });
   
     commentCount({
-      serverURL: "comment.qiucode.cn"
+      serverURL: "example.qiucode.cn", //评论系统服务器 URL
   
       // 可选的，用于自定选择器，默认为 `'.waline-pageview-count'`
       // selector: '.waline-pageview-count',
@@ -131,7 +130,7 @@
       reactionText: [ '点赞', '踩一下', '得意', '不屑', '尴尬', '睡觉'],
       reactionTitle: "您认为这篇文章怎么样？",
       dark: 'auto', //'html[data-theme="dark"]',
-      serverURL: "comment.qiucode.cn",
+      serverURL: "example.qiucode.cn", //评论系统服务器 URL
     });
   </script>
 

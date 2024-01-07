@@ -1,171 +1,283 @@
-<!-- <link rel="stylesheet" href="https://qiucode.cn/usr/themes/Xc/assets/Xc/css/Xc.dhltm.css" /> -->
-<div class="Qc_header_above">
-    <div class="Qc_container"> 
-        <svg class="Qc_header_above-slideicon" viewBox="0 0 1152 1024"
-            xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-            <path
-                d="M76.032 872a59.968 59.968 0 1 0 0 120h999.936a59.968 59.968 0 1 0 0-120H76.032zm16-420.032a59.968 59.968 0 1 0 0 120h599.936a59.968 59.968 0 1 0 0-119.936H92.032zM76.032 32a59.968 59.968 0 1 0 0 120h999.936a60.032 60.032 0 0 0 0-120H76.032z" />
-        </svg> 
-        <a class="Qc_header_above-logo" href="/" title="John'Blog"> 
-            <img class="Qc_logo"
-                src="/static/front/images/qiu-logo.png" /></a>
-        <nav class="Qc_header_above_nav"> 
-            
-            <a class="item {{ if eq (.RelPermalink | relLangURL) "/" }} active {{ end }}" href="/" title="首页" style="margin-right:8px">
-                <i class="fa fa-home"></i> 首页
-            </a>
-           
-            <a class="item {{ if eq (.RelPermalink | relLangURL) "/flinks/" }} active {{ end }}" href="/flinks" title="友情链接">
-                <i class="fa fa-link"></i>友情链接
-            </a> 
-
-            <a class="item {{ if eq (.RelPermalink | relLangURL) "/timeline/" }} active {{ end }}" href="/timeline" title="点点滴滴">
-                <i  class="fa fa-calendar-times-o"></i>点点滴滴
-            </a> 
-
-
-            <a class="item {{ if eq (.RelPermalink | relLangURL) "/about/" }} active {{ end }}" href="/about" title="关于我">
-                <i class="fa fa-user"></i>关于本站
-            </a>
-        </nav> 
-
+<style>
+  
+      .kiwi_container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}
+  
+      .kiwi_header__above-logo svg,.kiwi_header__above-nav .kiwi_dropdown__menu a::after{
+      display:none}
+      
+      #Joe .kiwi_leaving-list .emoji-item,#Joe .newreply .emoji-item{display:inline-block;margin:0 2px;padding:0;width:24px;height:24px;overflow:hidden}@media (max-width:860px){#Joe .kiwi_leaving-list .emoji-item,#Joe .newreply .emoji-item{-webkit-transform:scale(.8);transform:scale(.8)}}#Joe .kiwi_leaving-list .emoji-item img,#Joe .newreply .emoji-item img{display:block;width:24px;height:24px;border:0}#Joe .kiwi_leaving-list .emoji-animate,#Joe .newreply .emoji-animate{position:relative}#Joe .newreply .emoji-animate .img{cursor:default}#Joe .kiwi_leaving-list .emoji-animate .img{cursor:default;width:24px;height:24px}#Joe .kiwi_leaving-list .emoji-animate .img:hover,#Joe .kiwi_leaving-list .emoji-img:hover,#Joe .newreply .emoji-animate .img:hover,#Joe .newreply .emoji-img:hover{-webkit-transform:translateY(0);transform:translateY(0)}#Joe .newreply .emoji-img{position:relative;cursor:default}#Joe .kiwi_leaving-list .emoji-img{position:relative;cursor:default;width:20px;height:20px}#Joe .newreply .emoji-animate{top:5px}#Joe .newreply .emoji-animate .img{width:24px;height:24px}#Joe .newreply .emoji-img{top:-3px;width:20px;height:20px}.kiwi_container{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;width:100%;margin:0 auto 30px;padding:0 15px}.kiwi_container.revert{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.kiwi_container.revert .kiwi_aside{margin-left:0;margin-right:15px}.kiwi_container img{max-width:100%}.kiwi_container pre code{overflow-x:auto}.kiwi_container code:not([class]){display:inline-block;font-size:13px;color:var(--code);margin:2px 5px;padding:0 8px;white-space:normal;text-indent:0;-webkit-user-select:auto;-moz-user-select:auto;-ms-user-select:auto;user-select:auto;vertical-align:baseline;word-break:break-word;background:var(--code-background);border-radius:var(--radius-inner)}.kiwi_container .code-toolbar{position:relative;margin:20px 0;overflow:hidden;-webkit-box-shadow:1px 1px 5px 0 var(--shadow-code);box-shadow:1px 1px 5px 0 var(--shadow-code);border-radius:8px}.kiwi_container .code-toolbar .toolbar{pointer-events:none;display:none;opacity:1;left:0;right:0;top:0;z-index:unset;height:30px;line-height:30px;text-align:center}.kiwi_container .code-toolbar .toolbar .toolbar-item{opacity:1;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.kiwi_container .code-toolbar .toolbar .toolbar-item span{font-weight:700;font-size:14px;color:#999;background:0 0;border:0;-webkit-box-shadow:none;box-shadow:none}.kiwi_container .code-toolbar .toolbar .toolbar-item span:hover{color:#999}.kiwi_container .code-toolbar .toolbar .toolbar-item:last-child{display:none}.kiwi_container .code-toolbar .toolbar .autofold-tip{padding-left:5px;font-size:12px}.kiwi_container .code-toolbar pre[class*=language-]{position:relative;margin:0;padding:20px 0 0;-webkit-user-select:auto;-moz-user-select:auto;-ms-user-select:auto;user-select:auto;font-size:16px;overflow:hidden;white-space:pre;text-shadow:none;border-radius:8px}.kiwi_container .code-toolbar pre[class*=language-] code[class*=language-]{display:block;margin-bottom:0;overflow-x:auto;-webkit-overflow-scrolling:touch;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:0 12px 12px 18px;border-radius:0 0 8px 8px;text-shadow:none}.kiwi_container .code-toolbar pre[class*=language-] code[class*=language-] .token.operator,.kiwi_container .code-toolbar pre[class*=language-] code[class*=language-] .token.string{background:0 0}.kiwi_container .code-toolbar pre[class*=language-] .line-numbers-rows{left:0;top:0;bottom:0;padding-top:12px;border:0}.kiwi_container .code-toolbar pre[class*=language-] .code-expander,.kiwi_container .code-toolbar pre[class*=language-] .copy-button{cursor:pointer;position:absolute;right:10px;top:5px;z-index:2;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-size:14px;color:#999;-webkit-transition:all .25s;transition:all .25s}.kiwi_container .code-toolbar pre[class*=language-] .code-expander:hover,.kiwi_container .code-toolbar pre[class*=language-] .copy-button:hover{-webkit-filter:brightness(1.2);filter:brightness(1.2)}.kiwi_container .code-toolbar pre[class*=language-] .copy-button{top:3px;z-index:5;font-weight:700;-webkit-transition:opacity .25s;transition:opacity .25s}.kiwi_container .code-toolbar pre[class*=language-].c_title+.toolbar{display:block}.kiwi_container .code-toolbar pre[class*=language-].c_title code{padding:12px 12px 12px 18px}.kiwi_container .code-toolbar pre[class*=language-].c_hr{padding:30px 0 0}.kiwi_container .code-toolbar pre[class*=language-].c_hr:after{position:absolute;top:30px;z-index:1;content:"";width:100%;height:1px;background:#d8d8d8;mix-blend-mode:overlay}.kiwi_container .code-toolbar pre[class*=language-].c_hr code{padding:12px 12px 14px 18px}.kiwi_container .code-toolbar pre[class*=language-].c_macdot:before{content:"";position:absolute;top:9px;left:12px;z-index:1;width:12px;height:12px;border-radius:50%;background:#fc625d;-webkit-box-shadow:20px 0 #fdbc40,40px 0 #35cd4b;box-shadow:20px 0 #fdbc40,40px 0 #35cd4b}.kiwi_container .code-toolbar pre[class*=language-].c_newline code{white-space:pre-wrap;word-break:break-all}.kiwi_container .code-toolbar pre[class*=language-].c_hover_tools .code-expander,.kiwi_container .code-toolbar pre[class*=language-].c_hover_tools .copy-button{pointer-events:none;opacity:0}.kiwi_container .code-toolbar pre[class*=language-].c_hover_tools:hover .code-expander,.kiwi_container .code-toolbar pre[class*=language-].c_hover_tools:hover .copy-button{pointer-events:auto;opacity:1}.kiwi_container .code-toolbar pre[class*=language-].c_copy,.kiwi_container .code-toolbar pre[class*=language-].c_copy code{-webkit-user-select:auto;-moz-user-select:auto;-ms-user-select:auto;user-select:auto}.kiwi_container .code-toolbar pre[class*=language-].c_copy .code-expander{right:40px}.kiwi_container .code-toolbar pre[class*=language-].line-numbers code{padding:12px 12px 16px 54px}.kiwi_container .code-toolbar pre[class*=language-].close{height:30px}.kiwi_container .code-toolbar pre[class*=language-].close .code-expander{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.kiwi_container .code-toolbar pre[class*=language-].close:after{visibility:hidden}.kiwi_main{min-width:0;-webkit-box-flex:1;-ms-flex:1;flex:1;padding-bottom:15px}.kiwi_dropdown{position:relative}.kiwi_dropdown__link{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.kiwi_dropdown__link-icon{-webkit-transition:-webkit-transform .35s;transition:transform .35s;transition:transform .35s,-webkit-transform .35s;margin-left:-12px}.kiwi_dropdown__menu{position:absolute;left:50%;visibility:hidden;z-index:5;border-top:3px solid var(--theme);-webkit-transform-origin:top;transform-origin:top;background:var(--sib-background);-webkit-box-shadow:0 0 10px rgba(0,0,0,.15);box-shadow:0 0 10px rgba(0,0,0,.15);border-radius:0 0 var(--radius-inner) var(--radius-inner);padding:10px 0;opacity:0;-webkit-transform:translateX(-50%) perspective(600px) rotateX(-45deg);transform:translateX(-50%) perspective(600px) rotateX(-45deg);-webkit-transition:opacity .35s,visibility .35s,-webkit-transform .35s;transition:opacity .35s,visibility .35s,transform .35s;transition:opacity .35s,visibility .35s,transform .35s,-webkit-transform .35s}.kiwi_dropdown__menu::before{content:"";position:absolute;top:-10px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid var(--theme)}.kiwi_dropdown.active .kiwi_dropdown__link-icon{-webkit-transform:rotate(-180deg);transform:rotate(-180deg)}.kiwi_dropdown.active .kiwi_dropdown__menu{visibility:visible;opacity:1;-webkit-transform:translateX(-50%) perspective(600px) rotateX(0);transform:translateX(-50%) perspective(600px) rotateX(0)}.kiwi_header{position:relative;z-index:100;height:60px}.kiwi_header .kiwi_container{margin:0 auto}.kiwi_header .full{max-width:100%!important}
+      
+      .kiwi_header__above{position:fixed;top:0;z-index:6;width:100%;background:var(--background);-webkit-box-shadow:0 2px 10px 0 rgba(0,0,0,.2);box-shadow:0 2px 10px 0 rgba(0,0,0,.2);-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);will-change:opacity,transform;-webkit-transition:opacity,-webkit-transform .35s;transition:opacity,transform .35s;transition:opacity,transform .35s,-webkit-transform .35s}
+      
+      .kiwi_header__above .kiwi_container{-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;min-height:44px;max-width:auto!important}
+      
+      .kiwi_header__above-logo{position:relative;height:60px;margin-right:10px;padding-right:18px}
+      
+      .kiwi_header__above-logo img{min-width:40px;max-width:150px;height:40px;-o-object-fit:cover;object-fit:cover}
+      
+      .kiwi_header__above-logo::after{content:"";position:absolute;top:50%;right:0;width:1px;height:20px;background:var(--classC);-webkit-transform:translateY(-50%);transform:translateY(-50%)}
+      
+      .kiwi_header__above-logo,.kiwi_header__above-nav,.kiwi_header__above-nav .item{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+      
+      .kiwi_header__above-nav .item{cursor:pointer;position:relative;height:60px;line-height:60px;font-size:15px;padding:0 8px;margin-right:10px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;color:var(--main);-webkit-transition:color .35s;transition:color .35s}
+      
+      .kiwi_header__above-nav .item>i{display:inline-block;margin-right:4px;font-size:18px;-webkit-transition:-webkit-transform .5s;transition:transform .5s;transition:transform .5s,-webkit-transform .5s}
+      
+      .kiwi_header__above-nav .item:last-child{margin-right:0}
+      
+      .kiwi_header__above-nav .item::after{opacity:0;position:absolute;bottom:0;left:6px;right:6px;content:"";height:3px;-webkit-transform:scaleX(.25);transform:scaleX(.25);background:var(--theme);border-radius:6px 6px 0 0;-webkit-transition:opacity .5s,-webkit-transform .5s;transition:opacity .5s,transform .5s;transition:opacity .5s,transform .5s,-webkit-transform .5s}
+      
+      
+      .kiwi_header__above-nav .item.current,.kiwi_header__above-nav .item:hover{color:var(--theme)}
+      
+      .kiwi_header__above-nav .item.current::after,.kiwi_header__above-nav .item.current:hover::after{opacity:1;-webkit-transform:scaleX(1);transform:scaleX(1)}
+      
+      .kiwi_header__above-nav .item:hover::after{opacity:.3;-webkit-transform:scaleX(.7);transform:scaleX(.7)}
+      
+      .kiwi_header__above-nav .item:hover+.joe-icon-arrow-down,.kiwi_header__above-nav .kiwi_dropdown.active .kiwi_dropdown__link a,.kiwi_header__above-nav .kiwi_dropdown.active .kiwi_dropdown__link i{color:var(--theme)!important}
+      
+      .kiwi_header__above-nav.active-shadow .item.current{text-shadow:0 4px 20px var(--theme)}
+      
+      .kiwi_header__above-nav.active-animate .item:hover .m-icon{-webkit-animation:dung .3s .12s ease;animation:dung .3s .12s ease}
+      
+      .kiwi_header__above-nav .kiwi_dropdown{margin-right:15px}
+      
+      .kiwi_header__above-nav .kiwi_dropdown__link a{height:60px;line-height:60px;font-size:15px;padding-left:8px;padding-right:3px;-webkit-transition:color .35s;transition:color .35s;white-space:nowrap;color:var(--main)}
+      
+      .kiwi_header__above-nav .kiwi_dropdown__menu{min-width:90px;max-width:200px;text-align:center}
+      
+      .kiwi_header__above-nav .kiwi_dropdown__menu a{display:block;height:34px;margin-right:0;line-height:34px;color:var(--classF);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 15px;-webkit-transition:color .35s,background .35s;transition:color .35s,background .35s}
+      
+      .kiwi_header__above-nav .kiwi_dropdown__menu a.current,.kiwi_header__above-nav .kiwi_dropdown__menu a:hover{color:var(--theme);background:var(--sib)}
+      
+      .kiwi_header__above-nav .kiwi_dropdown .item:hover:after,.kiwi_header__above-nav .kiwi_dropdown.active .kiwi_dropdown__link a::after,.kiwi_header__above-nav .kiwi_dropdown.active .kiwi_dropdown__link i::after{display:none}.kiwi_header__above-nav .kiwi_nav_sub-li{position:relative;height:34px}.kiwi_header__above-nav .kiwi_nav_sub-li .m-icon{vertical-align:bottom}
+      
+      .kiwi_header__above-nav .kiwi_nav_sub-li:hover .kiwi_nav_sub{visibility:visible;opacity:1;-webkit-transform:translateX(0) perspective(600px) rotateY(0);transform:translateX(0) perspective(600px) rotateY(0)}
+      
+      .kiwi_header__above-nav .kiwi_nav_sub{visibility:hidden;z-index:10;-webkit-transform-origin:top;transform-origin:top;opacity:0;position:relative;left:100%;top:-34px;padding-left:7px;-webkit-box-shadow:7px 3px 8px 0 rgba(0,0,0,.15);box-shadow:7px 3px 8px 0 rgba(0,0,0,.15);border-radius:0 var(--radius-inner) var(--radius-inner) 0;-webkit-transform:translateX(-20%) perspective(600px) rotateY(-45deg);transform:translateX(-20%) perspective(600px) rotateY(-45deg);-webkit-transition:opacity .35s,visibility .35s,-webkit-transform .35s;transition:opacity .35s,visibility .35s,transform .35s;transition:opacity .35s,visibility .35s,transform .35s,-webkit-transform .35s}
+      .kiwi_header__above-nav .kiwi_nav_sub::before{position:absolute;top:10px;left:0;content:"";-webkit-transform:translateX(-50%);transform:translateX(-50%);width:0;height:0;border:7px solid transparent;border-right-color:var(--theme)}
+      .kiwi_header__above-nav .kiwi_nav_sub::after{position:absolute;top:0;left:7px;content:"";width:2px;height:100%;background:var(--theme)}.kiwi_header__above-nav .kiwi_nav_sub li{background:var(--sib-background)}.kiwi_header__above-search,.kiwi_header__above-search-mobile{position:relative;margin-left:auto;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.kiwi_header__above-search .input,.kiwi_header__above-search-mobile .input{background:var(--classC);width:170px;height:34px;border:1px solid transparent;padding:0 14px 0 16px;color:var(--routine);-webkit-transition:width .35s,border-color .35s,padding-right .35s;transition:width .35s,border-color .35s,padding-right .35s;border-radius:17px 0 0 17px}.kiwi_header__above-search .input:focus,.kiwi_header__above-search-mobile .input:focus{background:var(--background);border-color:var(--theme);padding-right:28px;width:170px}.kiwi_header__above-search .input:focus~.icon,.kiwi_header__above-search-mobile .input:focus~.icon{-webkit-transform:translate3d(0,-50%,0) rotateY(180deg);transform:translate3d(0,-50%,0) rotateY(180deg)}.kiwi_header__above-search .submit,.kiwi_header__above-search-mobile .submit{position:relative;z-index:1;width:50px;height:34px;color:#fff;border:0;background:var(--theme);border-radius:0 17px 17px 0}.kiwi_header__above-search .submit i,.kiwi_header__above-search-mobile .submit i{-webkit-transform-origin:right bottom;transform-origin:right bottom;font-size:20px}.kiwi_header__above-search .submit:hover i,.kiwi_header__above-search-mobile .submit:hover i{-webkit-animation:swag .3s ease infinite alternate;animation:swag .3s ease infinite alternate}.kiwi_header__above-search .icon,.kiwi_header__above-search-mobile .icon{position:absolute;top:50%;right:44px;width:28px;height:38px;background:url(data:image/png;base64,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);background-size:100% 100%;-webkit-transition:-webkit-transform .35s;transition:transform .35s;transition:transform .35s,-webkit-transform .35s;-webkit-transform:translate3d(100%,-50%,0) rotateY(180deg);transform:translate3d(100%,-50%,0) rotateY(180deg)}.kiwi_header__above-search .result,.kiwi_header__above-search-mobile .result{position:absolute;z-index:2;top:60px;left:0;right:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;visibility:hidden;opacity:0;background:var(--sib-background);-webkit-box-shadow:0 0 10px rgba(0,0,0,.15);box-shadow:0 0 10px rgba(0,0,0,.15);border-radius:var(--radius-inner);-webkit-transition:visibility .35s,opacity .35s,-webkit-transform .35s;transition:visibility .35s,opacity .35s,transform .35s;transition:visibility .35s,opacity .35s,transform .35s,-webkit-transform .35s;-webkit-transform:translate3d(0,15px,0);transform:translate3d(0,15px,0)}.kiwi_header__above-search .result.active,.kiwi_header__above-search-mobile .result.active{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);opacity:1;visibility:visible}.kiwi_header__above-search .result .item,.kiwi_header__above-search-mobile .result .item{height:40px;line-height:40px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;overflow:hidden;padding:0 10px;border-bottom:1px solid var(--classD);-webkit-transition:background .35s;transition:background .35s}.kiwi_header__above-search .result .item:last-child,.kiwi_header__above-search-mobile .result .item:last-child{border-bottom:none}.kiwi_header__above-search .result .item:nth-child(1) .sort,.kiwi_header__above-search-mobile .result .item:nth-child(1) .sort{background:#fe2d46}.kiwi_header__above-search .result .item:nth-child(2) .sort,.kiwi_header__above-search-mobile .result .item:nth-child(2) .sort{background:#f60}.kiwi_header__above-search .result .item:nth-child(3) .sort,.kiwi_header__above-search-mobile .result .item:nth-child(3) .sort{background:#faa90e}.kiwi_header__above-search .result .item:hover,.kiwi_header__above-search-mobile .result .item:hover{background:var(--classC)}.kiwi_header__above-search .result .item .sort,.kiwi_header__above-search-mobile .result .item .sort{color:#fff;background:#7f7f8c;width:18px;height:18px;line-height:18px;border-radius:2px;text-align:center;margin-right:8px;font-weight:500}.kiwi_header__above-search .result .item .text,.kiwi_header__above-search-mobile .result .item .text{-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--routine);font-size:12px}.kiwi_header__above-search .result .item .views,.kiwi_header__above-search-mobile .result .item .views{color:var(--seat);font-size:12px;margin-left:5px}.kiwi_header__above-search-mobile input{-webkit-box-flex:1;-ms-flex:1;flex:1;width:100%}.kiwi_header__above-searchicon{display:none;cursor:pointer;font-size:23px!important;color:var(--routine)}.kiwi_header__above-slideicon{display:none;cursor:pointer;width:20px;height:20px;color:var(--routine)}.kiwi_header__above.active{-webkit-transform:translate3d(0,-60px,0);transform:translate3d(0,-60px,0)}.kiwi_header__above.glass{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);background:var(--glass-background)}
+      
+      .kiwi_header__above.solid{-webkit-backdrop-filter:unset;backdrop-filter:unset;background:var(--background);-webkit-box-shadow:unset;box-shadow:unset}.kiwi_header__below{position:relative;border-top:1px solid var(--classC);height:45px}.kiwi_header__below-title{max-width:450px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:none;line-height:45px;font-size:17px;font-weight:700;color:var(--main);-webkit-animation:showHeaderTitle .35s;animation:showHeaderTitle .35s}
+  
+      .kiwi_header{position:relative;z-index:100;height:60px}.kiwi_header .kiwi_container{margin:0 auto}.kiwi_header .full{max-width:100%!important}
+  
+      .kiwi_header__searchout {
+        position: absolute;
+        top: 60px;
+        left: 20%;
+        right: 0;
+        z-index: 85;
+        background: var(--background);
+        border-top: 1px solid var(--classC);
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0);
+        -webkit-transition: visibility .35s,-webkit-transform .35s;
+        transition: transform .35s,visibility .35s;
+        transition: transform .35s,visibility .35s,-webkit-transform .35s;
+        visibility: hidden;
+    }
+  
+      @media (min-width:576px){.kiwi_container{max-width:540px}}
+      @media (min-width:768px){.kiwi_container{max-width:720px}}
+      @media (min-width:992px){.kiwi_container{max-width:960px}}
+      @media (min-width:1200px){.kiwi_container{max-width:1140px}}
+  
+  
+      @media (max-width:1100px){
+      html .kiwi_header__above-search .input{width:70px}
+      html .kiwi_header__above-search .input:focus{width:170px}}
+  
+      @media (max-width:1000px){html .kiwi_header__above-nav .item .m-icon{display:none}}
+  
+      @media (max-width:768px){
+     
+        html .kiwi_header{
+            top:0;height:55px;-webkit-animation-fill-mode:backwards;animation-fill-mode:backwards
+        }
         
+        html .kiwi_header__above .kiwi_container{
+            height:55px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between
+        }
+        html .kiwi_header__above-nav{display:none}
+        html .kiwi_header__above-logo{height:55px;margin-right:0}
+        html .kiwi_header__above-logo img{max-height:45px}
+  
+        html .kiwi_header__above-search{display:none}
+        html .kiwi_header__above-searchicon{display:block;margin-left:0}
+        html .kiwi_header__above-slideicon{display:block}
         
-        <svg class="Qc_header_above-searchicon" viewBox="0 0 1024 1024"
-            xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="display: block;">
-            <path
-                d="M1008.19 932.031L771.72 695.56a431.153 431.153 0 1 0-76.158 76.158l236.408 236.472a53.758 53.758 0 0 0 76.158 0 53.758 53.758 0 0 0 0-76.158zM107.807 431.185a323.637 323.637 0 0 1 323.316-323.381 323.7 323.7 0 0 1 323.381 323.38 323.637 323.637 0 0 1-323.38 323.317 323.637 323.637 0 0 1-323.317-323.316z" />
-        </svg> 
-        <a href="javascript:void(0)" type="button" id="ClickMe" style="margin: 0px 3px 2px 13px"><svg
-                t="1675873194952" class="loingico" viewBox="0 0 1024 1024" version="1.1"
-                xmlns="http://www.w3.org/2000/svg" p-id="3929" width="22" height="22">
-                <path
-                    d="M554.666667 349.44a48.213333 48.213333 0 1 1-47.786667 47.786667A48.213333 48.213333 0 0 1 554.666667 349.44m0-85.333333a133.546667 133.546667 0 1 0 133.546666 133.12A133.12 133.12 0 0 0 554.666667 264.106667z"
-                    fill="var(--routine)" p-id="3930"></path>
-                <path
-                    d="M768 759.893333a42.666667 42.666667 0 0 1-42.666667-42.666666 170.666667 170.666667 0 0 0-341.333333 0 42.666667 42.666667 0 0 1-85.333333 0 256 256 0 0 1 512 0 42.666667 42.666667 0 0 1-42.666667 42.666666z"
-                    fill="var(--routine)" p-id="3931"></path>
-                <path
-                    d="M554.666667 213.333333a341.333333 341.333333 0 1 1-341.333334 341.333334 341.333333 341.333333 0 0 1 341.333334-341.333334m0-85.333333a426.666667 426.666667 0 1 0 426.666666 426.666667A426.666667 426.666667 0 0 0 554.666667 128z"
-                    fill="var(--routine)" p-id="3932"></path>
-            </svg> </a>
+        html .kiwi_header__below{display:none}
+        html .kiwi_header__searchout{top:45px}
+      }
+  
+      @media (max-width:500px){
+        html .kiwi_header{height:50px}
+        html .kiwi_header__above .kiwi_container{margin:0 auto;height:50px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+        html .kiwi_header__above-nav{display:none}
+        html .kiwi_header__above-logo{height:50px}
+        html .kiwi_header__above-logo img{max-height:45px}
+        html .kiwi_header__above-searchicon{margin-left:0}
+        html .kiwi_header__above-slideicon{display:block}
+        html .kiwi_header__below{display:none}
+        html .kiwi_header__searchout{top:40px}
+        html .kiwi_bread{margin:0 auto;padding:15px 15px 0 5px}
+      }
+  
+     
+  
+      .kiwi_header__slideout{visibility:hidden;position:fixed;top:0;bottom:0;left:0;z-index:10;width:78%;max-width:480px;background:var(--classD);-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);-webkit-transition:visibility .35s,-webkit-transform .35s;transition:transform .35s,visibility .35s;transition:transform .35s,visibility .35s,-webkit-transform .35s}
+      
+      .kiwi_header__searchout-inner .cloud,.kiwi_header__slideout-wrap{overflow-y:auto;-webkit-overflow-scrolling:touch;-ms-scroll-chaining:none;overscroll-behavior:contain}
+      
+      .kiwi_header__slideout-wrap{position:relative;padding:135px 15px 15px;height:100%}
+      
+      .kiwi_header__slideout-wrap::-webkit-scrollbar,.kiwi_header__toc-wrap::-webkit-scrollbar{display:none}
+      
+      .kiwi_header__slideout-wrap .social-account{padding:0;margin-bottom:10px;border:unset}
+      
+      .kiwi_header__slideout.active{visibility:visible;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+      
+      .kiwi_header__slideout-image{position:absolute;top:0;left:0;width:100%;height:150px;-o-object-fit:cover;object-fit:cover;z-index:-1}
+      
+      .kiwi_header__slideout-author,.kiwi_header__slideout-count,.kiwi_header__slideout-menu{background:var(--background);border-radius:var(--radius-wrap);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow)}.kiwi_header__slideout-author{display:-webkit-box;display:-ms-flexbox;display:flex;margin-bottom:15px;padding:15px}.kiwi_header__slideout-author .avatar{width:50px;height:50px;margin-right:10px;border-radius:var(--radius-inner)}.kiwi_header__slideout-author .info{overflow:hidden;line-height:25px}.kiwi_header__slideout-author .info .level{height:23px;margin-left:2px}.kiwi_header__slideout-author .info .link,.kiwi_header__slideout-author .info .motto,.kiwi_index__title-notice a{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.kiwi_header__slideout-author .info .link{display:block;font-size:15px;font-weight:500;color:var(--main)}.kiwi_header__slideout-author .info .motto{font-size:12px;color:var(--routine)}.kiwi_header__slideout-count,.kiwi_header__slideout-menu{padding:10px 15px}.kiwi_header__slideout-count{margin-bottom:15px}.kiwi_header__slideout-count .item,.kiwi_header__slideout-menu .link{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:var(--routine);padding:5px 0}.kiwi_header__slideout-count .item .joe-font{color:var(--routine);margin-right:5px}.kiwi_header__slideout-count .item strong{font-weight:500;color:var(--theme)}.kiwi_header__slideout-menu{overflow:hidden}.kiwi_header__slideout-menu .link{-webkit-box-pack:justify;-ms-flex-pack:justify;/*justify-content:space-between;*/padding:10px 0;color:var(--main);-webkit-transition:color .15s;transition:color .15s}.kiwi_header__slideout-menu .link a{-webkit-transition:color .15s;transition:color .15s;color:var(--routine)}.kiwi_header__slideout-menu .link .joe-font{color:var(--minor);-webkit-transition:fill .15s,-webkit-transform .15s;transition:transform .15s,fill .15s;transition:transform .15s,fill .15s,-webkit-transform .15s}.kiwi_header__slideout-menu .link.in,.kiwi_header__slideout-menu .link.in a{color:var(--theme)}.kiwi_header__slideout-menu .link.in .joe-font{color:var(--theme);-webkit-transform:rotate(90deg);transform:rotate(90deg)}.kiwi_header__slideout-menu .slides{display:none;border-left:1px solid var(--classC);padding-left:15px}.kiwi_header__slideout-menu .slides .link{color:var(--routine)}.kiwi_header__slideout-menu .current a,.kiwi_header__slideout-menu .slides .current{color:var(--theme);font-weight:500;font-size:15px}
+      
+  </style>
+  
+ 
+      <div class="kiwi_header__above topInDown fixed glass">
+        <div class="kiwi_container kiwi_header_container">
+            <i class="fa fa-bars kiwi_header__above-slideicon"></i>
+            <a title="秋码记录" class="kiwi_header__above-logo" href="https://qiucode.cn">
+              <img style="border-radius:4px" src="/static/front/images/qiu-logo.png"  alt="秋码记录">
+            </a>
+          <nav class="kiwi_header__above-nav active-animate">
+  
+              <a class="item {{ if eq (.RelPermalink | relLangURL) "/" }} current {{ end }}" href="/" title="首页" style="margin-right:8px">
+                  <i class="fa fa-home"></i> 首页
+              </a>
+             
+              <a class="item {{ if eq (.RelPermalink | relLangURL) "/flinks/" }} current {{ end }}" href="/flinks" title="友情链接">
+                  <i class="fa fa-link"></i>友情链接
+              </a> 
+  
+              <a class="item {{ if eq (.RelPermalink | relLangURL) "/timeline/" }} current {{ end }}" href="/timeline" title="点点滴滴">
+                  <i  class="fa fa-calendar-times-o"></i>点点滴滴
+              </a> 
+  
+              <a class="item {{ if eq (.RelPermalink | relLangURL) "/about/" }} current {{ end }}" href="/about" title="关于我">
+                  <i class="fa fa-user"></i>关于本站
+              </a>
+                  
+          </nav>
+      <form class="kiwi_header__above-search" method="get" action="/search">
+        <input maxlength="16" autocomplete="off" placeholder="请输入关键字..." name="keyword" value="" class="input" type="text">
+        <button type="submit" class="submit" aria-label="搜索按钮"><i class="fa fa-search"></i></button>
        
-    </div>
-</div>
-
-<div class="Qc_header_slideout"> 
-    <img width="100%" height="150" class="Qc_header_slideout-image"
-        src="https://qiucode.cn/shaonv.jpg" alt="侧边栏壁纸" />
-    <div class="Qc_header_slideout-author"> <img width="50" height="50" class="avatar"
-            src="https://thirdqq.qlogo.cn/g?b=qq&nk=687778&s=100" alt="博主昵称" />
-        <div class="info"> <a class="link" href="https://qiucode.cn" target="_blank"
-                rel="noopener noreferrer nofollow">John</a>
-            <p class="motto Qc_motto"></p>
+      </form>
+            <i class="fa fa-search kiwi_header__above-searchicon"></i>
         </div>
-    </div>
-    <ul class="Qc_header_slideout-count"> </ul>
-    <ul class="Qc_header_slideout-menu panel-box">
-        <li> <a class="link" href="https://qiucode.cn/" title="首页"> <span><i class="iconfont icon-A131"></i>
-                    首页</span> </a> </li>
-        <li> <a class="link panel" href="#" rel="nofollow"> <span><i class="iconfont icon-A129"></i> 分类</span>
-                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13"
-                    height="13">
-                    <path
-                        d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
-                </svg> </a>
-            <ul class="slides panel-body panel-box">
-                <li>
-                    <div class="link panel "> <a href="https://qiucode.cn/category/default/" title="日常分享">日常分享</a>
-                        <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13"
-                            height="13">
-                            <path
-                                d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
-                        </svg> </div>
-                    <ul class="slides panel-body">
-                        <li><a class="link " href="https://qiucode.cn/category/wmfx/" title="外贸分享">外贸分享</a></li>
-                        <li><a class="link " href="https://qiucode.cn/category/wztj/" title="网站推荐">网站推荐</a></li>
-                        <li><a class="link " href="https://qiucode.cn/category/yxxg/" title="游戏相关">游戏相关</a></li>
-                    </ul>
-                </li>
-                <li><a class="link " href="https://qiucode.cn/category/xitong/" title="系统相关">系统相关</a></li>
-                <li>
-                    <div class="link panel "> <a href="https://qiucode.cn/category/wangzhan/"
-                            title="网站文档">网站文档</a> <svg class="icon" viewBox="0 0 1024 1024"
-                            xmlns="http://www.w3.org/2000/svg" width="13" height="13">
-                            <path
-                                d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
-                        </svg> </div>
-                    <ul class="slides panel-body">
-                        <li><a class="link " href="https://qiucode.cn/category/bkfx/" title="博客分享">博客分享</a></li>
-                        <li><a class="link " href="https://qiucode.cn/category/wzym/" title="网站源码">网站源码</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="link panel "> <a href="https://qiucode.cn/category/ruanjian/"
-                            title="软件分享">软件分享</a> <svg class="icon" viewBox="0 0 1024 1024"
-                            xmlns="http://www.w3.org/2000/svg" width="13" height="13">
-                            <path
-                                d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
-                        </svg> </div>
-                    <ul class="slides panel-body">
-                        <li><a class="link " href="https://qiucode.cn/category/sjrj/" title="📱手机软件">📱手机软件</a>
-                        </li>
-                        <li><a class="link " href="https://qiucode.cn/category/dnrj/" title="💻电脑软件">💻电脑软件</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li> <a class="link panel" href="#" rel="nofollow"> <span><i class="iconfont icon-A3"></i> 页面</span>
-                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13"
-                    height="13">
-                    <path
-                        d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
-                </svg> </a>
-            <ul class="slides panel-body">
-                <li><a class="link " href="https://qiucode.cn/sn.html" title="我的记录">我的记录</a></li>
-                <li><a class="link " href="https://qiucode.cn/youlian.html" title="友情链接">友情链接</a></li>
-                <li><a class="link " href="https://qiucode.cn/site.html" title="站点统计">站点统计</a></li>
-                <li><a class="link " href="https://qiucode.cn/Aboutme.html" title="关于我">关于我</a></li>
-            </ul>
-        </li>
-    </ul>
-    <ul class="Qc_header_slideout-menu panel-box" style="margin-top: 15px;margin-bottom: 100px;">
-        <li> <a class="link panel" href="#" rel="nofollow"> <span><i class="iconfont icon-A17"></i> 用户登录</span>
-                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13"
-                    height="13">
-                    <path
-                        d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z">
-                    </path>
-                </svg> </a>
-            <ul class="slides panel-body">
-                <li> <a class="link" href="https://qiucode.cn/admin/login.php" target="_blank"
-                        rel="noopener noreferrer nofollow">登录</a> <a class="link"
-                        href="https://qiucode.cn/admin/register.php" target="_blank"
-                        rel="noopener noreferrer nofollow">注册</a> </li>
-            </ul>
-        </li>
-    </ul>
-</div>
-<div class="Qc_header_mask"></div>
-
-<script>
-
-    let sideBtn = document.querySelector(".Qc_header_above .Qc_container .Qc_header_above-slideicon")
-
-    sideBtn.addEventListener("click", () => {
-        document.querySelector(".Qc_header_slideout").classList.add("active")
-        document.querySelector(".Qc_header_mask").classList.add("active")
-    })
-
-    let maskBtn = document.querySelector(".Qc_header_mask")
-
-    maskBtn.addEventListener("click",() => {
-        document.querySelector(".Qc_header_slideout").classList.remove("active")
-        maskBtn.classList.remove("active")
-    })
-
-   
+      </div>
     
+      <div class="kiwi_header__slideout">
+        <div class="kiwi_header__slideout-wrap">
+          <img width="100%" height="150" class="kiwi_header__slideout-image" src="/static/front/images/qiu-logo.png"  alt="侧边栏壁纸">
+          <div class="kiwi_header__slideout-author">
+            <img width="50" height="50" class="avatar ls-is-cached" src="/static/front/images/qiu-logo.png" alt="博主头像">
+            <div class="info">
+              <a class="link" href="https://qiucode.cn" target="_blank" rel="noopener noreferrer nofollow">秋码记录</a>
+                <p class="motto kiwi_motto">一个游离于山间之上的Java爱好者 | A Java lover living in the mountains</p>
+            </div>
+          </div>
+        <div class="social-account">
+            
+        </div>
+        <ul class="kiwi_header__slideout-count">
+        <li class="item">
+            <i class="joe-font joe-icon-riji"></i>
+            <span>累计撰写 <strong>29</strong> 篇文章</span>
+        </li>
+        <li class="item">
+            <i class="joe-font joe-icon-remen"></i>
+            <span>累计创建 <strong>40</strong> 个标签</span>
+        </li>
+        <li class="item">
+            <i class="joe-font joe-icon-message"></i>
+            <span>累计创建 <strong>185</strong> 个分类</span>
+        </li>
+        </ul>
+        <ul class="kiwi_header__slideout-menu panel-box">
+        <li>
+            <a class="link panel in" href="#" rel="nofollow">
+                <span>栏目</span>
+                <i class="joe-font joe-icon-arrow-right"></i>
+            </a>
+            <ul class="slides panel-body panel-box panel-side-menu" style="display: block;">
+                <li>
+                    <a class="link {{ if eq (.RelPermalink | relLangURL) "/" }} current {{ end }}" href="/" title="首页" >
+                        <i class="fa fa-home"></i> 首页
+                    </a>
+                </li>
 
-</script>
+                <li>
+                    <a class="link {{ if eq (.RelPermalink | relLangURL) "/flinks/" }} current {{ end }}" href="/flinks" title="友情链接">
+                        <i class="fa fa-link"></i>友情链接
+                    </a> 
+                </li>
+                
+
+                <li>
+                    <a class="link {{ if eq (.RelPermalink | relLangURL) "/timeline/" }} current {{ end }}" href="/timeline" title="点点滴滴">
+                        <i  class="fa fa-calendar-times-o"></i>点点滴滴
+                    </a> 
+                </li>
+                
+
+                <li>
+                    <a class="link {{ if eq (.RelPermalink | relLangURL) "/about/" }} current {{ end }}" href="/about" title="关于我">
+                        <i class="fa fa-user"></i>关于本站
+                    </a>
+                </li>
+                    
+            </ul>
+        </li>
+        </ul>
+    </div>
+</div>
+    
+        <div class="kiwi_header__searchout">
+          <div class="kiwi_container">
+            <div class="kiwi_header__searchout-inner">
+              <form class="kiwi_header__above-search-mobile" method="get" action="/search">
+                <input maxlength="16" autocomplete="off" placeholder="请输入关键字..." name="keyword" value="" class="input" type="text">
+                <button type="submit" class="submit">搜索</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    
+      <div class="kiwi_header__mask"></div>
+  
+  
+  <script>
+  
+      let sideBtn = document.querySelector(".kiwi_header__above-searchicon")
+  
+      sideBtn.addEventListener("click", () => {
+        alert(666666)
+          //document.querySelector(".kiwi_header__searchout").classList.add("active")
+          document.querySelector(".kiwi_header__searchout").style.visibility = 'visible'
+          document.querySelector(".kiwi_header__mask").classList.add("active")
+      })
+  
+      let maskBtn = document.querySelector(".kiwi_header__mask")
+  
+      maskBtn.addEventListener("click",() => {
+          //document.querySelector(".kiwi_header__searchout").classList.remove("active")
+          document.querySelector(".kiwi_header__searchout").style.visibility = 'hidden'
+          maskBtn.classList.remove("active")
+      })
+  
+     
+      
+  </script>

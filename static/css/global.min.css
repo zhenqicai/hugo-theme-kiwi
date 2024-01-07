@@ -9,7 +9,7 @@ html[data-night='night'] .Qc_detail_article code:not([class]){background:#fdf0ec
 html[data-night='night'] .Qc_detail_article-anote{color:#ffffff9c}
 html[data-night='night'] .Qc_detail_article-abtn{color:#ffffff9c}
 html[data-night='night'] .Qc_detail_overdue-wrapper{background:var(--classD)}
-*{font-family:'Xc Font','PingFang SC','Noto Serif SC','Hiragino Sans GB','Fira Mono','Microsoft YaHei',Arial,sans-serif;margin:0;padding:0;box-sizing:border-box;outline:none;-webkit-tap-highlight-color:transparent}
+*{font-family:'Kiwi Font','PingFang SC','Noto Serif SC','Hiragino Sans GB','Fira Mono','Microsoft YaHei',Arial,sans-serif;margin:0;padding:0;box-sizing:border-box;outline:none;-webkit-tap-highlight-color:transparent}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-thumb{border-radius:4px;background:var(--seat)}
 ::-webkit-scrollbar-track{background:transparent}
