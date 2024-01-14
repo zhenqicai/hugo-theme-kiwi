@@ -1,0 +1,64 @@
+{{- define "main" }}
+
+<style>
+    .archive_title{
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 0.1875rem 0.3125rem #1c1f21;
+        padding: 0 10px 10px 0;
+        letter-spacing: .25rem;
+    }
+    .archive_title .keyword {
+        color: rgb(214, 70, 70);
+    }
+</style>
+
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/index.min.css" />
+
+<div class="Qc_main index">
+    <div class="Qc_index">
+        <div class="Qc_index_list">
+            {{ if eq .Data.Singular "category" }}
+            <h3 class="archive_title">
+                分类
+                <span class="keyword">{{ .Data.Term }}</span>
+           
+            </h3>
+            {{ else if eq .Data.Singular "tag" }}
+            <h3 class="archive_title">
+                包含标签
+                <span class="keyword">{{ .Data.Term }}</span>
+                
+            </h3>
+            {{ end }}
+
+            <ul class="Qc_list">
+                <li>
+                    <!-- 自适应广告 &ndash;&gt;-->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-5798408669698308"
+                        data-ad-slot="9319631834"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+
+                </li>
+                {{ range $index,$data := .Paginator.Pages }}
+                    {{ partial "article.html" $data }}
+                {{ end }}
+            </ul>
+        </div>
+
+        {{ partial "paginator" . }}
+
+
+
+    </div>
+</div>
+
+{{- end }}

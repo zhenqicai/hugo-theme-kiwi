@@ -1,0 +1,52 @@
+{{ with .Paginator }}
+
+    {{- if gt .TotalPages 1 }}
+
+    <ul class="Qc_pagination">
+        
+
+        {{- if not (eq .PageNumber 1) }}
+        <li>
+            <a  href="{{ .First.URL | absURL }}">{{ "1" }}</a>
+        </li>
+            {{- if not (eq .PageNumber 2) }}
+                {{- if gt .PageNumber 3 }}
+                &nbsp;...&nbsp;
+                {{- end }}
+            <li >
+                <a  href="{{ .Prev.URL | absURL }}">{{ sub .PageNumber 1 }}</a>
+            </li> 
+                
+            {{- end }}
+        {{- end }}
+        
+        {{- range .Pagers -}}
+            {{ if eq .PageNumber $.Paginator.PageNumber }}
+            <li class="{{ if eq .PageNumber $.Paginator.PageNumber }}active{{ end }}">
+                <a  href="{{ .URL | absURL }}">{{- .PageNumber -}}</a>
+            </li>
+            {{ end }}
+        {{- end }}
+
+        {{- if not (eq .PageNumber .TotalPages) }}
+            {{- if not (eq .PageNumber ( sub .TotalPages 1)) }}
+            <li >
+                <a  href="{{ .Next.URL | absURL }}">{{ add .PageNumber 1 }}</a>
+            </li>
+
+                {{- if lt .PageNumber (sub .TotalPages 2) }}
+                &nbsp;...&nbsp;
+                {{- end }}
+
+            {{- end }}
+
+            <li >
+                <a class="pageLast" href="{{ .Last.URL | absURL }}">{{ .TotalPages }}</a>
+            </li>
+        {{- end }}
+
+    </ul>
+
+    {{- end }}
+
+{{ end }}
