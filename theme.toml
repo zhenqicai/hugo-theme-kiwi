@@ -8,7 +8,7 @@ description = "An exquisite personal blog theme powered by Hugo, allowing you to
 homepage = "https://github.com/zhenqicai/hugo-theme-kiwi"
 tags = ["website", "starter", "responsive", "Disqus", "blog", "Tachyons", "Multilingual", "Stackbit"]
 features = ["posts", "shortcodes", "related content", "comments"]
-min_version = "0.0.4"
+min_version = "0.0.5"
 
 [author]
   name = "theNewDynamic"

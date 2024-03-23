@@ -117,70 +117,59 @@
 	</div>
 
 	
-
-	{{ if .IsPage }}
-
-	
-	<script src="{{ .Site.BaseURL }}js/highlight.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-
-   {{ end }}
-
-   <script>
-	 function registerImageLoadEvent() {
-		const images = document.querySelectorAll('.sidebar img, .Qc_post img, .vendors-list img');
-				
-		const callback = (entries) => {
-			entries.forEach(item => {
-				if (item.intersectionRatio > 0) {
-					let ele = item.target;
-					let imgSrc = ele.getAttribute('src');
-					ele.setAttribute("src","1.png")
-					ele.setAttribute("data-lazy-src",imgSrc)
-					ele.classList.add("lazyload")
-			
-				}
-			})
-		};
-
-		Array.from(images).forEach(img => {
-			const bg = '/images/loading.gif'
-
-			img.setAttribute("data-lazy-src",img.src)
-			img.src = bg
-		})
-		
-	
-	}
-
-	registerImageLoadEvent()
-
-   </script>
-
-
- <script src="{{ .Site.BaseURL }}js/lazyload.life.min.js"></script>
-
- <script>
-	const lazyloadImg = () => {
-      window.lazyLoadInstance = new LazyLoad({
-        elements_selector: 'img',
-        threshold: 0,
-        data_src: 'lazy-src'
-      })
-    }
-
-	lazyloadImg()
- </script>
-
-
 	</div>
 </body>
 
+<script>
+	function registerImageLoadEvent() {
+	   const images = document.querySelectorAll('.sidebar img, .Qc_post img, .vendors-list img');
+			   
+	   const callback = (entries) => {
+		   entries.forEach(item => {
+			   if (item.intersectionRatio > 0) {
+				   let ele = item.target;
+				   let imgSrc = ele.getAttribute('src');
+				   ele.setAttribute("src","1.png")
+				   ele.setAttribute("data-lazy-src",imgSrc)
+				   ele.classList.add("lazyload")
+		   
+			   }
+		   })
+	   };
+
+	   Array.from(images).forEach(img => {
+		   const bg = '/images/loading.gif'
+
+		   img.setAttribute("data-lazy-src",img.src)
+		   img.src = bg
+	   })
+	   
+   
+   }
+
+   registerImageLoadEvent()
+
+  </script>
 
 
-</html>
+<script src="{{ .Site.BaseURL }}js/lazyload.life.min.js"></script>
 
+<script>
+   const lazyloadImg = () => {
+	 window.lazyLoadInstance = new LazyLoad({
+	   elements_selector: 'img',
+	   threshold: 0,
+	   data_src: 'lazy-src'
+	 })
+   }
 
+   lazyloadImg()
+</script>
+
+{{ if .IsPage }}
+<script src="{{ .Site.BaseURL }}js/clipboard.min.js"></script>
+<script src="{{ .Site.BaseURL }}js/prism.min.js" ></script>
+{{ end }}
 
 <script>
 	
@@ -227,3 +216,8 @@
     })
 
 </script>
+
+
+
+</html>
+

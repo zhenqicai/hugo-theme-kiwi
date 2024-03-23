@@ -87,6 +87,12 @@
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
 {{ end }}
 
+{{ if .IsPage }}
+
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/blackmac.css">
+
+{{ end }}
+
 {{ if .IsHome }}
 <link rel="stylesheet" href="{{ .Site.BaseURL }}css/index.min.css" />
 
