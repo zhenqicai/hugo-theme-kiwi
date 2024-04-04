@@ -1,5 +1,13 @@
 {{- define "main" }}
 
+    {{- $pages := union .RegularPages .Sections }}
+
+    {{- if .IsHome }}
+        {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{- end }}
+
+    {{- $paginator := .Paginate $pages }}
+
 <div class="Qc_main index">
     <div class="Qc_index">
         
