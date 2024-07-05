@@ -1,0 +1,68 @@
+.word-color:nth-child(7n + 1) {
+    color: rgb(202, 110, 255);
+  }
+  .word-color:nth-child(7n + 2) {
+    color: rgb(83, 110, 255);
+  }
+  .word-color:nth-child(7n + 3) {
+    color: rgb(143, 253, 241);
+  }
+  .word-color:nth-child(7n + 4) {
+    color: rgb(183, 255, 112);
+  }
+  .word-color:nth-child(7n + 5) {
+    color: rgb(255, 212, 126);
+  }
+  .word-color:nth-child(7n + 6) {
+    color: rgb(248, 140, 131);
+  }
+  .word-color:nth-child(7n + 7) {
+    color: rgb(104, 160, 255);
+  }
+  @keyframes word {
+    0% {
+      opacity: 0.5;
+    }
+    3% {
+      opacity: 1;
+    }
+    9% {
+      opacity: 1;
+    }
+    12% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+
+  .word-animate {
+    animation-name: word;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    will-change: opacity;
+    opacity: 0.5;
+  }
+
+  .word-animate:nth-child(7n + 1) {
+    animation-delay: 0s;
+  }
+  .word-animate:nth-child(7n + 2) {
+    animation-delay: 3s;
+  }
+  .word-animate:nth-child(7n + 3) {
+    animation-delay: 6s;
+  }
+  .word-animate:nth-child(7n + 4) {
+    animation-delay: 9s;
+  }
+  .word-animate:nth-child(7n + 5) {
+    animation-delay: 12s;
+  }
+  .word-animate:nth-child(7n + 6) {
+    animation-delay: 15s;
+  }
+  .word-animate:nth-child(7n + 7) {
+    animation-delay: 18s;
+  }

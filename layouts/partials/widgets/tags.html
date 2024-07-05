@@ -1,31 +1,67 @@
-<section class="Qc_aside_item tags"> 
-    <div class="Qc_aside_item-title"> 
-        <i class="iconfont icon-A67" style="margin-right: 8px;font-size: 17px"></i> 
-        <span class="text">标签云</span> 
-        <span class="xccx_mac"></span> 
-    </div> 
-     <div class="Qc_aside_item-contain" style="padding:10px"> 
-        <div class="tag"></div> 
-        <ul class="cloud">
-            {{- $tags := .Site.Taxonomies.tags }}
-            {{- if gt (len $tags) 0 }}
-            {{ $i := 0 }}
-                {{- range $name, $taxonomy := $tags }}
+<!--标签云-->
 
-                {{ $i = add $i 1 }}
+<section class="Qc_aside_item tags">
+    <div id="sourrounding_div" style="width:100%;height:100%;min-height: 300px;">
+        <div id="tag-canvas"></div>
+    </div>
+</section>
 
-                {{- if lt $i 11 }}
-                    {{- with $.Site.GetPage (printf "/tags/%s" $name) }}
-            <li class="item">
-                <a style="background:#4C83FF" href="{{ .RelPermalink }}" title="{{ .Title }}">
-                    {{- .Title -}}{{- if .Site.Params.widgets.tags_counter }} ({{ $taxonomy.Count }}){{ end -}}
-                </a>
-            </li> 
-            {{- end }}
 
-            {{- end }}
-            {{- end }}
-            {{- end }}
-         </ul> 
-        </div> 
-    </section>
+    {{- range $Name, $tag := .Site.Taxonomies.tags }}
+
+        {{ if eq "" ($.Scratch.Get "tagsMap") }}
+            {{ $.Scratch.Set "tagsMap" (slice (dict $Name $tag.Count))  }}
+        {{ else }}
+            {{ $.Scratch.Add "tagsMap" (slice (dict $Name $tag.Count)) }}
+        {{ end }}
+    {{- end }}
+    {{ $result := ($.Scratch.Get "tagsMap")}}
+    <span id="tag-temp" style="display:none">{{$result | jsonify }}</span>
+
+<script>
+//因为前期每个标签值比较小，帮X一个系数
+var XISHU = 20;
+//为了动态宽度
+
+var div = document.querySelector("#sourrounding_div");
+var canvas = document.querySelector("#tag-canvas");
+canvas.style.width = div.offsetWidth+'px';
+canvas.style.height = div.offsetHeight+'px'; 
+var wordFreqData =  document.querySelector("#tag-temp").innerHTML;
+var jsonObj = JSON.parse(wordFreqData);
+var arr = []
+jsonObj.forEach(element => {
+    var key = Object.keys(element);
+    var itemArr = [key[0],element[key]*XISHU];
+    arr.push(itemArr);
+});
+//获取当前是暗色还是浅色
+var isDark = document.body.className.includes("dark");
+WordCloud(canvas, {
+      "list": arr,//或者[['各位观众',45],['词云', 21],['来啦!!!',13]],只要格式满足这样都可以
+      "shape": "pentagon", //形状 circle (default), cardioid (心型), diamond, square, triangle-forward, triangle, pentagon, and star.
+      "gridSize": 6, // 密集程度 数字越小越密集
+      "weightFactor": 1, // 字体大小=原始大小*weightFactor
+      "fontWeight": 'normal', //字体粗细
+      "fontFamily": 'Times, serif', // 字体
+      "color": isDark?'random-light':'random-dark', // 字体颜色 'random-dark' 或者 'random-light'
+      "backgroundColor": 'transparent', // 背景颜色
+      "classes": "tag-cloud-item word-color", //用于点击事件
+  });
+  canvas.addEventListener('wordcloudstop', function (e) {
+        //动画
+        setTimeout(() => {
+            var els = document.querySelectorAll(".word-color");
+            Array.from(els).forEach((el) => {
+                //console.log('动画',el)
+                el.classList.add("word-animate")
+            })
+        }, 2000);
+        //点击
+        document.querySelectorAll('.tag-cloud-item').forEach(function (element) {
+            const text = element.innerHTML;
+            element.innerHTML = `<a href="/tags/${text}" style="color: inherit;">${text}</a>`;
+        });
+    });
+
+</script>

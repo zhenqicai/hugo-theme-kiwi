@@ -93,6 +93,13 @@
 
 {{ end }}
 
+
+{{- if eq .Section "tags"}}
+{{/* 标签云 */}}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/word-cloud.css"\>
+<script src="{{ .Site.BaseURL }}js/third-party/wordcloud/wordcloud2.js"></script>
+{{- end }}
+
 {{ if .IsHome }}
 <link rel="stylesheet" href="{{ .Site.BaseURL }}css/index.min.css" />
 
