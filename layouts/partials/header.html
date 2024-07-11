@@ -123,11 +123,35 @@
         html .kiwi_header__searchout{top:40px}
         html .kiwi_bread{margin:0 auto;padding:15px 15px 0 5px}
       }
+
+
+      .kiwi_header__slideout.active {
+    visibility: visible;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+   }
+
+   
+    .kiwi_header__slideout {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 80%;
+        z-index: 1020;
+        background: var(--classD);
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+        visibility: hidden;
+        transition: visibility 0.35s, -webkit-transform 0.35s;
+        transition: transform 0.35s, visibility 0.35s;
+        transition: transform 0.35s, visibility 0.35s, -webkit-transform 0.35s;
+        overflow-y: auto;
+        padding: 30px 15px 15px;
+    }
+   
   
-     
-  
-      .kiwi_header__slideout{visibility:hidden;position:fixed;top:0;bottom:0;left:0;z-index:10;width:78%;max-width:480px;background:var(--classD);-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);-webkit-transition:visibility .35s,-webkit-transform .35s;transition:transform .35s,visibility .35s;transition:transform .35s,visibility .35s,-webkit-transform .35s}
-      
+    
       .kiwi_header__searchout-inner .cloud,.kiwi_header__slideout-wrap{overflow-y:auto;-webkit-overflow-scrolling:touch;-ms-scroll-chaining:none;overscroll-behavior:contain}
       
       .kiwi_header__slideout-wrap{position:relative;padding:135px 15px 15px;height:100%}
@@ -136,12 +160,37 @@
       
       .kiwi_header__slideout-wrap .social-account{padding:0;margin-bottom:10px;border:unset}
       
-      .kiwi_header__slideout.active{visibility:visible;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
       
       .kiwi_header__slideout-image{position:absolute;top:0;left:0;width:100%;height:150px;-o-object-fit:cover;object-fit:cover;z-index:-1}
       
       .kiwi_header__slideout-author,.kiwi_header__slideout-count,.kiwi_header__slideout-menu{background:var(--background);border-radius:var(--radius-wrap);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow)}.kiwi_header__slideout-author{display:-webkit-box;display:-ms-flexbox;display:flex;margin-bottom:15px;padding:15px}.kiwi_header__slideout-author .avatar{width:50px;height:50px;margin-right:10px;border-radius:var(--radius-inner)}.kiwi_header__slideout-author .info{overflow:hidden;line-height:25px}.kiwi_header__slideout-author .info .level{height:23px;margin-left:2px}.kiwi_header__slideout-author .info .link,.kiwi_header__slideout-author .info .motto,.kiwi_index__title-notice a{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.kiwi_header__slideout-author .info .link{display:block;font-size:15px;font-weight:500;color:var(--main)}.kiwi_header__slideout-author .info .motto{font-size:12px;color:var(--routine)}.kiwi_header__slideout-count,.kiwi_header__slideout-menu{padding:10px 15px}.kiwi_header__slideout-count{margin-bottom:15px}.kiwi_header__slideout-count .item,.kiwi_header__slideout-menu .link{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:var(--routine);padding:5px 0}.kiwi_header__slideout-count .item .joe-font{color:var(--routine);margin-right:5px}.kiwi_header__slideout-count .item strong{font-weight:500;color:var(--theme)}.kiwi_header__slideout-menu{overflow:hidden}.kiwi_header__slideout-menu .link{-webkit-box-pack:justify;-ms-flex-pack:justify;/*justify-content:space-between;*/padding:10px 0;color:var(--main);-webkit-transition:color .15s;transition:color .15s}.kiwi_header__slideout-menu .link a{-webkit-transition:color .15s;transition:color .15s;color:var(--routine)}.kiwi_header__slideout-menu .link .joe-font{color:var(--minor);-webkit-transition:fill .15s,-webkit-transform .15s;transition:transform .15s,fill .15s;transition:transform .15s,fill .15s,-webkit-transform .15s}.kiwi_header__slideout-menu .link.in,.kiwi_header__slideout-menu .link.in a{color:var(--theme)}.kiwi_header__slideout-menu .link.in .joe-font{color:var(--theme);-webkit-transform:rotate(90deg);transform:rotate(90deg)}.kiwi_header__slideout-menu .slides{display:none;border-left:1px solid var(--classC);padding-left:15px}.kiwi_header__slideout-menu .slides .link{color:var(--routine)}.kiwi_header__slideout-menu .current a,.kiwi_header__slideout-menu .slides .current{color:var(--theme);font-weight:500;font-size:15px}
       
+      .kiwi_header__mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.65);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 0.35s, opacity 0.35s;
+        z-index: 880;
+      }
+      .kiwi_header__mask.slideout {
+          z-index: 1010;
+      }
+
+      .kiwi_header__mask.active {
+          visibility: visible;
+          opacity: 1;
+      }
+      .kiwi_header__mask {
+          background-image: initial;
+          background-color: rgba(0, 0, 0, 0.65);
+      }
   </style>
   
  
@@ -181,7 +230,7 @@
     
       <div class="kiwi_header__slideout">
         <div class="kiwi_header__slideout-wrap">
-          <img width="100%" height="150" class="kiwi_header__slideout-image" src="/static/front/images/qiu-logo.png"  alt="侧边栏壁纸">
+          <img width="100%" height="150" class="kiwi_header__slideout-image" src="/images/head_img.webp"  alt="侧边栏壁纸">
           <div class="kiwi_header__slideout-author">
             <img width="50" height="50" class="avatar ls-is-cached" src="/static/front/images/qiu-logo.png" alt="博主头像">
             <div class="info">
@@ -193,54 +242,54 @@
             
         </div>
         <ul class="kiwi_header__slideout-count">
-        <li class="item">
+          <li class="item">
             <i class="joe-font joe-icon-riji"></i>
-            <span>累计撰写 <strong>29</strong> 篇文章</span>
-        </li>
-        <li class="item">
+            <span>累计撰写 <strong>{{ .Scratch.Get "postsCount" }}</strong> 篇文章</span>
+          </li>
+          <li class="item">
             <i class="joe-font joe-icon-remen"></i>
-            <span>累计创建 <strong>40</strong> 个标签</span>
-        </li>
-        <li class="item">
+            <span>累计创建 <strong>{{ .Scratch.Get "tagsCount" }}</strong> 个标签</span>
+          </li>
+          <li class="item">
             <i class="joe-font joe-icon-message"></i>
-            <span>累计创建 <strong>185</strong> 个分类</span>
-        </li>
+            <span>累计创建 <strong>{{ .Scratch.Get "catsCount" }}</strong> 个分类</span>
+          </li>
         </ul>
         <ul class="kiwi_header__slideout-menu panel-box">
-        <li>
-            <a class="link panel in" href="#" rel="nofollow">
-                <span>栏目</span>
-                <i class="joe-font joe-icon-arrow-right"></i>
-            </a>
-            <ul class="slides panel-body panel-box panel-side-menu" style="display: block;">
-                <li>
-                    <a class="link {{ if eq (.RelPermalink | relLangURL) "/" }} current {{ end }}" href="/" title="首页" >
-                        <i class="fa fa-home"></i> 首页
-                    </a>
-                </li>
+          <li>
+              <a class="link panel in" href="#" rel="nofollow">
+                  <span>栏目</span>
+                  <i class="joe-font joe-icon-arrow-right"></i>
+              </a>
+              <ul class="slides panel-body panel-box panel-side-menu" style="display: block;">
+                  <li>
+                      <a class="link {{ if eq (.RelPermalink | relLangURL) "/" }} current {{ end }}" href="/" title="首页" >
+                          <i class="fa fa-home"></i> 首页
+                      </a>
+                  </li>
 
-                <li>
-                    <a class="link {{ if eq (.RelPermalink | relLangURL) "/flinks/" }} current {{ end }}" href="/flinks" title="友情链接">
-                        <i class="fa fa-link"></i>友情链接
-                    </a> 
-                </li>
-                
+                  <li>
+                      <a class="link {{ if eq (.RelPermalink | relLangURL) "/flinks/" }} current {{ end }}" href="/flinks" title="友情链接">
+                          <i class="fa fa-link"></i>友情链接
+                      </a> 
+                  </li>
+                  
 
-                <li>
-                    <a class="link {{ if eq (.RelPermalink | relLangURL) "/timeline/" }} current {{ end }}" href="/timeline" title="点点滴滴">
-                        <i  class="fa fa-calendar-times-o"></i>点点滴滴
-                    </a> 
-                </li>
-                
+                  <li>
+                      <a class="link {{ if eq (.RelPermalink | relLangURL) "/timeline/" }} current {{ end }}" href="/timeline" title="点点滴滴">
+                          <i  class="fa fa-calendar-times-o"></i>点点滴滴
+                      </a> 
+                  </li>
+                  
 
-                <li>
-                    <a class="link {{ if eq (.RelPermalink | relLangURL) "/about/" }} current {{ end }}" href="/about" title="关于我">
-                        <i class="fa fa-user"></i>关于本站
-                    </a>
-                </li>
-                    
-            </ul>
-        </li>
+                  <li>
+                      <a class="link {{ if eq (.RelPermalink | relLangURL) "/about/" }} current {{ end }}" href="/about" title="关于我">
+                          <i class="fa fa-user"></i>关于本站
+                      </a>
+                  </li>
+                      
+              </ul>
+          </li>
         </ul>
     </div>
 </div>
@@ -262,22 +311,41 @@
   <script>
   
       let sideBtn = document.querySelector(".kiwi_header__above-searchicon")
-  
+
       sideBtn.addEventListener("click", () => {
-        alert(666666)
+
           //document.querySelector(".kiwi_header__searchout").classList.add("active")
           document.querySelector(".kiwi_header__searchout").style.visibility = 'visible'
           document.querySelector(".kiwi_header__mask").classList.add("active")
       })
-  
+
       let maskBtn = document.querySelector(".kiwi_header__mask")
-  
+      let slideout = document.querySelector(".kiwi_header__slideout")
+
       maskBtn.addEventListener("click",() => {
           //document.querySelector(".kiwi_header__searchout").classList.remove("active")
-          document.querySelector(".kiwi_header__searchout").style.visibility = 'hidden'
+        
           maskBtn.classList.remove("active")
+
+          document.querySelector("body").style.overflow=""
+          maskBtn.classList.remove("active")
+          maskBtn.classList.remove("slideout")
+          document.querySelector(".kiwi_header__searchout").style.visibility = 'hidden'
+          slideout.classList.remove("active");
       })
-  
-     
+
+
+      let sildeIcon = document.querySelector(".kiwi_header__above-slideicon")
+
+
+
+      sildeIcon.addEventListener("click", () => {
+        document.querySelector(".kiwi_header__searchout").style.visibility = 'hidden'
+
+        slideout.classList.contains("active") 
+        ? (document.querySelector("body").style.overflow="", maskBtn.classList.remove("active slideout"),slideout.classList.remove("active")) 
+        : (document.querySelector("body").style.overflow="hidden", maskBtn.classList.add("active"),maskBtn.classList.add("slideout"),slideout.classList.add("active"))
+      })
+      
       
   </script>

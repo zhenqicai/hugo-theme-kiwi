@@ -4,7 +4,7 @@
 {{ .Scratch.Set "isComment" $isComment }}
 <div class="Qc_main Qc_post">
     <div class="Qc_detail">
-        <h1 class="title Qc_psot_title"> {{ .Title }}</h1>
+        <h1 class="title Qc_detail_title"> {{ .Title }}</h1>
         <div class="Qc_bread">
             <ul class="Qc_bread_bread">
                 <li class="item"> <span class="iconfont icon-A131" style="margin-right: 4px;"></span> <a
@@ -20,6 +20,35 @@
         <article class="Qc_detail_article" id="article-container">
             {{ .Content }}
         </article>
+    </div>
+
+
+     <!-- 上一篇 下一篇 -->
+     <div class="entry-page">
+        {{ with .PrevInSection }}
+        <div class="entry-page-prev j-lazy" style="background-image: url({{ (.Params.cover.image) | absURL }})">
+            <a href="{{ .RelPermalink | relLangURL }}"> 
+                <span>{{ .Title }}</span> 
+            </a>
+            <div class="entry-page-info"> 
+                <span class="pull-left">« 上一篇</span> 
+                <span class="pull-right">{{ .Date.Format .Site.Params.dateFormat }}</span>
+            </div>
+        </div>
+        {{ end }}
+
+        {{ with .NextInSection }} 
+        <div class="entry-page-next j-lazy" style="background-image: url({{ (.Params.cover.image) | absURL }})">
+            <a href="{{ .RelPermalink | relLangURL }}">
+                <span>{{ .Title }}</span> 
+            </a>
+            <div class="entry-page-info"> 
+                <span class="pull-right">下一篇  »</span> 
+                <span class="pull-left">{{ .Date.Format .Site.Params.dateFormat }}</span>
+            </div>
+        </div> 
+        {{ end }}
+
     </div>
 
     {{ if and .IsPage $isComment }}

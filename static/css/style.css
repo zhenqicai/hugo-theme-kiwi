@@ -385,6 +385,7 @@
 .Qc_pagination li a:hover .icon{fill:#fff}
 .Qc_pagination li a .icon{width:12px;height:12px;fill:var(--routine);transition:fill 0.35s}
 .Qc_pagination li a .icon-next{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
+.Qc_bread__bread .item {color: var(--minor); white-space: nowrap;}
 /* .Qc_action_item{position:relative;display:flex;align-items:center;justify-content:center;min-width:20px;max-width:20px;height:20px;margin:0 0 0 12px;cursor:pointer}
 .Qc_action_item svg{position:absolute;width:20px;height:20px;fill:var(--routine);transition:.35s ease-out}
 .Qc_action_item.mode svg{-webkit-transform:scale(0);transform:scale(0);opacity:0}
@@ -495,4 +496,95 @@ to{-webkit-transform:scaleX(0.5);transform:scaleX(0.5);background-color:#409eff}
 }
 .Qc_bread_bread .line {
     padding: 0 5px;
+}
+
+.entry-page {
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.entry-page-next, .entry-page-prev {
+    color: rgb(232, 230, 227);
+}
+
+.entry-page-next, .entry-page-prev {
+    position: relative;
+    float: left;
+    width: 49%;
+    padding: 60px 15px 10px;
+    color: #fff;
+    background-size: cover;
+    background-position: 50%;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.entry-page-next {
+    float: right;
+}
+
+.entry-page-next::before, .entry-page-prev::before {
+    background-image: initial;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.entry-page-next:before, .entry-page-prev:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    content: "";
+}
+
+.entry-page-next a, .entry-page-prev a {
+    color: rgb(232, 230, 227);
+}
+.entry-page-next a, .entry-page-prev a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    color: #fff;
+    font-size: 15px;
+    font-size: 1.25rem;
+}
+
+.entry-page-next a span, .entry-page-prev a span {
+    display: block;
+    padding: 10px 15px 0;
+    height: 50px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+}
+
+
+
+.entry-page-next .entry-page-info, .entry-page-prev .entry-page-info {
+    position: relative;
+    font-size: 14px;
+    line-height: 16px;
+    overflow: hidden;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+@media (max-width: 767px) {
+    .entry-page-next, .entry-page-prev {
+        width: 100% !important;
+        margin-bottom: 10px;
+        float: none;
+    }
 }
