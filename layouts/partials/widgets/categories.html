@@ -1,6 +1,98 @@
 {{- $categories := .Site.Taxonomies.categories }}
 {{- if gt (len $categories) 0 }}
 
+<style>
+	
+	ul.card-category-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	ul.card-category-list > .card-category-list-item a {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: box;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-moz-box-orient: horizontal;
+		-o-box-orient: horizontal;
+		-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		padding: 3px 10px;
+		color: var(--main);
+		-webkit-transition: all 0.4s;
+		-moz-transition: all 0.4s;
+		-o-transition: all 0.4s;
+		-ms-transition: all 0.4s;
+		transition: all 0.4s;
+	}
+    ul.card-category-list > .card-category-list-item a:hover {
+		padding: 3px 17px;
+		background-color: var(--theme);
+	}
+    ul.card-category-list > .card-category-list-item a span:first-child {
+		-webkit-box-flex: 1;
+		-moz-box-flex: 1;
+		-o-box-flex: 1;
+		box-flex: 1;
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+	}
+	.card-category-list.child {
+		padding: 0 0 0 16px;
+	}
+	.card-category-list > .parent > a .card-category-list-name {
+		width: 70% !important;
+	}
+	.card-category-list > .parent > a .card-category-list-count {
+		width: calc(100% - 70% - 20px);
+		text-align: right;
+	}
+	.card-category-list > .parent i {
+		float: right;
+		margin-right: -0.5em;
+		padding: 0.5em;
+		-webkit-transition: -webkit-transform 0.3s;
+		-moz-transition: -moz-transform 0.3s;
+		-o-transition: -o-transform 0.3s;
+		-ms-transition: -ms-transform 0.3s;
+		transition: transform 0.3s;
+		-webkit-transform: rotate(0);
+		-moz-transform: rotate(0);
+		-o-transform: rotate(0);
+		-ms-transform: rotate(0);
+		transform: rotate(0);
+	}
+	.card-category-list > .parent i.expand {
+		-webkit-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+	}
+	.card-more-btn{
+		position: absolute;
+		color: inherit;
+		float: right;
+		right: 55px;
+		top: 0px;
+	}
+	.card-more-btn:hover {
+		-webkit-animation: more-btn-move 1s infinite;
+		-moz-animation: more-btn-move 1s infinite;
+		-o-animation: more-btn-move 1s infinite;
+		-ms-animation: more-btn-move 1s infinite;
+		animation: more-btn-move 1s infinite;
+	}
+
+
+	
+</style>
+
 <section class="Qc_aside_item tags"> 
     <div class="Qc_aside_item-title"> 
         <i class="iconfont icon-A67" style="margin-right: 8px;font-size: 17px"></i> 
@@ -9,22 +101,24 @@
     </div> 
     <div class="Qc_aside_item-contain" style="padding:10px"> 
         <div class="tag"></div> 
-		<ul class="list">
+		<ul class="card-category-list" id="aside-cat-list">
 			{{ $i := 0 }}
 			{{- range $name, $taxonomy := $categories }}
 			
-			   {{ $i = add $i 1 }}
-
-			   {{- if lt $i 11 }}
-				{{- with $.Site.GetPage (printf "/categories/%s" $name) }}
-			<li class="item"> 
-				<a class="link" href="{{ .RelPermalink }}">{{ .Title }} </a>
-				<span class="widget__counter widget__counter--bubble">{{ $taxonomy.Count }}</span>
-			</li>
-               {{- end }}
-
+			    {{ $i = add $i 1 }}
+			    {{- if gt $i 31 }}
+					{{- with $.Site.GetPage (printf "/categories/%s" $name) }}
+					<li class="card-category-list-item">
+						<a class="card-category-list-link" href="{{ .RelPermalink }}">
+							<span class="card-category-list-name">{{ .Title }}</span>
+							<span class="card-category-list-count">{{ $taxonomy.Count }}</span>
+						</a>
+					</li>
+					{{- end }}
+				{{- end }}
 			{{- end }}
-		{{- end }}
+			
+		</ul>
 	</div>
 </section>
 {{- end }}

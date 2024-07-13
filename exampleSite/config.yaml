@@ -62,6 +62,15 @@ params:
   postMeta: 
     categories: true
 
+  headMeta: 
+    keyWords: Hugo,Hugo主题,Java爱好者,个人博客,建站,人工智能,AI,ChatGPT,微服务,开源
+    description: 一个曾游离于山巅之上的Java爱好者,矗立在山峰处,已然将目光转向了人工智能（AI）,Web3,NFT,区块链等前沿技术领域,且分享知识于由Hugo驱动的自己开源Hugo-theme-kiwi主题的个人博客上面。
+    siteName: 秋码分享
+    siteUrl: https://qiucode.cn
+    copyright: "Copyright © 2018 qiucode.cn. All Rights Reserved."
+    shortCutIcon: https://qiucode.cn/imgs/icons/favicon.ico
+    appleTouchIcon: https://qiucode.cn/imgs/icons/apple-touch-icon.png
+
   cover: 
     hidden: false # hide everywhere but not in structured data
     hiddenInList: false # hide on list pages and home
@@ -140,4 +149,4 @@ params:
   css: css
   js: js
 
-  theme_version: 0.0.8
+  theme_version: 0.0.9

@@ -95,6 +95,28 @@
 
 		.kiwi_action_item.mode svg{-webkit-transform:scale(0);transform:scale(0);opacity:0}
 		.kiwi_action_item.mode svg.active{-webkit-transform:scale(1);transform:scale(1);opacity:1}
+
+		.vp-scroll-progress {
+			visibility: hidden;
+			position: absolute;
+			right: -12px;
+    		bottom: 27px;
+			width: 52px;
+			height: 52px;
+		}
+		.vp-scroll-progress svg {
+			width: 80px;
+			height: 80px;
+		}
+		.vp-scroll-progress.active{
+			visibility: visible;
+		}
+
+		.vp-scroll-progress circle {
+			opacity: .9;
+			transform: rotate(-90deg);
+			transform-origin: 50% 50%;
+		}
 		
 	</style>
 
@@ -104,6 +126,16 @@
 			<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="25" height="25">
 				<path d="M725.902 498.916c18.205-251.45-93.298-410.738-205.369-475.592l-6.257-3.982-6.258 3.414c-111.502 64.853-224.711 224.142-204.8 475.59-55.751 53.476-80.214 116.623-80.214 204.8v15.36l179.2-35.27c11.378 40.39 58.596 69.973 113.21 69.973 54.613 0 101.262-29.582 112.64-68.836l180.337 36.41v-15.36c-.569-89.885-25.031-153.6-82.489-206.507zM571.733 392.533c-33.564 31.29-87.04 28.445-118.329-5.12s-28.444-87.04 5.12-117.76c33.565-31.289 87.04-28.444 118.33 5.12s28.444 86.471-5.12 117.76zm-56.32 368.64c-35.84 0-64.284 29.014-64.284 64.285 0 35.84 54.044 182.613 64.284 182.613s64.285-146.773 64.285-182.613c0-35.271-29.014-64.285-64.285-64.285z"></path>
 			</svg>
+
+			<!-- 绘制圆圈 -->
+			<div class="vp-scroll-progress">
+				<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+					<circle cx="26" cy="26" r="24" fill="none" stroke="var(--theme)" stroke-width="5" 
+						data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
+					</circle>
+				</svg>
+			</div>
+
 		</div>
 		<div class="kiwi_action_item mode">
 			<svg class="icon-1 " viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="25" height="25">
@@ -175,14 +207,33 @@
 	
 	var mybutton = document.querySelector(".kiwi_action .kiwi_action_item.scroll")
     window.onscroll = function () {
+		
+		const currentTop = window.scrollY || document.documentElement.scrollTop
+		const ele = document.querySelector(".Qc_container")
+
+		const docHeight = ele.clientHeight
+		const winHeight = document.documentElement.clientHeight
+		const headerHeight = ele.offsetTop
+		const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight)
+		const scrollPercent = (currentTop - headerHeight) / (contentMath)
+		const scrollPercentRounded = Math.round(scrollPercent * 100)
+		const percentage = (scrollPercentRounded > 100) ? 100 : (scrollPercentRounded <= 0) ? 0 : scrollPercentRounded
+
+
+        let svgCircle = document.querySelector(".vp-scroll-progress svg circle")
+
         if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
             // mybutton.style.visibility = "visible";
             // mybutton.style.opacity = "1";
 			mybutton.classList.add("active")
+			document.querySelector(".vp-scroll-progress").classList.add("active")
+			svgCircle.setAttribute("stroke-dasharray",`${Math.PI*percentage*.48} ${Math.PI*(100-percentage)*.48}`)
+		    svgCircle.setAttribute("stroke","var(--theme)")
         } else {
             // mybutton.style.visibility = "hidden";
             // mybutton.style.opacity = "0";
 			mybutton.classList.remove("active")
+			document.querySelector(".vp-scroll-progress").classList.remove("active")
         }
     };
 
