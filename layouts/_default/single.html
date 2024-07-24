@@ -196,6 +196,210 @@
 .mobile-share-qrbg{position:absolute;left:0;top:0;width:100%;height:100%}
 .mobile-share-qrbg img{display:block;width:100%;height:100%}.multi-filter{padding:20px;margin-bottom:20px;background:var(--theme-el-bg-color)}
 
+
+
+.reading,.reading:before{-webkit-transition:all .3s ease-out 0s;-o-transition:all .3s ease-out 0s;transition:all .3s ease-out 0s}
+
+.reading:before{width:100%;height:100%;left:0;top:0;right:0;bottom:0;background:#f0f0f0;content:""}
+
+.reading .Qc_main{-webkit-transition:all .5s ease-out 0s;-o-transition:all .5s ease-out 0s;transition:all .5s ease-out 0s}
+
+.reading .kiwi_header,.reading .Qc_aside .Qc_aside_item,.reading .entry-bar,.reading .entry-related-posts,.reading .entry-related-title,.reading .post-comments, .reading .Qc_footer{display: none;}
+
+.reading .entry-main{padding:20px 0}
+
+.reading .reading-back,.reading .reading-back .wi,.reading .reading-back:hover .wi{-webkit-transition:all .3s ease-out 0s;-o-transition:all .3s ease-out 0s;transition:all .3s ease-out 0s}
+.reading .reading-back{position:fixed;z-index:10000;right:30px;top:50px;cursor:pointer}
+.reading .reading-back .wi,.reading .reading-back:hover .wi{color:var(--theme)}
+.reading .reading-back .wi{font-size:48px;color:var(--main)}
+
+.reading .Qc_aside .sticky_layout{top: 100px;}
+
+
+.post-meta {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 0.4rem;
+}
+
+.post-meta-line {
+    padding: 5px 10px;
+}
+
+.post-meta span {
+    display: inline-block;
+}
+
+.post-meta a, .post-meta a::before,  .post-meta a::after {
+    text-decoration: none;
+    color: var(--theme);
+    /* color: #353535; */
+}
+
+[data-night="night"]  .post-meta{
+    color: #a3a3a3;
+}
+
+.entry-related-posts{margin-bottom:30px}
+.entry-related-posts{background:var(--background);padding:20px;margin-bottom:20px}
+
+
+@media (max-width:1239px){
+    .entry-related-posts{padding:20px;}
+}
+    
+@media (max-width:767px){
+    .entry-related-posts{padding:0;background:0 0}
+}
+
+.entry-related-title{margin:0 0 20px;font-size:18px;font-weight:500}
+
+.entry-related-title{position:relative;padding:0 0 0 12px}
+
+.entry-related-title:before{position:absolute;left:0;top:1px;width:3px;height:calc(100% - 2px);content:"";background-color:var(--theme-color);background-image:-o-linear-gradient(top,rgba(255,255,255,.15),transparent);background-image:linear-gradient(180deg,rgba(255,255,255,.15),transparent);border-radius:3px}
+
+
+.Xc_home_articie-si.default {
+    display: flex;
+    position: relative;
+}
+
+.Xc_home_articie-si {
+    box-shadow: var(--darkreader-bg--box-shadow);
+    background: var(--darkreader-bg--background);
+}
+.Xc_home_articie-si {
+    position: relative;
+    width: 100%;
+    background: var(--background);
+    border-radius: var(--radius-wrap);
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+}
+
+.Xc_home_articie-si.default .thumbnail {
+    flex-shrink: 0;
+    position: relative;
+    width: 210px;
+    height: 140px;
+    margin-right: 15px;
+    overflow: hidden;
+    border-radius: var(--radius-inner);
+}
+
+.Xc_home_articie-si.default .thumbnail img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    transition: .35s;
+}
+
+.Xc_home_articie-si.default .information {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.Xc_home_articie-si .information .title {
+    color: var(--darkreader-text--main);
+}
+.Xc_home_articie-si .information .title {
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    color: var(--main);
+    font-size: 18px;
+    line-height: 24px;
+    max-height: 48px;
+    transition: color 0.35s;
+}
+
+.Xc_home_articie-si .information .title .badge {
+    background-image: initial;
+    background-color: rgba(165, 29, 42, 0.81);
+    color: rgb(232, 230, 227);
+}
+.Xc_home_articie-si .information .title .badge {
+    height: 20px;
+    line-height: 20px;
+    background: #dc3545cf;
+    color: #fff;
+    font-size: 12px;
+    margin-right: 5px;
+    border-radius: 2px;
+    padding: 0 8px;
+    white-space: nowrap;
+    vertical-align: 2px;
+}
+
+.Xc_home_articie-si .abstract {
+    color: var(--darkreader-text--minor);
+}
+.Xc_home_articie-si .abstract {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--minor);
+    word-break: break-word;
+    line-height: 22px;
+    max-height: 44px;
+    opacity: 0.85;
+}
+
+.Xc_home_articie-si .meta {
+    color: var(--darkreader-text--minor);
+}
+.Xc_home_articie-si .meta {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    color: var(--minor);
+    font-size: 13px;
+}
+
+.Xc_home_articie-si .meta .items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.Xc_home_articie-si .meta .items li {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.Xc_home_articie-si .meta .last {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.icon2 {
+    fill: currentcolor;
+}
+.icon2 {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 2px;
+    fill: currentColor;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.Xc_home_articie-si .meta .last .link {
+    color: var(--darkreader-text--minor);
+}
 </style>
 
 {{ $isComment := .Params.comment.enable | default .Site.Params.comments.enable }}
@@ -203,17 +407,59 @@
 <div class="Qc_main Qc_post">
     <div class="Qc_detail">
         <h1 class="title Qc_detail_title"> {{ .Title }}</h1>
-        <div class="Qc_bread">
-            <ul class="Qc_bread_bread">
-                <li class="item"> <span class="iconfont icon-A131" style="margin-right: 4px;"></span> <a
-                        href="https://qiucode.cn/" class="link" title="首页">首页</a> </li>
-                <li class="line">/</li>
-                <li class="item"> <a class="link" href="https://qiucode.cn/category/bkfx/" title="博客分享">博客分享</a>
-                </li>
-                <li class="line">/</li>
-                <li class="item">正文</li>
-            </ul>
+
+        <div class="post-meta">
+            
+            <div class="post-meta-line">
+                <i class="wpcom-icon wi">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#wi-date"></use>
+                    </svg>
+                </i>
+                <time datetime="{{ .Date.Format .Site.Params.dateFormat }}">于&nbsp;{{ .Date.Format .Site.Params.dateFormat }}&nbsp;发表</time>&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="wpcom-icon wi">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#wi-comments"></use>
+                    </svg>
+                </i>
+                <span class="waline-comment-count"  data-path="{{ .RelPermalink | relLangURL }}" ><i class="fa fa-refresh faq-rotating"></i></span>
+                条评论&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="wpcom-icon wi">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#wi-eye"></use>
+                    </svg>
+                </i>
+                <span class="waline-pageview-count" data-path="{{ .RelPermalink | relLangURL }}"><i class="fa fa-refresh faq-rotating"></i></span>
+                次阅读&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+
+            <div class="post-meta-line">
+                <i class="wpcom-icon wi">
+                    <svg aria-hidden="true">
+                        <use xlink:href="#wi-folder-open"></use>
+                    </svg>
+                </i>
+                <span class="post-category">收录于 
+
+                    {{ if .Site.Params.postMeta.categories }}
+                    {{ with .Params.categories }}
+
+
+                    {{ range $name :=  . }}
+
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a class="link" href="{{ (printf "/categories/%s" $name)  | relLangURL }}" itemprop="url" rel="noopener noreferrer index">
+                    <span itemprop="name">{{ $name }} </span>
+                  </a>
+                </span>
+                {{ end }}
+                {{ end }}
+                {{ end }}
+                </span>
+            </div>
+
         </div>
+
         <div class="Qc_detail_category"> </div>
         <article class="Qc_detail_article" id="article-container">
             {{ .Content }}
@@ -317,6 +563,74 @@
 
     </div>
 
+    <div class="entry-related-posts">
+        <h3 class="entry-related-title">相关推荐</h3>
+        <div>
+            {{ $related := .Site.RegularPages.Related . | first 5 }}
+            {{ with $related }}
+
+            {{ range . }}
+
+           
+            <li class="Xc_home_articie-si default">
+                <a href="{{ .RelPermalink }}" class="thumbnail" title="{{ .Title }}" rel="noopener noreferrer">
+                    <img width="100%" height="100%" class=" ls-is-cached lazyloaded-6" src="{{ .Params.cover.image }}"  alt="{{ .Title }}">
+                  
+                    {{ .Date }} 
+ 
+                </a>
+                <div class="information">
+                    <a href="{{ .RelPermalink }}" class="title" title="{{ .Title }}" rel="noopener noreferrer">
+                     {{ .Title }}
+                    </a>
+                    <a class="abstract" href="{{ .RelPermalink }}" title="文章摘要" rel="noopener noreferrer">{{ .Summary }}</a>
+                    <div class="meta">
+                        <ul class="items">
+                            <li>
+                                <i class="wpcom-icon wi">
+                                    <svg aria-hidden="true">
+                                        <use xlink:href="#wi-date"></use>
+                                    </svg>
+                                </i>
+                                <time datetime="{{ .Date.Format .Site.Params.dateFormat }}">&nbsp;{{ .Date.Format .Site.Params.dateFormat }}</time>
+                            
+                            </li>
+                           
+                        </ul>
+                        <div class="last" style="display:flex">
+                            <i class="wpcom-icon wi">
+                                <svg aria-hidden="true">
+                                    <use xlink:href="#wi-folder-open"></use>
+                                </svg>
+                            </i>&nbsp;&nbsp;
+                    
+                            {{ if .Site.Params.postMeta.categories }}
+                            {{ with .Params.categories }}
+        
+        
+                            {{ range $name :=  . }}
+
+                            <a class="link" rel="noopener noreferrer" href="{{ (printf "/categories/%s" $name)  | relLangURL }}">{{ $name }}</a>&nbsp;&nbsp;
+                             
+    
+                        {{ end }}
+                        {{ end }}
+                        {{ end }}
+                            
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {{ end }}
+
+            {{ end }}
+
+
+
+        </div>
+                    
+    </div>
+
     {{ if and .IsPage $isComment }}
        	{{ partialCached "comments.html" . }}
     {{ end }}
@@ -332,11 +646,36 @@
 
 
         let mainWidth = document.querySelector(".Qc_main").clientWidth
-        document.querySelector('.entry-bar-inner').style.width = mainWidth + 30 + 'px'
+        document.querySelector('.entry-bar-inner').style.width = mainWidth  + 'px'
 
+        let readingDom = document.getElementById('j-reading')
+        readingDom.addEventListener('click',() => {
+            document.querySelector('body').classList.add('reading')
+
+            let backReadingHtml = `<div class="reading-back" id="j-reading-back" onclick="readingBack()">
+                                        <i class="wpcom-icon wi">
+                                            <svg aria-hidden="true">
+                                                <use xlink:href="#wi-back"></use>
+                                            </svg>
+                                        </i>
+                                    </div>`
+            let backReadingNode = document.createRange().createContextualFragment( backReadingHtml);
+
+            document.querySelector('body').appendChild(backReadingNode)
+
+            localStorage.setItem("reading", 'on');
+        })
 
         
+        
     })();
+
+    function readingBack(){
+        let readingBackDom =  document.getElementById('j-reading-back')
+        document.querySelector('body').classList.remove('reading')
+        document.querySelector('body').removeChild(readingBackDom)
+        localStorage.setItem("reading", 'off');
+    }
 
     let shareInfo = document.querySelector('#share-info-hidden')
     let shareTitle,shareUrl,shareSummary,shareImage
