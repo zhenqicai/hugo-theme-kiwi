@@ -137,6 +137,12 @@
         <div class="flinks-list-desc">{{ .FLinksDesc | safeHTML }}</div>
         <ul class="Qc_detail_friends xccx-friends">
             {{ range .FLinksList }}
+            {{ if .temp }}
+                {{ $.Scratch.Set "fLinkSiteName" .name }}
+                {{ $.Scratch.Set "fLinkSiteDesc" .desc }}
+                {{ $.Scratch.Set "fLinkSiteLink" .link }}
+                {{ $.Scratch.Set "fLinkSiteLogo" .logo }}
+            {{ else }}
             <li class="Qc_detail_friends-item"> 
                 <a class="contain" href="{{ if or .isLost  .lostFriend }} javascript:void; {{ else }} {{ .link }} {{ end }}" rel="external nofollow noreferrer" title=" {{ .name }}"  {{ if not .isLost }} target="_blank" {{ end }} style="background: #7367F0"> 
                     
@@ -164,6 +170,7 @@
                 </a> 
             </li>
             {{ end }}
+            {{ end }}
         </ul>
         {{ end }}
        
@@ -181,14 +188,17 @@
             </qc-mtitle>
         </p>
        
-        <p>
-        </p>
+        {{ .Content }}
+
         <section style="margin-bottom: 15px">
             <qc-callout color="#9e4def">
-                
                 <span class="_content" style="display: block;">
                     <div class="Qc_callout" style="border-left-color: #9e4def;">
-                        {{ .Content }}
+                       网站名称： {{ $.Scratch.Get "fLinkSiteName" }} <br/>
+                       网站描述： {{ $.Scratch.Get "fLinkSiteDesc"  }}  <br/>
+                       网站链接： {{ $.Scratch.Get "fLinkSiteLink"  }}  <br/>
+                       网站logo： {{ $.Scratch.Get "fLinkSiteLogo"  }}  <br/>
+                       
                     </div>
                 </span>
             </qc-callout>

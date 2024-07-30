@@ -86,3 +86,9 @@
       desc: 30年悬而未决，最终凶手成了受害者，而受害者倒成了凶手
       avatar: https://bookcover.yuewen.com/qdbimg/349573/1030616305/180
       link: https://book.qidian.com/info/1030616305/
+
+    - name: 秋码记录
+      desc: 一个游离于山间之上的Java爱好者
+      link: https://qiucode.cn
+      logo: https://qiucode.cn/static/front/images/qiu-logo.png
+      temp: true
