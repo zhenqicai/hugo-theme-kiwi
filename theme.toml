@@ -2,7 +2,6 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "hugo-theme-kiwi"
-author = "zhenqicai"
 license = "MIT"
 licenselink = "https://github.com/zhenqicai/hugo-theme-kiwi/blob/master/LICENSE.md"
 description = "An exquisite personal blog theme powered by Hugo, allowing you to quickly build a blog website of your own."
@@ -13,5 +12,5 @@ features = ["posts", "shortcodes", "related content", "comments"]
 min_version = "0.0.12"
 
 [author]
-  name = "theNewDynamic"
+  name = "zhenqicai"
   homepage = "https://qiucode.cn/"
