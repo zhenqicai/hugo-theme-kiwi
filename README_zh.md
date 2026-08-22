@@ -108,7 +108,7 @@ cover:
 
 - [秋码记录](https://qiucode.cn)
 
-如您也正在使用 `Hugo kiwi` 主题，欢迎在 [flinks.yaml](https://github.com/hugo-next/hugo-next-docs/blob/develop/data/flinks.yaml)  文件底部提交贵站的名称、描述、头像、链接等信息，具体格式内容参考如下：
+如您也正在使用 `Hugo kiwi` 主题，欢迎在 [flinks.yaml]((https://github.com/zhenqicai/hugo-theme-kiwi/tree/main/exampleSite/data/flinks.yaml)  文件底部提交贵站的名称、描述、头像、链接等信息，具体格式内容参考如下：
 
 ```yaml
 - name: 秋码记录
@@ -119,7 +119,7 @@ cover:
 
 ## 🙋 使用反馈
 
-- 加入 [GitHub Discussions](https://github.com/zhenqicai/hugo-theme-kiwi/discussions) 或 [Gitter](https://github.com/zhenqicai/community) 在线讨论 :beers:
+- 加入 [GitHub Discussions](https://github.com/zhenqicai/hugo-theme-kiwi/discussions) 或 [Gitter](https://github.com/zhenqicai/hugo-theme-kiwi/community) 在线讨论 :beers:
 - [GitHub Issues](https://github.com/zhenqicai/hugo-theme-kiwi/issues/new?labels=Bug&template=bug-report.md) 提交错误报告 :bug:
 - [GitHub Feature](https://github.com/zhenqicai/hugo-theme-kiwi/issues/new?labels=Feature+Request&template=feature-request.md) 表新功能的想法 :sparkles:
 
