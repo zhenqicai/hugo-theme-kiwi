@@ -108,7 +108,7 @@ cover:
 
 - [秋码记录](https://qiucode.cn)
 
-如您也正在使用 `Hugo kiwi` 主题，欢迎在 [flinks.yaml]((https://github.com/zhenqicai/hugo-theme-kiwi/tree/main/exampleSite/data/flinks.yaml)  文件底部提交贵站的名称、描述、头像、链接等信息，具体格式内容参考如下：
+如您也正在使用 `Hugo kiwi` 主题，欢迎在 [flinks.yaml](https://github.com/zhenqicai/hugo-theme-kiwi/tree/main/exampleSite/data/flinks.yaml)  文件底部提交贵站的名称、描述、头像、链接等信息，具体格式内容参考如下：
 
 ```yaml
 - name: 秋码记录
