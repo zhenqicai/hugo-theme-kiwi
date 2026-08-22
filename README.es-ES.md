@@ -107,7 +107,7 @@ cover:
 
 - [Qiucode Record](https://qiucode.cn)
 
-Si también estás utilizando el tema `Hugo kiwi`, envía el nombre, descripción, avatar, enlace y otra información de tu sitio en la parte inferior del archivo [flinks.yaml](https://github.com/hugo-next/hugo-next-docs/blob/develop/data/flinks.yaml). El contenido del formato específico es el siguiente:
+Si también estás utilizando el tema `Hugo kiwi`, envía el nombre, descripción, avatar, enlace y otra información de tu sitio en la parte inferior del archivo [flinks.yaml](https://github.com/zhenqicai/hugo-theme-kiwi/tree/main/exampleSite/data/flinks.yam). El contenido del formato específico es el siguiente:
 
 ```yaml
  - name: Autumn code record
@@ -118,7 +118,7 @@ Si también estás utilizando el tema `Hugo kiwi`, envía el nombre, descripció
 
 ## 🙋 ComentariosComentarios y retroalimentación
 
-- Únete a las discusiones en línea de [GitHub Discussions](https://github.com/zhenqicai/hugo-theme-kiwi/discussions) o [Gitter](https://github.com/zhenqicai/community) :beers:
+- Únete a las discusiones en línea de [GitHub Discussions](https://github.com/zhenqicai/hugo-theme-kiwi/discussions) o [Gitter](https://github.com/zhenqicai/hugo-theme-kiwi/community) :beers:
 - [GitHub Issues](https://github.com/zhenqicai/hugo-theme-kiwi/issues/new?labels=Bug&template=bug-report.md) para enviar un informe de error :bug:
 - [GitHub Feature](https://github.com/zhenqicai/hugo-theme-kiwi/issues/new?labels=Feature+Request&template=feature-request.md) para expresar ideas para nuevas características :sparkles:
 
