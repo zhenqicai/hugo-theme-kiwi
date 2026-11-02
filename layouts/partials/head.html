@@ -125,8 +125,7 @@
 <script src="{{ .Site.BaseURL }}js/third-party/wordcloud/wordcloud2.js"></script>
 {{- end }}
 
-{{/* 所有列表页（首页、栏目、分类、标签）与搜索页共用同一套文章列表样式，并初始化阅读量、评论数 */}}
-{{ if or .IsNode (eq .Type "search") }}
+{{ if .IsHome }}
 <link rel="stylesheet" href="{{ .Site.BaseURL }}css/index.min.css" />
 
 <script type="module">
