@@ -1,90 +1,318 @@
 {{- define "main" }}
+{{/* 搜索数据来源与首页文章列表保持一致：主栏目（mainSections，默认 post）下的全部文章 */}}
+{{- $dateFormat := .Site.Params.dateFormat | default "2006-01-02" }}
+{{- $mainSections := .Site.Params.mainSections | default (slice "post") }}
+{{- $pages := where site.RegularPages "Type" "in" $mainSections }}
+{{- if not $pages }}
+    {{- $pages = where site.RegularPages "Type" "not in" (slice "page" "search" "timeline" "flinks") }}
+{{- end }}
+
+{{- $index := slice }}
+{{- $coverParams := site.Params.cover | default (dict) }}
+{{- $hideCover := ($coverParams.hidden | default $coverParams.hiddenInList) }}
+{{- range $pages }}
+    {{- $p := . }}
+    {{- $cover := "" }}
+    {{- $coverAlt := "" }}
+    {{- $coverZoom := "" }}
+    {{/* 缩略图与首页 partials/cover.html 取图规则保持一致 */}}
+    {{- if not $hideCover }}
+        {{- with .Params.cover }}
+            {{- with .image }}
+                {{- $resource := ($p.Resources.ByType "image").GetMatch (printf "*%s*" .) }}
+                {{- if $resource }}
+                    {{- $cover = $resource.RelPermalink }}
+                {{- else }}
+                    {{- $cover = . | absURL }}
+                {{- end }}
+            {{- end }}
+            {{- $coverAlt = (.alt | default .caption | default "") | plainify }}
+            {{- with .zoom }}
+                {{- $coverZoom = printf "%v" . }}
+            {{- end }}
+        {{- end }}
+    {{- end }}
+
+    {{- $categories := slice }}
+    {{- $categoryNames := slice }}
+    {{- range .GetTerms "categories" }}
+        {{- $categories = $categories | append (dict "name" .LinkTitle "url" .RelPermalink) }}
+        {{- $categoryNames = $categoryNames | append .LinkTitle }}
+    {{- end }}
+
+    {{- $tags := slice }}
+    {{- range .GetTerms "tags" }}
+        {{- $tags = $tags | append .LinkTitle }}
+    {{- end }}
+
+    {{- $summary := .Summary | plainify | replaceRE "\\s+" " " }}
+    {{/* 除标题、摘要外，描述、分类、标签也参与匹配，单独存放以减小页面体积 */}}
+    {{- $extra := delimit (slice .Description (delimit $categoryNames " ") (delimit $tags " ")) " " }}
+
+    {{- $index = $index | append (dict
+        "u" (.RelPermalink | relLangURL)
+        "t" .Title
+        "d" (.Date.Format $dateFormat)
+        "g" .Date.Unix
+        "s" $summary
+        "x" $extra
+        "c" $cover
+        "a" $coverAlt
+        "z" $coverZoom
+        "p" (gt .Weight 0)
+        "r" $categories) }}
+{{- end }}
+
 <div class="Qc_main index">
     <div class="Qc_index">
         <div class="Qc_index_list">
-            <ul class="Qc_list">
-        
-            </ul>
+            <h3 class="kiwi_search_title">
+                搜索
+                <span class="keyword" id="kiwiSearchKeyword"></span>
+                <span class="count" id="kiwiSearchCount"></span>
+            </h3>
+            <ul class="Qc_list" id="kiwiSearchList" data-loading="{{ "images/loading.gif" | relURL }}"></ul>
+            <div class="kiwi_search_empty" id="kiwiSearchEmpty" hidden></div>
         </div>
     </div>
 </div>
 
+<style>
+    .kiwi_search_title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--main);
+        text-align: center;
+        /* 顶部导航栏是 fixed 定位，这里留出空间避免标题被遮住 */
+        padding: 62px 0 18px;
+        word-break: break-all;
+    }
+
+    @media (max-width: 768px) {
+        .kiwi_search_title {
+            padding-top: 32px;
+        }
+    }
+
+    .kiwi_search_title .keyword {
+        color: rgb(214, 70, 70);
+    }
+
+    .kiwi_search_title .count {
+        display: block;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--minor);
+        margin-top: 8px;
+    }
+
+    .kiwi_search_list_hit {
+        color: rgb(214, 70, 70);
+        font-weight: 700;
+        background: none;
+    }
+
+    .kiwi_search_empty {
+        padding: 40px 0;
+        text-align: center;
+        color: var(--minor);
+    }
+</style>
+
+<script type="application/json" id="kiwiSearchData">{{ $index | jsonify | safeJS }}</script>
 
 <script type="text/javascript">
-
-    var getUrlParameter = function getUrlParameter (sParam) {
-        var sPageURL = window.location.search.substring(1),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-            }
+    (function () {
+        var dataEl = document.getElementById('kiwiSearchData');
+        var listEl = document.getElementById('kiwiSearchList');
+        var emptyEl = document.getElementById('kiwiSearchEmpty');
+        var countEl = document.getElementById('kiwiSearchCount');
+        var keywordEl = document.getElementById('kiwiSearchKeyword');
+        if (!dataEl || !listEl) {
+            return;
         }
-    };
 
-    var searchData = function(){
-        var q = getUrlParameter("keyword");
-      
-        document.querySelector('.Qc_list').innerHTML = ''
+        var articles = [];
+        try {
+            articles = JSON.parse(dataEl.textContent || '[]');
+        } catch (e) {
+            articles = [];
+        }
+        if (!Array.isArray(articles)) {
+            articles = [];
+        }
 
-        fetch('{{"index.xml"|absURL}}')
-        .then(response => response.text())
-        .then(res => {
-           
-            var parser = new DOMParser();
-            var xmlDoc = parser.parseFromString(res, "text/xml"); // xmlData是包含XML内容的字符串变量
+        // 列表缩略图占位图，与首页一致使用主题自带的 loading 图
+        var loadingImg = escapeHTML(listEl.getAttribute('data-loading') || '');
 
-            let items = xmlDoc.getElementsByTagName("item")
+        // 关键字来自地址栏，URLSearchParams 会正确处理中文以及空格（+ 号）
+        var keyword = (new URLSearchParams(window.location.search).get('keyword') || '').trim();
+        var terms = keyword ? keyword.toLowerCase().split(/\s+/).filter(function (t) {
+            return !!t;
+        }) : [];
 
-            let itemHtml = ''
-            for (i = 0; i < items.length; i++) {
-                let title = items[i].querySelector('title').textContent
-                let desc = items[i].querySelector('description').textContent
-                let link = items[i].querySelector('link').textContent
-                let pubDate = new Date(items[i].querySelector('pubDate').textContent)
+        // 回填导航栏搜索框，方便用户修改关键字后重新搜索
+        [].forEach.call(document.querySelectorAll('.kiwi_header__above-search input, .kiwi_header__above-search-mobile input'), function (input) {
+            input.value = keyword;
+        });
 
-                if(title.toLowerCase().indexOf(q.toLowerCase()) >= 0 || desc.toLowerCase().indexOf(q.toLowerCase()) >= 0 ) {
-                    
-                    let highTitle = title.toLowerCase().replace(q.toLowerCase(),`<span style="font-weight:700;color:red;">${q.toLowerCase()}</span>`)
+        function escapeHTML(text) {
+            return String(text == null ? '' : text).replace(/[&<>"']/g, function (ch) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                }[ch];
+            });
+        }
 
-                    let highDesc = desc.toLowerCase().replace(q.toLowerCase(),`<span style="font-weight:700;color:red;">${q.toLowerCase()}</span>`)
+        function escapeRegExp(text) {
+            return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
 
-                    itemHtml += `<li class="Qc_list_item wow index2">
-                                    <div class="line"></div>
-                                    <div class="information">
-                                        <a href="${link}" class="title" title="${title}" rel="noopener noreferrer">
-                                            ${highTitle}
-                                        </a>
-                                        <a class="abstract" href="${link}" title="文章摘要" rel="noopener noreferrer">${highDesc}</a>
-                                        <div class="meta">
-                                            <ul class="items">
-                                                <li>
-                                                    <i class="fa fa-calendar-times-o"></i>&nbsp;&nbsp;${pubDate.getFullYear()}-${(pubDate.getMonth() + 1)}-${pubDate.getDate()}</li>
-                                                <li>
-                                            </ul>
-                                           
-                                        </div>
-                                    </div>
-                                </li>`
-                }
-                
+        // plainify 后的摘要仍保留 &amp; &lsquo; 等实体，先解码再转义，避免二次转义把摘要显示成乱码
+        var decoder = document.createElement('textarea');
+
+        function decodeEntities(text) {
+            if (!text || text.indexOf('&') < 0) {
+                return text || '';
             }
-            document.querySelector('.Qc_list').innerHTML = itemHtml
+            decoder.innerHTML = text;
+            return decoder.value;
+        }
 
-        })
-    };
+        for (var i = 0; i < articles.length; i++) {
+            articles[i].s = decodeEntities(articles[i].s);
+            articles[i].x = decodeEntities(articles[i].x);
+        }
 
-    if (document.readyState === "complete" ||
-        (document.readyState !== "loading" && !document.documentElement.doScroll)) {
-        searchData();
-    } else {
-        document.addEventListener("DOMContentLoaded", searchData);
-    } 
+        // 命中标题的权重高于命中摘要、描述分类标签，未命中的关键字直接淘汰该文章
+        function matchScore(article) {
+            var title = (article.t || '').toLowerCase();
+            var summary = (article.s || '').toLowerCase();
+            var extra = (article.x || '').toLowerCase();
+            var score = 0;
+            for (var i = 0; i < terms.length; i++) {
+                var term = terms[i];
+                var hit = 0;
+                if (title.indexOf(term) >= 0) {
+                    hit = 5;
+                } else if (summary.indexOf(term) >= 0) {
+                    hit = 3;
+                } else if (extra.indexOf(term) >= 0) {
+                    hit = 1;
+                }
+                if (!hit) {
+                    return 0;
+                }
+                score += hit;
+            }
+            return score;
+        }
 
+        function highlight(text) {
+            var raw = String(text == null ? '' : text);
+            if (!terms.length) {
+                return escapeHTML(raw);
+            }
+            // 一次扫描完成高亮，避免重复替换破坏已生成的标签和 HTML 实体
+            var reg = new RegExp('(' + terms.map(escapeRegExp).join('|') + ')', 'gi');
+            var html = '';
+            var last = 0;
+            var hit;
+            while ((hit = reg.exec(raw)) !== null) {
+                html += escapeHTML(raw.slice(last, hit.index));
+                html += '<span class="kiwi_search_list_hit">' + escapeHTML(hit[0]) + '</span>';
+                last = hit.index + hit[0].length;
+                if (!hit[0].length) {
+                    reg.lastIndex++;
+                }
+            }
+            return html + escapeHTML(raw.slice(last));
+        }
+
+        // 与首页 partials/article.html 完全一致的列表结构
+        function articleHtml(article) {
+            var url = escapeHTML(article.u);
+            var summary = (article.s || '').trim();
+            var html = '<li class="Qc_list_item wow index2">';
+            html += '<div class="line"></div>';
+            html += '<a href="' + url + '" class="thumbnail" title="' + escapeHTML(article.t) + '" rel="noopener noreferrer">';
+            if (article.c) {
+                html += '<img' + (article.z ? ' style="zoom:' + escapeHTML(article.z) + ';"' : '') + ' loading="lazy" src="' + loadingImg + '" data-lazy-src="' + escapeHTML(article.c) + '" alt="' + escapeHTML(article.a) + '">';
+            }
+            html += '</a>';
+            html += '<div class="information">';
+            html += '<a href="' + url + '" class="title" title="' + escapeHTML(article.t) + '" rel="noopener noreferrer">';
+            if (article.p) {
+                html += '<span class="badge" style="display:inline-block">置顶</span>';
+            }
+            html += highlight(article.t) + '</a>';
+            html += '<a class="abstract" href="' + url + '" title="文章摘要" rel="noopener noreferrer">' + highlight(summary) + '</a>';
+            html += '<div class="meta"><ul class="items">';
+            html += '<li><i class="fa fa-calendar-times-o"></i>&nbsp;&nbsp;' + escapeHTML(article.d) + '</li>';
+            html += '<li><i class="fa fa-eye"></i>&nbsp;<span class="waline-pageview-count" data-path="' + url + '"></span></li>';
+            html += '<li><i class="fa fa-comments-o"></i>&nbsp;<span class="waline-comment-count" data-path="' + url + '"></span></li>';
+            html += '</ul>';
+            html += '<div class="last" style="display:flex"><i class="fa fa-folder-open" style="margin-right:2px;font-size:15px"></i>&nbsp;&nbsp;';
+            (article.r || []).forEach(function (category, index) {
+                if (index) {
+                    html += ' / ';
+                }
+                html += '<span itemprop="about" itemscope itemtype="http://schema.org/Thing">';
+                html += '<a class="link" href="' + escapeHTML(category.url) + '" itemprop="url" rel="noopener noreferrer index">';
+                html += '<span itemprop="name">' + escapeHTML(category.name) + '</span></a></span>';
+            });
+            html += '</div></div></div></li>';
+            return html;
+        }
+
+        keywordEl.textContent = keyword;
+        countEl.textContent = '';
+        emptyEl.hidden = true;
+        listEl.innerHTML = '';
+
+        if (!keyword) {
+            emptyEl.hidden = false;
+            emptyEl.textContent = '请输入关键字，搜索站内文章。';
+            return;
+        }
+
+        var matched = [];
+        articles.forEach(function (article) {
+            var score = matchScore(article);
+            if (score > 0) {
+                matched.push({
+                    article: article,
+                    score: score
+                });
+            }
+        });
+
+        // 置顶优先，其次按匹配度、发布时间倒序
+        matched.sort(function (a, b) {
+            if (!!b.article.p !== !!a.article.p) {
+                return b.article.p ? 1 : -1;
+            }
+            if (b.score !== a.score) {
+                return b.score - a.score;
+            }
+            return (b.article.g || 0) - (a.article.g || 0);
+        });
+
+        countEl.textContent = '共找到 ' + matched.length + ' 篇文章';
+
+        if (!matched.length) {
+            emptyEl.hidden = false;
+            emptyEl.textContent = '没有找到与「' + keyword + '」相关的文章，换个关键字试试吧。';
+            return;
+        }
+
+        listEl.innerHTML = matched.map(function (item) {
+            return articleHtml(item.article);
+        }).join('');
+    })();
 </script>
 {{ end }}
