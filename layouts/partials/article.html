@@ -34,16 +34,18 @@
                 <i class="fa fa-folder-open" style="margin-right:2px;font-size:15px"></i>&nbsp;&nbsp;
                
                 {{ if .Site.Params.postMeta.categories }}
-                    {{ with .Params.categories }}
+                    {{- range $index, $term := .GetTerms "categories" }}
+                    {{- if $index }} / {{ end -}}
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a class="link" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" itemprop="url" rel="noopener noreferrer index">
-                    <span itemprop="name">{{- . -}}</span>
+                  <a class="link" href="{{ $term.RelPermalink }}" itemprop="url" rel="noopener noreferrer index">
+                    <span itemprop="name">{{- $term.LinkTitle -}}</span>
                   </a>
                 </span>
-                {{ end }}
+                    {{- end }}
                 {{ end }}
 
             </div>
         </div>
     </div>
 </li>
+
