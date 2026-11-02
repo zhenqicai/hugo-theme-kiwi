@@ -15,6 +15,8 @@
     }
 </style>
 
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/index.min.css" />
+
 <div class="Qc_main index">
     <div class="Qc_index">
         <div class="Qc_index_list">
@@ -33,6 +35,19 @@
             {{ end }}
 
             <ul class="Qc_list">
+                <li>
+                    <!-- 自适应广告 &ndash;&gt;-->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-5798408669698308"
+                        data-ad-slot="9319631834"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+
+                </li>
                 {{ range $index,$data := .Paginator.Pages }}
                     {{ partial "article.html" $data }}
                 {{ end }}
